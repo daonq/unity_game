@@ -1,0 +1,109 @@
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
+public class Land : MonoBehaviour
+{
+    public int id;
+    public int levelUnlock;
+    public GameObject Seed;
+    public enum StateLand { NONE, SEEDED, DONE};
+    public StateLand stateLand;
+
+    private int _idSeed;
+
+    public Text textTime;
+    public GameObject objectTime;
+
+    public Sprite spriteLock;
+
+    public GameObject effect;
+
+    private Material mat;
+
+    private void Start()
+    {
+        if(DataGlobal.instance.GetLevel() < levelUnlock)
+        {
+            GetComponent<SpriteRenderer>().sprite = spriteLock;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (DataGlobal.instance.AllowMouseDown)
+        {
+            if(DataGlobal.instance.GetLevel() >= levelUnlock)
+            {
+                if (stateLand == StateLand.NONE)
+                {
+                    UIManager.instance.OnClickToLand(id);
+                } else if(stateLand == StateLand.SEEDED)
+                {
+                    objectTime.SetActive(true);
+                    StartCoroutine(HideTime());
+                } else if(stateLand == StateLand.DONE)
+                {
+                    OnDone(_idSeed);
+                }
+            } else
+            {
+                Debug.Log("You need to level " + levelUnlock +
+                    " to be able to open this land!");
+            }
+        }
+    }
+
+    IEnumerator HideTime()
+    {
+        yield return new WaitForSeconds(5);
+        objectTime.SetActive(false);
+    }
+
+    private int _exp;
+    private Sprite _sp4;
+    public void Seeded(int id, int time, Sprite sp1, Sprite sp2, Sprite sp3, int exp, Sprite sp4, Material mat)
+    {
+        _sp4 = sp4;
+        _exp = exp;
+        _idSeed = id;
+        this.mat = mat;
+        StartCoroutine(OnSeeded(time, sp1, sp2, sp3));
+    }
+
+    IEnumerator OnSeeded(int time, Sprite sp1, Sprite sp2, Sprite sp3)
+    {
+        stateLand = StateLand.SEEDED;
+        Seed.GetComponent<SpriteRenderer>().sprite = sp1;
+        int timeDefaut = time;
+        textTime.text = time + "s";
+        while (time > 0)
+        {
+            yield return new WaitForSeconds(1);
+            time--;
+            if (time == timeDefaut / 2)
+            {
+                Seed.GetComponent<SpriteRenderer>().sprite = sp2;
+            }
+            if(time == 1)
+            {
+                stateLand = StateLand.DONE;
+                Seed.GetComponent<SpriteRenderer>().sprite = sp3;
+            }
+            textTime.text = time + "s";
+        }
+    }
+
+    public void OnDone(int idSeed)
+    {
+        Seed.GetComponent<SpriteRenderer>().sprite = null;
+        stateLand = StateLand.NONE;
+        DataGlobal.instance.ArrayAmount[idSeed] += 5;
+        DataGlobal.instance.AddStar(idSeed * _exp);
+        GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
+        ef.transform.Rotate(new Vector3(-90, 0, 0));
+        ef.GetComponent<ParticleSystemRenderer>().material = mat;
+        Destroy(ef, 5);
+    }
+}

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d61cd98b56b91124b887ee37a90115e5
+timeCreated: 1545139988
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: iCiel Nabila
+  fontNames:
+  - iCiel Nabila
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

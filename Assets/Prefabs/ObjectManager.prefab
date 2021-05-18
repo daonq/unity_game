@@ -1,0 +1,927 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5185583143415639172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5185583143415639170}
+  - component: {fileID: 5185583143415639171}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5185583143415639170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583143415639172}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5185583144413620430}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5185583143415639171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583143415639172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823b9a83c7531b242b81833438b56974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5185583143700620046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5185583143700620045}
+  - component: {fileID: 5185583143700620044}
+  m_Layer: 0
+  m_Name: DataGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5185583143700620045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583143700620046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5185583144413620430}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5185583143700620044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583143700620046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32552c827e2efb45867c0c70c65a55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtLevel: {fileID: 0}
+  txtStar: {fileID: 0}
+  txtGold: {fileID: 0}
+  txtWood: {fileID: 0}
+  txtStone: {fileID: 0}
+  txtWater: {fileID: 0}
+  txtOil: {fileID: 0}
+  AllowMouseDown: 1
+  _level: 20
+  _gold: 10000
+  _water: 500
+  _stone: 500
+  _wood: 500
+  _star: 0
+  _oil: 10000
+  _levelHouse: 1
+  ArrayLand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ArrayAmount: 
+  ArrayLandFactory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ArrayHaveOwnedItem: 
+  ArrayChuong:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  levelContain:
+  - level: 1
+    star: 50
+    wood: 500
+    stone: 500
+    oil: 500
+    water: 500
+  - level: 2
+    star: 150
+    wood: 550
+    stone: 550
+    oil: 550
+    water: 550
+  - level: 3
+    star: 200
+    wood: 600
+    stone: 600
+    oil: 600
+    water: 600
+  - level: 4
+    star: 300
+    wood: 620
+    stone: 620
+    oil: 620
+    water: 620
+  - level: 5
+    star: 500
+    wood: 630
+    stone: 630
+    oil: 630
+    water: 630
+  - level: 6
+    star: 600
+    wood: 640
+    stone: 640
+    oil: 640
+    water: 640
+  - level: 7
+    star: 800
+    wood: 650
+    stone: 650
+    oil: 650
+    water: 650
+  - level: 8
+    star: 900
+    wood: 660
+    stone: 660
+    oil: 660
+    water: 660
+  - level: 9
+    star: 1000
+    wood: 670
+    stone: 670
+    oil: 670
+    water: 670
+  - level: 10
+    star: 1200
+    wood: 680
+    stone: 680
+    oil: 680
+    water: 680
+  - level: 11
+    star: 1300
+    wood: 690
+    stone: 690
+    oil: 690
+    water: 690
+  - level: 12
+    star: 1400
+    wood: 700
+    stone: 700
+    oil: 700
+    water: 700
+  - level: 13
+    star: 1500
+    wood: 710
+    stone: 710
+    oil: 710
+    water: 710
+  - level: 14
+    star: 1600
+    wood: 720
+    stone: 720
+    oil: 720
+    water: 720
+  - level: 15
+    star: 1700
+    wood: 730
+    stone: 730
+    oil: 730
+    water: 730
+  - level: 16
+    star: 1800
+    wood: 740
+    stone: 740
+    oil: 740
+    water: 740
+  - level: 17
+    star: 1900
+    wood: 750
+    stone: 750
+    oil: 750
+    water: 750
+  - level: 18
+    star: 2000
+    wood: 760
+    stone: 760
+    oil: 760
+    water: 760
+  - level: 19
+    star: 2100
+    wood: 770
+    stone: 770
+    oil: 770
+    water: 770
+  - level: 20
+    star: 2200
+    wood: 780
+    stone: 780
+    oil: 780
+    water: 780
+  - level: 21
+    star: 2300
+    wood: 790
+    stone: 790
+    oil: 790
+    water: 790
+  - level: 22
+    star: 2400
+    wood: 800
+    stone: 800
+    oil: 800
+    water: 800
+  - level: 23
+    star: 2500
+    wood: 810
+    stone: 810
+    oil: 810
+    water: 810
+  - level: 24
+    star: 2600
+    wood: 820
+    stone: 820
+    oil: 820
+    water: 820
+  - level: 25
+    star: 2700
+    wood: 830
+    stone: 830
+    oil: 830
+    water: 830
+  - level: 26
+    star: 2800
+    wood: 840
+    stone: 840
+    oil: 840
+    water: 840
+  - level: 27
+    star: 2900
+    wood: 850
+    stone: 850
+    oil: 850
+    water: 850
+  - level: 28
+    star: 3000
+    wood: 860
+    stone: 860
+    oil: 860
+    water: 860
+  - level: 29
+    star: 3100
+    wood: 870
+    stone: 870
+    oil: 870
+    water: 870
+  - level: 30
+    star: 3200
+    wood: 880
+    stone: 880
+    oil: 880
+    water: 880
+  - level: 31
+    star: 3300
+    wood: 890
+    stone: 890
+    oil: 890
+    water: 890
+  - level: 32
+    star: 3400
+    wood: 900
+    stone: 900
+    oil: 900
+    water: 900
+  - level: 33
+    star: 3500
+    wood: 910
+    stone: 910
+    oil: 910
+    water: 910
+  - level: 34
+    star: 3600
+    wood: 920
+    stone: 920
+    oil: 920
+    water: 920
+  - level: 35
+    star: 3700
+    wood: 930
+    stone: 930
+    oil: 930
+    water: 930
+  - level: 36
+    star: 3800
+    wood: 940
+    stone: 940
+    oil: 940
+    water: 940
+  - level: 37
+    star: 3900
+    wood: 950
+    stone: 950
+    oil: 950
+    water: 950
+  - level: 38
+    star: 4000
+    wood: 960
+    stone: 960
+    oil: 960
+    water: 960
+  - level: 39
+    star: 4100
+    wood: 970
+    stone: 970
+    oil: 970
+    water: 970
+  - level: 40
+    star: 4200
+    wood: 980
+    stone: 980
+    oil: 980
+    water: 980
+  - level: 41
+    star: 4300
+    wood: 990
+    stone: 990
+    oil: 990
+    water: 990
+  - level: 42
+    star: 4400
+    wood: 1000
+    stone: 1000
+    oil: 1000
+    water: 1000
+  - level: 43
+    star: 4500
+    wood: 1010
+    stone: 1010
+    oil: 1010
+    water: 1010
+  - level: 44
+    star: 4600
+    wood: 1020
+    stone: 1020
+    oil: 1020
+    water: 1020
+  - level: 45
+    star: 4700
+    wood: 1030
+    stone: 1030
+    oil: 1030
+    water: 1030
+  - level: 46
+    star: 4800
+    wood: 1040
+    stone: 1040
+    oil: 1040
+    water: 1040
+  - level: 47
+    star: 4900
+    wood: 1050
+    stone: 1050
+    oil: 1050
+    water: 1050
+  - level: 48
+    star: 5000
+    wood: 1060
+    stone: 1060
+    oil: 1060
+    water: 1060
+  - level: 49
+    star: 5100
+    wood: 1070
+    stone: 1070
+    oil: 1070
+    water: 1070
+  - level: 50
+    star: 5200
+    wood: 1080
+    stone: 1080
+    oil: 1080
+    water: 1080
+  - level: 51
+    star: 5300
+    wood: 1090
+    stone: 1090
+    oil: 1090
+    water: 1090
+  - level: 52
+    star: 5400
+    wood: 1100
+    stone: 1100
+    oil: 1100
+    water: 1100
+  - level: 53
+    star: 5500
+    wood: 1110
+    stone: 1110
+    oil: 1110
+    water: 1110
+  - level: 54
+    star: 5600
+    wood: 1120
+    stone: 1120
+    oil: 1120
+    water: 1120
+  - level: 55
+    star: 5700
+    wood: 1130
+    stone: 1130
+    oil: 1130
+    water: 1130
+  - level: 56
+    star: 5800
+    wood: 1140
+    stone: 1140
+    oil: 1140
+    water: 1140
+  - level: 57
+    star: 5900
+    wood: 1150
+    stone: 1150
+    oil: 1150
+    water: 1150
+  - level: 58
+    star: 6000
+    wood: 1160
+    stone: 1160
+    oil: 1160
+    water: 1160
+  - level: 59
+    star: 6100
+    wood: 1170
+    stone: 1170
+    oil: 1170
+    water: 1170
+  - level: 60
+    star: 6200
+    wood: 1180
+    stone: 1180
+    oil: 1180
+    water: 1180
+  - level: 61
+    star: 6300
+    wood: 1190
+    stone: 1190
+    oil: 1190
+    water: 1190
+  - level: 62
+    star: 6400
+    wood: 1200
+    stone: 1200
+    oil: 1200
+    water: 1200
+  - level: 63
+    star: 6500
+    wood: 1210
+    stone: 1210
+    oil: 1210
+    water: 1210
+  - level: 64
+    star: 6600
+    wood: 1220
+    stone: 1220
+    oil: 1220
+    water: 1220
+  - level: 65
+    star: 6700
+    wood: 1230
+    stone: 1230
+    oil: 1230
+    water: 1230
+  - level: 66
+    star: 6800
+    wood: 1240
+    stone: 1240
+    oil: 1240
+    water: 1240
+  - level: 67
+    star: 6900
+    wood: 1250
+    stone: 1250
+    oil: 1250
+    water: 1250
+  - level: 68
+    star: 7000
+    wood: 1260
+    stone: 1260
+    oil: 1260
+    water: 1260
+  - level: 69
+    star: 7100
+    wood: 1270
+    stone: 1270
+    oil: 1270
+    water: 1270
+  - level: 70
+    star: 7200
+    wood: 1280
+    stone: 1280
+    oil: 1280
+    water: 1280
+  - level: 71
+    star: 7300
+    wood: 1290
+    stone: 1290
+    oil: 1290
+    water: 1290
+  - level: 72
+    star: 7400
+    wood: 1300
+    stone: 1300
+    oil: 1300
+    water: 1300
+  - level: 73
+    star: 7500
+    wood: 1310
+    stone: 1310
+    oil: 1310
+    water: 1310
+  - level: 74
+    star: 7600
+    wood: 1320
+    stone: 1320
+    oil: 1320
+    water: 1320
+  - level: 75
+    star: 7700
+    wood: 1330
+    stone: 1330
+    oil: 1330
+    water: 1330
+  - level: 76
+    star: 7800
+    wood: 1340
+    stone: 1340
+    oil: 1340
+    water: 1340
+  - level: 77
+    star: 7900
+    wood: 1350
+    stone: 1350
+    oil: 1350
+    water: 1350
+  - level: 78
+    star: 8000
+    wood: 1360
+    stone: 1360
+    oil: 1360
+    water: 1360
+  - level: 79
+    star: 8100
+    wood: 1370
+    stone: 1370
+    oil: 1370
+    water: 1370
+  - level: 80
+    star: 8200
+    wood: 1380
+    stone: 1380
+    oil: 1380
+    water: 1380
+  - level: 81
+    star: 8300
+    wood: 1390
+    stone: 1390
+    oil: 1390
+    water: 1390
+  - level: 82
+    star: 8400
+    wood: 1400
+    stone: 1400
+    oil: 1400
+    water: 1400
+  - level: 83
+    star: 8500
+    wood: 1410
+    stone: 1410
+    oil: 1410
+    water: 1410
+  - level: 84
+    star: 8600
+    wood: 1420
+    stone: 1420
+    oil: 1420
+    water: 1420
+  - level: 85
+    star: 8700
+    wood: 1430
+    stone: 1430
+    oil: 1430
+    water: 1430
+  - level: 86
+    star: 8800
+    wood: 1440
+    stone: 1440
+    oil: 1440
+    water: 1440
+  - level: 87
+    star: 8900
+    wood: 1450
+    stone: 1450
+    oil: 1450
+    water: 1450
+  - level: 88
+    star: 9000
+    wood: 1460
+    stone: 1460
+    oil: 1460
+    water: 1460
+  - level: 89
+    star: 9100
+    wood: 1470
+    stone: 1470
+    oil: 1470
+    water: 1470
+  - level: 90
+    star: 9200
+    wood: 1480
+    stone: 1480
+    oil: 1480
+    water: 1480
+  - level: 91
+    star: 9300
+    wood: 1490
+    stone: 1490
+    oil: 1490
+    water: 1490
+  - level: 92
+    star: 9400
+    wood: 1500
+    stone: 1500
+    oil: 1500
+    water: 1500
+  - level: 93
+    star: 9500
+    wood: 1510
+    stone: 1510
+    oil: 1510
+    water: 1510
+  - level: 94
+    star: 9600
+    wood: 1520
+    stone: 1520
+    oil: 1520
+    water: 1520
+  - level: 95
+    star: 9700
+    wood: 1530
+    stone: 1530
+    oil: 1530
+    water: 1530
+  - level: 96
+    star: 9800
+    wood: 1540
+    stone: 1540
+    oil: 1540
+    water: 1540
+  - level: 97
+    star: 9900
+    wood: 1550
+    stone: 1550
+    oil: 1550
+    water: 1550
+  - level: 98
+    star: 9950
+    wood: 1560
+    stone: 1560
+    oil: 1560
+    water: 1560
+  - level: 99
+    star: 9999
+    wood: 9999
+    stone: 9999
+    oil: 9999
+    water: 9999
+  levelCurrentOfFactory: 
+  RoiIcon: {fileID: 8984399531844546585, guid: e22858cfde9bc394aaca92a59c7e68af, type: 3}
+  SeedObject: {fileID: 8892864526755869409, guid: 1436d4f34e8879a4398fd1b9c8476b9e,
+    type: 3}
+--- !u!1 &5185583144176138769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5185583144176139247}
+  - component: {fileID: 5185583144176138768}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5185583144176139247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583144176138769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5185583144413620430}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5185583144176138768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583144176138769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee4381616f8aea43853ed6406db5086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelSeeds: {fileID: 0}
+  title: {fileID: 0}
+  exp: {fileID: 0}
+  time: {fileID: 0}
+  product: {fileID: 0}
+  levelUL: {fileID: 0}
+  gold: {fileID: 0}
+  btnBuy: {fileID: 0}
+  btnExit: {fileID: 0}
+  image: {fileID: 0}
+  PanelFactory1: {fileID: 0}
+  titleF1: {fileID: 0}
+  goldF1: {fileID: 0}
+  rawMatF1: {fileID: 0}
+  timeF1: {fileID: 0}
+  productF1: {fileID: 0}
+  btnBuyF1: {fileID: 0}
+  btnExitF1: {fileID: 0}
+  imageF1: {fileID: 0}
+  PanelWaiting: {fileID: 0}
+  textWater: {fileID: 0}
+  textStone: {fileID: 0}
+  textWood: {fileID: 0}
+  btnBuild: {fileID: 0}
+  btnExitPW: {fileID: 0}
+  du1W: {fileID: 0}
+  du2W: {fileID: 0}
+  du3W: {fileID: 0}
+  PanelBuild: {fileID: 0}
+  titlePB1: {fileID: 0}
+  titlePB2: {fileID: 0}
+  levelPB: {fileID: 0}
+  mainHousePB: {fileID: 0}
+  goldPB: {fileID: 0}
+  imagePB: {fileID: 0}
+  imageLevel1: {fileID: 0}
+  imageLevel2: {fileID: 0}
+  imageLevel3: {fileID: 0}
+  iconHarvest: {fileID: 0}
+  LockPB: {fileID: 0}
+  unLockPb: {fileID: 0}
+  not1: {fileID: 0}
+  tick1: {fileID: 0}
+  not2: {fileID: 0}
+  tick2: {fileID: 0}
+  not3: {fileID: 0}
+  tick3: {fileID: 0}
+  btn_ThuHoach: {fileID: 0}
+  btn_NangCap: {fileID: 0}
+  btn_ExitPB: {fileID: 0}
+  PanelStore: {fileID: 0}
+  btnBuyPS: {fileID: 0}
+  btnExitPS: {fileID: 0}
+  unitPrice: {fileID: 0}
+  des: {fileID: 0}
+  iconPS: {fileID: 0}
+  haveOwned: {fileID: 0}
+  PanelBan: {fileID: 0}
+  btnExitPB: {fileID: 0}
+  btnSell: {fileID: 0}
+  amount: {fileID: 0}
+  unityPrice: {fileID: 0}
+  TotalMoney: {fileID: 0}
+  titleBan: {fileID: 0}
+  iconNongsan1: {fileID: 0}
+  iconNongSan2: {fileID: 0}
+  PanelChuong: {fileID: 0}
+  titleChuong: {fileID: 0}
+  harvestChuong: {fileID: 0}
+  timeChuong: {fileID: 0}
+  rewardsChuong: {fileID: 0}
+  goldChuong: {fileID: 0}
+  imageChuong: {fileID: 0}
+  imageVatnuoi1: {fileID: 0}
+  imageVatnuoi2: {fileID: 0}
+  imageVatnuoi3: {fileID: 0}
+  imageVatnuoi4: {fileID: 0}
+  BuyVatNuoi: {fileID: 0}
+  ExitChuong: {fileID: 0}
+  Muathem: {fileID: 0}
+  MuaGiam: {fileID: 0}
+  PanelHouse: {fileID: 0}
+  containWater: {fileID: 0}
+  containStone: {fileID: 0}
+  containWood: {fileID: 0}
+  containOil: {fileID: 0}
+  title2: {fileID: 0}
+  Contain: {fileID: 0}
+  content1: {fileID: 0}
+  content2: {fileID: 0}
+  content3: {fileID: 0}
+  content4: {fileID: 0}
+  Upgrade: {fileID: 0}
+  levelRequire: {fileID: 0}
+  thieu1: {fileID: 0}
+  du1: {fileID: 0}
+  goldRequire: {fileID: 0}
+  thieu2: {fileID: 0}
+  du2: {fileID: 0}
+  oilRequire: {fileID: 0}
+  thieu3: {fileID: 0}
+  du3: {fileID: 0}
+  exitMainHouse: {fileID: 0}
+  NangCapHouse: {fileID: 0}
+  imageHouse: {fileID: 0}
+  WhereHouse: {fileID: 0}
+--- !u!1 &5185583144413620431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5185583144413620430}
+  m_Layer: 0
+  m_Name: ObjectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5185583144413620430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185583144413620431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5185583143415639170}
+  - {fileID: 5185583143700620045}
+  - {fileID: 5185583144176139247}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
