@@ -1,16 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class EffectQuaCam : MonoBehaviour
+public class EffectQuaCam : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Rigidbody2D rb;
-    [SerializeField] 
-    private float h;
-    private void Start()
+    public GameObject test;
+
+    public void OnDrag(PointerEventData eventData)
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.up*h);
-        Destroy(gameObject, 1);
+        Debug.Log("On Drag");
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("On End Drag");
+    }
+
+    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("On Begin Drag");
+        GameObject t = Instantiate(test, transform.position, Quaternion.identity);
     }
 }
