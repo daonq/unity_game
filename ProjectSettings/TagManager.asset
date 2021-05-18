@@ -8,6 +8,16 @@ TagManager:
   - LandFactory
   - Chuong
   - House
+  - LUA
+  - KHOAI
+  - NGO
+  - CACHUA
+  - DAU
+  - CATIM
+  - BINGO
+  - DAUTAY
+  - DUAHAU
+  - MIA
   layers:
   - Default
   - TransparentFX
