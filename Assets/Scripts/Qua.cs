@@ -12,6 +12,7 @@ public class Qua : MonoBehaviour
 
     public bool Cothepha;
 
+    public GameObject vongtron;
     public GameObject gio;
     public Text textSoluong;
 
@@ -19,8 +20,8 @@ public class Qua : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = qua3;
         textSoluong.text = DataGlobal.instance.ArrayHaveOwnedItem[2].ToString();
-        //vongtron.transform.DOScale(Vector3.zero, 1);
-        gio.SetActive(false);
+        vongtron.transform.DOScale(Vector3.zero, 1);
+        //gio.SetActive(false);
     }
 
     private void OnMouseDown()
@@ -28,16 +29,16 @@ public class Qua : MonoBehaviour
         textSoluong.text = DataGlobal.instance.ArrayHaveOwnedItem[2].ToString();
         if (DataGlobal.instance.AllowMouseDown && Cothepha)
         {
-            //vongtron.transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 1);
-            gio.SetActive(true);
+            vongtron.transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 1);
+            //gio.SetActive(true);
             StartCoroutine(Hide());
         }
     }
 
     IEnumerator Hide()
     {
-        yield return new WaitForSeconds(1);
-        gio.SetActive(false);
-        //vongtron.transform.DOScale(Vector3.zero, 1);
+        yield return new WaitForSeconds(3);
+        //gio.SetActive(false);
+        vongtron.transform.DOScale(Vector3.zero, 1);
     }
 }
