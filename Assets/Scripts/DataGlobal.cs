@@ -27,7 +27,7 @@ public class DataGlobal : MonoBehaviour
     public Text txtWood;
     public Text txtStone;
     public Text txtWater;
-    public Text txtOil;
+    //public Text txtOil;
 
     public bool AllowMouseDown; // Cho phep click vao object trong scene
     [SerializeField] private int _level; // Level hien tai cua nguoi choi
@@ -65,7 +65,7 @@ public class DataGlobal : MonoBehaviour
     public void AddOil(int oil)
     {
         _oil += oil;
-        txtOil.text = _oil.ToString();
+        //txtOil.text = _oil.ToString();
     }
 
     public void SubOil(int oil)

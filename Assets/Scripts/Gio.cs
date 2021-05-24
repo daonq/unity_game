@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class Gio : MonoBehaviour
 {
+    public int idAmount; // 12: Cam, 11: Tao, 10: Dao
     public GameObject cay;
     public GameObject qua;
     public Material mat;
@@ -13,9 +14,11 @@ public class Gio : MonoBehaviour
         if(DataGlobal.instance.ArrayHaveOwnedItem[2] > 0)
         {
             DataGlobal.instance.ArrayHaveOwnedItem[2] -= 1;
+            DataGlobal.instance.AddStar(2);
+            DataGlobal.instance.ArrayAmount[idAmount] += 5;
             cay.GetComponent<Qua>().textSoluong.text = DataGlobal.instance.ArrayHaveOwnedItem[2].ToString();
             cay.GetComponent<Qua>().Cothepha = false;
-            cay.GetComponent<Qua>().vongtron.transform.DOScale(Vector3.zero, 1);
+            //cay.GetComponent<Qua>().vongtron.transform.DOScale(Vector3.zero, 1);
             GameObject ef = Instantiate(qua, cay.transform.position, Quaternion.identity);
             ef.transform.Rotate(new Vector3(-90, 0, 0));
             ef.GetComponent<ParticleSystemRenderer>().material = mat;

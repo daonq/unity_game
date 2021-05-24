@@ -14,11 +14,11 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         AddListenForPanelSeeds();
+        AddListnerForPS();
+        AddListenerForPanelBan();
         AddListenForPanelFactory1();
         AddListenForPanelWaiting();
         AddListenerToPanelBuild();
-        AddListnerForPS();
-        AddListenerForPanelBan();
         AddListenerForPanelChuong();
         AddEventListnerForPanelHouse();
     }
