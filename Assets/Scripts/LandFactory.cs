@@ -18,6 +18,9 @@ public class LandFactory : MonoBehaviour
     public TextMeshProUGUI textTime;
     public TextMeshProUGUI textCount;
 
+    public bool active;
+
+
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
@@ -32,6 +35,7 @@ public class LandFactory : MonoBehaviour
                     UIManager.instance.OnClickToWaiting();
                 } else if(stateLandFactory == StateLandFactory.BUILD)
                 {
+                    active = true;
                     UIManager.instance.ShowBuildFactory();
                 }
             } else
@@ -91,20 +95,31 @@ public class LandFactory : MonoBehaviour
 
         time = 0;
         count = 0;
-        textCount.text = count + "/" + countMax;
-        textTime.text = time + "/" + timeMax;
+
+        if (active)
+        {
+            textCount.text = count + "/" + countMax;
+            textTime.text = time + "/" + timeMax;
+        }
+
         while (count < countMax)
         {
             yield return new WaitForSeconds(1);
             if(time < timeMax)
             {
                 time++;
-                textTime.text = time + "/" + timeMax;
+                if (active)
+                {
+                    textTime.text = time + "/" + timeMax;
+                }
             } else
             {
                 time = 0;
                 count++;
-                textCount.text = count + "/" + countMax;
+                if (active)
+                {
+                    textCount.text = count + "/" + countMax;
+                }
             }
         }
     }
@@ -128,6 +143,14 @@ public class LandFactory : MonoBehaviour
             DataGlobal.instance.AddOil(count);
         }
         count = 0;
-        textCount.text = count + "/" + countMax;
+        if (active)
+        {
+            textCount.text = count + "/" + countMax;
+        }
+    }
+
+    public void setActive()
+    {
+        active = false;
     }
 }

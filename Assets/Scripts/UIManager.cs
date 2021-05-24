@@ -263,8 +263,9 @@ public class UIManager : MonoBehaviour
         btn_ThuHoach.onClick.AddListener(delegate
         {
             DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().OnThuHoach(_factory1.id);
+            DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().setActive();
             PanelBuild.SetActive(false);
-            DataGlobal.instance.AllowMouseDown = true; 
+            DataGlobal.instance.AllowMouseDown = true;
             MainCamera.instance.camLock = false;
         });
 
@@ -286,13 +287,14 @@ public class UIManager : MonoBehaviour
                 {
                     DataGlobal.instance.levelCurrentOfFactory[_factory1.id] = 2;
                     DataGlobal.instance.SubGold(_factory1.gold3);
-                    DataGlobal.instance.ArrayLandFactory[_factory1.id].GetComponent<LandFactory>().OnBuild2();
+                    DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().OnBuild2();
                 }
             }
         });
 
         btn_ExitPB.onClick.AddListener(delegate
         {
+            DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().setActive();
             PanelBuild.SetActive(false);
             DataGlobal.instance.AllowMouseDown = true;
             MainCamera.instance.camLock = false;
