@@ -60,8 +60,7 @@ public class LandFactory : MonoBehaviour
                 }
             } else
             {
-                Debug.Log("You need to level " + levelUnlock +
-                    " to be able to open this land!");
+                UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
             }
         }
     }

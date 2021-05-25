@@ -37,11 +37,11 @@ public class Stone : MonoBehaviour
                 StartCoroutine(HoiSinh());
             } else
             {
-                Debug.Log("Ban khong du tien!");
+                UIManager.instance.Hienthongbao("You not have money!");
             }
         } else
         {
-            Debug.Log("Hien tai khong the pha huy!");
+            UIManager.instance.Hienthongbao("Waiting...");
         }
     }
 

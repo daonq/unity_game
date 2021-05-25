@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +11,22 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    public Text thongbao;
+
+    public void Hienthongbao(string mes)
+    {
+        thongbao.text = mes;
+        StartCoroutine(thongbaoText());
+    }
+
+    IEnumerator thongbaoText()
+    {
+        thongbao.gameObject.SetActive(true);
+        thongbao.GetComponent<RectTransform>().DOMove(thongbao.transform.position + new Vector3(0, 300, 0), 2f);
+        yield return new WaitForSeconds(2f);
+        thongbao.gameObject.SetActive(false);
     }
 
     private void Start()

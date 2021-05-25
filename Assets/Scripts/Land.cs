@@ -77,8 +77,7 @@ public class Land : MonoBehaviour
                 }
             } else
             {
-                Debug.Log("You need to level " + levelUnlock +
-                    " to be able to open this land!");
+                UIManager.instance.Hienthongbao("The plot of land is opened at the level " + levelUnlock);
             }
         }
     }

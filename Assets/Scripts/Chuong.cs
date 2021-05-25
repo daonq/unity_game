@@ -56,7 +56,8 @@ public class Chuong : MonoBehaviour
                     UIManager.instance.ShowPanelChuong(id);
                 } else if(state == StateChuong.WAITING)
                 {
-                    Debug.Log("Dang phat trien");
+                    //Debug.Log("Dang phat trien");
+                    UIManager.instance.Hienthongbao("No no no...");
                 } else if(state == StateChuong.DONE)
                 {
                     if(_vatnuoi.id == 13)
@@ -97,7 +98,8 @@ public class Chuong : MonoBehaviour
                 }
             } else
             {
-                Debug.Log("Ban chua du level de mo khoa!");
+                //Debug.Log("Ban chua du level de mo khoa!");
+                UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
             }
         }
     }
