@@ -116,7 +116,12 @@ public class UIManager : MonoBehaviour
 
         btnBuyF1.onClick.AddListener(delegate
         {
-            if (DataGlobal.instance.GetGold() >= _factory1.gold)
+            if ((_factory1.id == 4 && !(idFactory == 5 || idFactory == 6 || idFactory == 7)) ||
+                (_factory1.id != 4 && (idFactory == 5 || idFactory == 6 || idFactory == 7)))
+            {
+
+            }
+            else if (DataGlobal.instance.GetGold() >= _factory1.gold)
             {
                 PanelFactory1.SetActive(false);
                 DataGlobal.instance.AllowMouseDown = true;
@@ -553,6 +558,7 @@ public class UIManager : MonoBehaviour
         {
             if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi))
             {
+                DataGlobal.instance.SubGold(_vatnuoi.gold * soluongVatnuoi);
                 DataGlobal.instance.ArrayChuong[_idChuong].GetComponent<Chuong>().Build(_vatnuoi, soluongVatnuoi);
                 DataGlobal.instance.AllowMouseDown = true;
                 PanelChuong.SetActive(false);

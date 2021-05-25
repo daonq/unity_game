@@ -9,6 +9,14 @@ public class DataGlobal : MonoBehaviour
     {
         instance = this;
         ArrayHaveOwnedItem = new int[3];
+        _level = PlayerPrefs.GetInt("level", 1);
+        _gold = PlayerPrefs.GetInt("gold", 1000);
+        _water = PlayerPrefs.GetInt("water", 500);
+        _stone = PlayerPrefs.GetInt("stone", 500);
+        _wood = PlayerPrefs.GetInt("wood", 500);
+        _star = PlayerPrefs.GetInt("star", 0);
+        _oil = PlayerPrefs.GetInt("oil", 0);
+        _levelHouse = PlayerPrefs.GetInt("levelHouse", 1);
     }
 
     private void Start()
@@ -19,6 +27,18 @@ public class DataGlobal : MonoBehaviour
         txtWood.text = _wood.ToString();
         txtStone.text = _stone.ToString();
         txtWater.text = _water.ToString();
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("level", _level);
+        PlayerPrefs.SetInt("gold", _gold);
+        PlayerPrefs.SetInt("water", _water);
+        PlayerPrefs.SetInt("stone", _stone);
+        PlayerPrefs.SetInt("wood", _wood);
+        PlayerPrefs.SetInt("star", _star);
+        PlayerPrefs.SetInt("oil", _oil);
+        PlayerPrefs.SetInt("levelHouse", _levelHouse);
     }
 
     public Text txtLevel;

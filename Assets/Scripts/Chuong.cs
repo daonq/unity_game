@@ -28,11 +28,28 @@ public class Chuong : MonoBehaviour
 
     public GameObject effect;
 
+    public GameObject effectThuHoach;
+    public Material[] listMat;
+
+    private void Start()
+    {
+        if(DataGlobal.instance.GetLevel() >= levelUnlock)
+        {
+            effect.SetActive(true);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            if(DataGlobal.instance.GetLevel() >= levelUnlock)
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            if (DataGlobal.instance.GetLevel() >= levelUnlock)
             {
                 if (state == StateChuong.NONE)
                 {
@@ -42,6 +59,32 @@ public class Chuong : MonoBehaviour
                     Debug.Log("Dang phat trien");
                 } else if(state == StateChuong.DONE)
                 {
+                    if(_vatnuoi.id == 13)
+                    {
+                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+                        ef.transform.Rotate(new Vector3(-90, 0, 0));
+                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[0];
+                        Destroy(ef, 3);
+                    } else if(_vatnuoi.id == 14)
+                    {
+                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+                        ef.transform.Rotate(new Vector3(-90, 0, 0));
+                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[1];
+                        Destroy(ef, 3);
+                    } else if(_vatnuoi.id == 15)
+                    {
+                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+                        ef.transform.Rotate(new Vector3(-90, 0, 0));
+                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[2];
+                        Destroy(ef, 3);
+                    } else if(_vatnuoi.id == 16)
+                    {
+                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+                        ef.transform.Rotate(new Vector3(-90, 0, 0));
+                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[3];
+                        Destroy(ef, 3);
+                    }
+
                     state = StateChuong.NONE;
                     for (int i = 0; i < listVatNuoi.Count; i++)
                     {
@@ -64,6 +107,7 @@ public class Chuong : MonoBehaviour
     public void Build(DetailVatnuoi vatnuoi, int soluong)
     {
         bien.SetActive(false);
+        effect.SetActive(false);
         sl = soluong;
         _vatnuoi = vatnuoi;
         GetComponent<SpriteRenderer>().sprite = vatnuoi.imageChuong1;
@@ -86,7 +130,7 @@ public class Chuong : MonoBehaviour
                 listVatNuoi.Add(vn);
             } else if(_vatnuoi.id == 16)
             {
-                GameObject vn = Instantiate(bo, vitri[i].position, Quaternion.identity);
+                GameObject vn = Instantiate(cuu, vitri[i].position, Quaternion.identity);
                 listVatNuoi.Add(vn);
             }
         }

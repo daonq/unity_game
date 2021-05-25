@@ -7,6 +7,8 @@ public class Stone : MonoBehaviour
     public Sprite sprHo;
     public Sprite anhGoc;
 
+    public GameObject effect;
+
     private void Start()
     {
         if(!Cothepha)
@@ -17,12 +19,19 @@ public class Stone : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (DataGlobal.instance.AllowMouseDown && Cothepha)
+        if (DataGlobal.instance.AllowMouseDown)
         {
-            if(DataGlobal.instance.GetGold() >= 10)
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            if (DataGlobal.instance.GetGold() >= 10 && Cothepha)
             {
+                GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
+                //ef.transform.Rotate(new Vector3(-90, 0, 0));
+                //ef.GetComponent<ParticleSystemRenderer>().material = mat;
+                Destroy(ef, 3);
+
                 DataGlobal.instance.SubGold(10);
                 DataGlobal.instance.AddStone(2);
+                DataGlobal.instance.AddStar(2);
                 Cothepha = false;
                 GetComponent<SpriteRenderer>().sprite = sprHo;
                 StartCoroutine(HoiSinh());
@@ -34,6 +43,11 @@ public class Stone : MonoBehaviour
         {
             Debug.Log("Hien tai khong the pha huy!");
         }
+    }
+
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     IEnumerator HoiSinh()

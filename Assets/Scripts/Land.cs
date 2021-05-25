@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class Land : MonoBehaviour
 {
@@ -22,19 +23,46 @@ public class Land : MonoBehaviour
 
     private Material mat;
 
+    public int currentTime;
+    public int maxTime;
+    public int timeOut;
+
     private void Start()
     {
         if(DataGlobal.instance.GetLevel() < levelUnlock)
         {
             GetComponent<SpriteRenderer>().sprite = spriteLock;
         }
+        loadData();
+    }
+    void loadData()
+    {
+        //chua co cay gi
+        //co cay va duoc thu hoach
+        //da co cay va cay chua lon
+        timeOut = CurrencyManager.Offline(PlayerPrefs.GetString("timethucodat" + id));
+        if(timeOut >= PlayerPrefs.GetInt("timeodat" + id))
+        {
+            //cay da lon va duoc thu hoach
+        }
+        else
+        {
+            //cay chua lon va tinh time con lai
+            currentTime = PlayerPrefs.GetInt("timeodat" + id) - timeOut;
+            //.....
+        }
+    }
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            if(DataGlobal.instance.GetLevel() >= levelUnlock)
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            if (DataGlobal.instance.GetLevel() >= levelUnlock)
             {
                 if (stateLand == StateLand.NONE)
                 {
@@ -82,6 +110,11 @@ public class Land : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             time--;
+
+            PlayerPrefs.SetInt("idhatgiong" + id, _idSeed);
+            PlayerPrefs.SetInt("timeodat" + id, time);
+            PlayerPrefs.SetString("timethucodat" + id, DateTime.Now.ToString());
+
             if (time == timeDefaut / 2)
             {
                 Seed.GetComponent<SpriteRenderer>().sprite = sp2;
@@ -100,7 +133,7 @@ public class Land : MonoBehaviour
         Seed.GetComponent<SpriteRenderer>().sprite = null;
         stateLand = StateLand.NONE;
         DataGlobal.instance.ArrayAmount[idSeed] += 5;
-        DataGlobal.instance.AddStar(idSeed * _exp);
+        DataGlobal.instance.AddStar(_exp);
         GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
         ef.transform.Rotate(new Vector3(-90, 0, 0));
         ef.GetComponent<ParticleSystemRenderer>().material = mat;

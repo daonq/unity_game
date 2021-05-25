@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 7364078546624886263}
   - component: {fileID: 7364078546624886262}
   - component: {fileID: 7364078546624886261}
+  - component: {fileID: 5605978571777479059}
   m_Layer: 0
   m_Name: ThuyenLoai1
   m_TagString: Untagged
@@ -290,6 +291,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92543bf65465564c915e9217a417089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5605978571777479059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364078546624886256}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 93ebfddbdd61ae14494edcd89d4dad90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7364078546821460868
 GameObject:
   m_ObjectHideFlags: 0

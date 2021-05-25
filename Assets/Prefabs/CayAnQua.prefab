@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2064961461
 Transform:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894503791526840594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.318, y: 0.732, z: 0}
+  m_LocalPosition: {x: -0.6, y: 1.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 307854019}
@@ -330,7 +330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2e2db6a740bf74695fe3cb322ad6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caycam: {fileID: 7855398266861535989}
+  idAmount: 12
+  cay: {fileID: 7855398266861535989}
+  qua: {fileID: 5891236417760494744, guid: 3674f1ba548443f42b8407006080b9f2, type: 3}
+  mat: {fileID: 2100000, guid: b32200b80cca47648a3f621bdb99988e, type: 2}
 --- !u!1 &7855398266861535989
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +345,8 @@ GameObject:
   - component: {fileID: 7855398266861535991}
   - component: {fileID: 7855398266861535990}
   - component: {fileID: 7855398266861535985}
-  - component: {fileID: 306124378}
+  - component: {fileID: 69566137}
+  - component: {fileID: 2147323573120293966}
   m_Layer: 0
   m_Name: CayAnQua
   m_TagString: Untagged
@@ -536,7 +540,7 @@ PolygonCollider2D:
       - {x: 0.28, y: 0.604}
       - {x: 0.25, y: 0.574}
       - {x: 0.25, y: 0.564}
---- !u!114 &306124378
+--- !u!114 &69566137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,12 +549,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 7855398266861535989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb93483f658e4524f83c47836474ee51, type: 3}
+  m_Script: {fileID: 11500000, guid: 58b898773ca57fd4dabbe4460631e2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam1: {fileID: 21300000, guid: 5e4862d533ce358419acfd0b4fddaa4b, type: 3}
-  cam2: {fileID: 21300000, guid: 565b56c81cde0634088e0b852fad2671, type: 3}
-  cam3: {fileID: 21300000, guid: 32a7c9b20eb9cf04a9d5341aed171491, type: 3}
-  Cothepha: 1
-  vongtron: {fileID: 2064961460}
-  textSoluong: {fileID: 1523212312}
+  indexAmount: 0
+  qua: {fileID: 5891236417760494744, guid: 3674f1ba548443f42b8407006080b9f2, type: 3}
+  mat: {fileID: 2100000, guid: b32200b80cca47648a3f621bdb99988e, type: 2}
+  status1: {fileID: 21300000, guid: 5e4862d533ce358419acfd0b4fddaa4b, type: 3}
+  status2: {fileID: 21300000, guid: 565b56c81cde0634088e0b852fad2671, type: 3}
+  status3: {fileID: 21300000, guid: 32a7c9b20eb9cf04a9d5341aed171491, type: 3}
+  cothepha: 1
+--- !u!58 &2147323573120293966
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855398266861535989}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.009627938, y: 0.6191368}
+  serializedVersion: 2
+  m_Radius: 0.52314174

@@ -20,12 +20,32 @@ public class LandFactory : MonoBehaviour
 
     public bool active;
 
+    public GameObject effect;
+
+    public GameObject hoinuoc;
+
+    private void Start()
+    {
+        if(DataGlobal.instance.GetLevel() >= levelUnlock)
+        {
+            effect.SetActive(true);
+        } else
+        {
+            effect.SetActive(false);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+    }
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            if(DataGlobal.instance.GetLevel() >= levelUnlock)
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            if (DataGlobal.instance.GetLevel() >= levelUnlock)
             {
                 if(stateLandFactory == StateLandFactory.NONE)
                 {
@@ -48,6 +68,7 @@ public class LandFactory : MonoBehaviour
 
     public void OnWaiting(DetailFactory factory)
     {
+        effect.SetActive(false);
         idFactory = factory.id;
         this.factory = factory;
         stateLandFactory = StateLandFactory.WAITING;
@@ -56,6 +77,10 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild()
     {
+        if (factory.id == 0)
+        {
+            GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+        }
         stateLandFactory = StateLandFactory.BUILD;
         GetComponent<SpriteRenderer>().sprite = factory.sp1;
         StartCoroutine(FactoryWork());
@@ -63,6 +88,10 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild1()
     {
+        if (factory.id == 0)
+        {
+            GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+        }
         stateLandFactory = StateLandFactory.BUILD;
         GetComponent<SpriteRenderer>().sprite = factory.sp2;
         StartCoroutine(FactoryWork());
@@ -70,6 +99,10 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild2()
     {
+        if (factory.id == 0)
+        {
+            GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+        }
         stateLandFactory = StateLandFactory.BUILD;
         GetComponent<SpriteRenderer>().sprite = factory.sp3;
         StartCoroutine(FactoryWork());

@@ -28,7 +28,7 @@ public class Gio : MonoBehaviour
         else
         {
             Debug.Log("Ban khong co gio cay!");
-        }
+        } 
     }
 
     IEnumerator HoiSinh()

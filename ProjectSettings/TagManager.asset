@@ -18,6 +18,8 @@ TagManager:
   - DAUTAY
   - DUAHAU
   - MIA
+  - FxTemporaire
+  - BIEN
   layers:
   - Default
   - TransparentFX

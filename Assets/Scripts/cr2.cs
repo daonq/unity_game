@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CayRung : MonoBehaviour
+// Su dung cho nhung cay co 2 trang thai sprite thoi
+public class cr2 : MonoBehaviour
 {
-    public bool Cothepha;
-    public Sprite sprite1;
-    public Sprite sprite2;
-    public int timeHs;
+    public bool cothepha;
+    public Sprite sp1;
+    public Sprite sp2;
+    public int time;
 
     public GameObject effect;
     public Material mat;
 
     private void Start()
     {
-        if (!Cothepha)
+        if (!cothepha)
         {
             StartCoroutine(HoiSinh());
         }
@@ -21,9 +22,10 @@ public class CayRung : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (DataGlobal.instance.AllowMouseDown && Cothepha)
+        if(DataGlobal.instance.AllowMouseDown)
         {
-            if(DataGlobal.instance.GetGold() >= 10)
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            if(cothepha && DataGlobal.instance.GetGold() >= 10)
             {
                 GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
                 ef.transform.Rotate(new Vector3(-90, 0, 0));
@@ -33,23 +35,23 @@ public class CayRung : MonoBehaviour
                 DataGlobal.instance.SubGold(10);
                 DataGlobal.instance.AddWood(2);
                 DataGlobal.instance.AddStar(2);
-                Cothepha = false;
-                GetComponent<SpriteRenderer>().sprite = sprite1;
+
                 StartCoroutine(HoiSinh());
-            } else
-            {
-                Debug.Log("Ban khong du tien!");
             }
-        } else
-        {
-            Debug.Log("Hien tai khong the pha huy!");
         }
+    }
+
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     IEnumerator HoiSinh()
     {
-        yield return new WaitForSeconds(timeHs);
-        GetComponent<SpriteRenderer>().sprite = sprite2;
-        Cothepha = true;
+        cothepha = false;
+        GetComponent<SpriteRenderer>().sprite = sp1;
+        yield return new WaitForSeconds(time);
+        GetComponent<SpriteRenderer>().sprite = sp2;
+        cothepha = true;
     }
 }
