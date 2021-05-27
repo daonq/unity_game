@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class cr4 : MonoBehaviour
 {
+    public int id;
     public bool cothepha;
     public Sprite sp1;
     public Sprite sp2;
@@ -15,6 +16,16 @@ public class cr4 : MonoBehaviour
 
     private void Start()
     {
+        time = PlayerPrefs.GetInt("Timecr4" + id);
+        if(time > 0)
+        {
+            cothepha = false;
+        }
+        else
+        {
+            cothepha = true;
+        }
+
         if (!cothepha)
         {
             StartCoroutine(HoiSinh());
@@ -37,6 +48,11 @@ public class cr4 : MonoBehaviour
                 DataGlobal.instance.AddWood(2);
                 DataGlobal.instance.AddStar(2);
 
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp1;
+                time = 180;
+                PlayerPrefs.SetInt("Timecr4" + id, time);
+
                 StartCoroutine(HoiSinh());
             }
         }
@@ -49,14 +65,28 @@ public class cr4 : MonoBehaviour
 
     IEnumerator HoiSinh()
     {
-        cothepha = false;
-        GetComponent<SpriteRenderer>().sprite = sp1;
-        yield return new WaitForSeconds(time / 4);
-        GetComponent<SpriteRenderer>().sprite = sp2;
-        yield return new WaitForSeconds(time / 2);
-        GetComponent<SpriteRenderer>().sprite = sp3;
-        yield return new WaitForSeconds(time);
-        GetComponent<SpriteRenderer>().sprite = sp4;
-        cothepha = true;
+        while(time > 0)
+        {
+            yield return new WaitForSeconds(1);
+            time--;
+            if(time <= 0)
+            {
+                cothepha = true;
+                GetComponent<SpriteRenderer>().sprite = sp4;
+            } else if(time > 0 && time <= 60)
+            {
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp3;
+            } else if(time > 60 && time <= 120)
+            {
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp2;
+            } else if(time > 120 && time <= 180)
+            {
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp1;
+            }
+            PlayerPrefs.SetInt("Timecr4" + id, time);
+        }
     }
 }

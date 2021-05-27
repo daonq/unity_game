@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DataGlobal : MonoBehaviour
 {
@@ -69,6 +70,9 @@ public class DataGlobal : MonoBehaviour
     public int[] levelCurrentOfFactory;
     public GameObject RoiIcon;
     public GameObject SeedObject;
+
+    public List<DetailSeed> listSeed = new List<DetailSeed>();
+    public List<DetailVatnuoi> listVatNuoi = new List<DetailVatnuoi>();
 
     public void AddStar(int star)
     {

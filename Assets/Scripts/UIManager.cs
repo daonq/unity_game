@@ -18,16 +18,33 @@ public class UIManager : MonoBehaviour
     public void Hienthongbao(string mes)
     {
         thongbao.text = mes;
-        StartCoroutine(thongbaoText());
+        thongbao.gameObject.SetActive(true);
+        thongbao.GetComponent<RectTransform>().DOMove(thongbao.transform.position + new Vector3(0, 300, 0), 1f);
+        //StartCoroutine(thongbaoText());
     }
 
+    public void AnThongBao()
+    {
+        StartCoroutine(ANTHONGBAO());
+    }
+
+    IEnumerator ANTHONGBAO()
+    {
+        yield return new WaitForSeconds(1);
+        thongbao.text = "";
+        thongbao.gameObject.SetActive(false);
+        thongbao.GetComponent<RectTransform>().localPosition = Vector3.zero;
+    }
+
+    /*
     IEnumerator thongbaoText()
     {
         thongbao.gameObject.SetActive(true);
         thongbao.GetComponent<RectTransform>().DOMove(thongbao.transform.position + new Vector3(0, 300, 0), 2f);
         yield return new WaitForSeconds(2f);
         thongbao.gameObject.SetActive(false);
-    }
+        thongbao.GetComponent<RectTransform>().localPosition = Vector3.zero;
+    }*/
 
     private void Start()
     {

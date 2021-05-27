@@ -24,6 +24,8 @@ public class LandFactory : MonoBehaviour
 
     public GameObject hoinuoc;
 
+    public bool ELSE = false;
+
     private void Start()
     {
         if(DataGlobal.instance.GetLevel() >= levelUnlock)
@@ -35,9 +37,15 @@ public class LandFactory : MonoBehaviour
         }
     }
 
+
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        if (ELSE)
+        {
+            ELSE = false;
+            //UIManager.instance.AnThongBao();
+        }
     }
 
     private void OnMouseDown()
@@ -60,7 +68,8 @@ public class LandFactory : MonoBehaviour
                 }
             } else
             {
-                UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
+                ELSE = true;
+                //UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
             }
         }
     }

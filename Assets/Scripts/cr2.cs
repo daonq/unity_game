@@ -4,16 +4,27 @@ using UnityEngine;
 // Su dung cho nhung cay co 2 trang thai sprite thoi
 public class cr2 : MonoBehaviour
 {
+    public int id;
     public bool cothepha;
     public Sprite sp1;
     public Sprite sp2;
-    public int time;
 
     public GameObject effect;
     public Material mat;
 
+    public int time;
+
     private void Start()
     {
+        time = PlayerPrefs.GetInt("Timecr2" + id);
+        if(time > 0)
+        {
+            cothepha = false;
+        } else
+        {
+            cothepha = true;
+        }
+
         if (!cothepha)
         {
             StartCoroutine(HoiSinh());
@@ -36,6 +47,11 @@ public class cr2 : MonoBehaviour
                 DataGlobal.instance.AddWood(2);
                 DataGlobal.instance.AddStar(2);
 
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp1;
+                time = 180;
+                PlayerPrefs.SetInt("Timecr2" + id, time);
+
                 StartCoroutine(HoiSinh());
             }
         }
@@ -48,10 +64,20 @@ public class cr2 : MonoBehaviour
 
     IEnumerator HoiSinh()
     {
-        cothepha = false;
-        GetComponent<SpriteRenderer>().sprite = sp1;
-        yield return new WaitForSeconds(time);
-        GetComponent<SpriteRenderer>().sprite = sp2;
-        cothepha = true;
+        while(time > 0)
+        {
+            yield return new WaitForSeconds(1);
+            time--;
+            if(time <= 0)
+            {
+                cothepha = true;
+                GetComponent<SpriteRenderer>().sprite = sp2;
+            } else
+            {
+                cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sp1;
+            }
+            PlayerPrefs.SetInt("Timecr2" + id, time);
+        }
     }
 }

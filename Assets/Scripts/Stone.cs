@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
+    public int id;
     public bool Cothepha;
     public Sprite sprHo;
     public Sprite anhGoc;
 
     public GameObject effect;
 
+    public int currentTime;
+
     private void Start()
     {
-        if(!Cothepha)
+        currentTime = PlayerPrefs.GetInt("TimeStone" + id);
+        if(currentTime > 0)
+        {
+            Cothepha = false;
+        } else
+        {
+            Cothepha = true;
+        }
+        if (!Cothepha)
         {
             StartCoroutine(HoiSinh());
         }
@@ -25,23 +36,16 @@ public class Stone : MonoBehaviour
             if (DataGlobal.instance.GetGold() >= 10 && Cothepha)
             {
                 GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
-                //ef.transform.Rotate(new Vector3(-90, 0, 0));
-                //ef.GetComponent<ParticleSystemRenderer>().material = mat;
                 Destroy(ef, 3);
-
                 DataGlobal.instance.SubGold(10);
                 DataGlobal.instance.AddStone(2);
                 DataGlobal.instance.AddStar(2);
                 Cothepha = false;
                 GetComponent<SpriteRenderer>().sprite = sprHo;
+                currentTime = 100;
+                PlayerPrefs.SetInt("TimeStone" + id, currentTime);
                 StartCoroutine(HoiSinh());
-            } else
-            {
-                UIManager.instance.Hienthongbao("You not have money!");
             }
-        } else
-        {
-            UIManager.instance.Hienthongbao("Waiting...");
         }
     }
 
@@ -50,10 +54,28 @@ public class Stone : MonoBehaviour
         transform.localScale = new Vector3(1, 1, 1);
     }
 
+    // Can mot bien thoi gian o ngoai, moi s giam 1 don vi
+    // Khi no bang 0 thi se chuyen ve anh goc
+    // Khi bi pha se chuyen ve anh binh thuong
+
     IEnumerator HoiSinh()
     {
-        yield return new WaitForSeconds(100);
-        GetComponent<SpriteRenderer>().sprite = anhGoc;
-        Cothepha = true;
+        
+        while(currentTime > 0)
+        {
+            yield return new WaitForSeconds(1);
+            currentTime--;
+            if (currentTime <= 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = anhGoc;
+                Cothepha = true;
+            }
+            else
+            {
+                Cothepha = false;
+                GetComponent<SpriteRenderer>().sprite = sprHo;
+            }
+            PlayerPrefs.SetInt("TimeStone" + id, currentTime);
+        }
     }
 }
