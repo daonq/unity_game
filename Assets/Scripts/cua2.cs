@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Gio : MonoBehaviour
+public class cua2 : MonoBehaviour
 {
     public GameObject cay;
 
@@ -8,7 +8,7 @@ public class Gio : MonoBehaviour
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            cay.GetComponent<ThuHoachCayAnQua>().thuhoach();
+            cay.GetComponent<cr2>().cuanhe();
             gameObject.SetActive(false);
         }
     }

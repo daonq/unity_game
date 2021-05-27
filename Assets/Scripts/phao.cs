@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class Gio : MonoBehaviour
+public class phao : MonoBehaviour
 {
-    public GameObject cay;
+    public GameObject stone;
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            cay.GetComponent<ThuHoachCayAnQua>().thuhoach();
+            stone.GetComponent<Stone>().no();
             gameObject.SetActive(false);
         }
     }

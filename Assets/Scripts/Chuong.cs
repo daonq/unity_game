@@ -134,6 +134,7 @@ public class Chuong : MonoBehaviour
 
     public void Build(DetailVatnuoi vatnuoi, int soluong)
     {
+        state = StateChuong.WAITING;
         bien.SetActive(false);
         effect.SetActive(false);
         sl = soluong;

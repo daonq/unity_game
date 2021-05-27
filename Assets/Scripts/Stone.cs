@@ -12,6 +12,8 @@ public class Stone : MonoBehaviour
 
     public int currentTime;
 
+    public GameObject phao; // Pháo :))))
+
     private void Start()
     {
         currentTime = PlayerPrefs.GetInt("TimeStone" + id);
@@ -35,18 +37,33 @@ public class Stone : MonoBehaviour
             transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
             if (DataGlobal.instance.GetGold() >= 10 && Cothepha)
             {
-                GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
-                Destroy(ef, 3);
-                DataGlobal.instance.SubGold(10);
-                DataGlobal.instance.AddStone(2);
-                DataGlobal.instance.AddStar(2);
-                Cothepha = false;
-                GetComponent<SpriteRenderer>().sprite = sprHo;
-                currentTime = 100;
-                PlayerPrefs.SetInt("TimeStone" + id, currentTime);
-                StartCoroutine(HoiSinh());
+                phao.SetActive(true);
+                StartCoroutine(HidePhao());
             }
         }
+    }
+
+    IEnumerator HidePhao()
+    {
+        yield return new WaitForSeconds(3);
+        if (phao.activeSelf)
+        {
+            phao.SetActive(false);
+        }
+    }
+
+    public void no()
+    {
+        GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
+        Destroy(ef, 3);
+        DataGlobal.instance.SubGold(10);
+        DataGlobal.instance.AddStone(2);
+        DataGlobal.instance.AddStar(2);
+        Cothepha = false;
+        GetComponent<SpriteRenderer>().sprite = sprHo;
+        currentTime = 100;
+        PlayerPrefs.SetInt("TimeStone" + id, currentTime);
+        StartCoroutine(HoiSinh());
     }
 
     private void OnMouseUp()

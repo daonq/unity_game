@@ -10,6 +10,7 @@ public class DataGlobal : MonoBehaviour
     {
         instance = this;
         ArrayHaveOwnedItem = new int[3];
+        levelCurrentOfFactory = new int[10];
         _level = PlayerPrefs.GetInt("level", 1);
         _gold = PlayerPrefs.GetInt("gold", 1000);
         _water = PlayerPrefs.GetInt("water", 500);
@@ -18,6 +19,11 @@ public class DataGlobal : MonoBehaviour
         _star = PlayerPrefs.GetInt("star", 0);
         _oil = PlayerPrefs.GetInt("oil", 0);
         _levelHouse = PlayerPrefs.GetInt("levelHouse", 1);
+
+        for (int i = 0; i < ArrayAmount.Length; i++)
+        {
+            ArrayAmount[i] = PlayerPrefs.GetInt("arrayAmount" + i);
+        }
     }
 
     private void Start()
@@ -40,6 +46,11 @@ public class DataGlobal : MonoBehaviour
         PlayerPrefs.SetInt("star", _star);
         PlayerPrefs.SetInt("oil", _oil);
         PlayerPrefs.SetInt("levelHouse", _levelHouse);
+
+        for (int i = 0; i < ArrayAmount.Length; i++)
+        {
+            PlayerPrefs.SetInt("arrayAmount" + i, ArrayAmount[i]);
+        }
     }
 
     public Text txtLevel;
@@ -73,6 +84,9 @@ public class DataGlobal : MonoBehaviour
 
     public List<DetailSeed> listSeed = new List<DetailSeed>();
     public List<DetailVatnuoi> listVatNuoi = new List<DetailVatnuoi>();
+    public List<DetailFactory> listFactory = new List<DetailFactory>();
+
+    public Sprite sprOdat;
 
     public void AddStar(int star)
     {
@@ -82,6 +96,30 @@ public class DataGlobal : MonoBehaviour
             _level++;
             _star = 0;
             txtLevel.text = _level.ToString();
+
+            for (int i = 0; i < ArrayLand.Length; i++)
+            {
+                if(_level >= ArrayLand[i].GetComponent<Land>().levelUnlock)
+                {
+                    ArrayLand[i].GetComponent<Land>().GetComponent<SpriteRenderer>().sprite = sprOdat;
+                }
+            }
+
+            for (int i = 0; i < ArrayChuong.Length; i++)
+            {
+                if(_level >= ArrayChuong[i].GetComponent<Chuong>().levelUnlock)
+                {
+                    ArrayChuong[i].GetComponent<Chuong>().effect.SetActive(true);
+                }
+            }
+
+            for (int i = 0; i < ArrayLandFactory.Length; i++)
+            {
+                if(_level >= ArrayLandFactory[i].GetComponent<LandFactory>().levelUnlock)
+                {
+                    ArrayLandFactory[i].GetComponent<LandFactory>().effect.SetActive(true);
+                }
+            }
         }
         txtStar.text = _star.ToString();
     }

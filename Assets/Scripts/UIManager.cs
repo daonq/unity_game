@@ -233,13 +233,14 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void OnClickToWaiting()
+    public void OnClickToWaiting(DetailFactory factoryWating)
     {
+        _factory1 = factoryWating;
         PanelWaiting.SetActive(true);
-        textWater.text = "" + _factory1.water;
-        textStone.text = "" + _factory1.stone;
-        textWood.text = "" + _factory1.water;
-        if(DataGlobal.instance.GetWater() >= _factory1.water)
+        textWater.text = "" + factoryWating.water;
+        textStone.text = "" + factoryWating.stone;
+        textWood.text = "" + factoryWating.water;
+        if(DataGlobal.instance.GetWater() >= factoryWating.water)
         {
             du1W.gameObject.SetActive(true);
         }
@@ -247,14 +248,14 @@ public class UIManager : MonoBehaviour
         {
             du1W.gameObject.SetActive(false);
         }
-        if(DataGlobal.instance.GetStone() >= _factory1.stone)
+        if(DataGlobal.instance.GetStone() >= factoryWating.stone)
         {
             du2W.gameObject.SetActive(true);
         } else
         {
             du2W.gameObject.SetActive(false);
         }
-        if(DataGlobal.instance.GetWood() >= _factory1.wood)
+        if(DataGlobal.instance.GetWood() >= factoryWating.wood)
         {
             du3W.gameObject.SetActive(true);
         }
@@ -273,8 +274,6 @@ public class UIManager : MonoBehaviour
     public GameObject PanelBuild;
     public TextMeshProUGUI titlePB1;
     public TextMeshProUGUI titlePB2;
-    //public TextMeshProUGUI timePB;
-    //public TextMeshProUGUI harvestPB;
     public TextMeshProUGUI levelPB;
     public TextMeshProUGUI mainHousePB;
     public TextMeshProUGUI goldPB;
@@ -341,14 +340,15 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void ShowBuildFactory()
+    public void ShowBuildFactory(DetailFactory factoryBuild)
     {
+        _factory1 = factoryBuild;
         DataGlobal.instance.AllowMouseDown = false;
         PanelBuild.SetActive(true);
         MainCamera.instance.camLock = true;
-        imageLevel1.sprite = _factory1.sp1;
-        imageLevel2.sprite = _factory1.sp2;
-        imageLevel3.sprite = _factory1.sp3;
+        imageLevel1.sprite = factoryBuild.sp1;
+        imageLevel2.sprite = factoryBuild.sp2;
+        imageLevel3.sprite = factoryBuild.sp3;
     }
     private int _levelChoice;
     public void OnClickToBuild(int levelChoice)
@@ -558,7 +558,7 @@ public class UIManager : MonoBehaviour
     public Button Muathem;
     public Button MuaGiam;
 
-    private DetailVatnuoi _vatnuoi;
+    private DetailVatnuoi _vatnuoi = null;
     private int _idChuong;
     private int soluongVatnuoi;
 
@@ -591,6 +591,11 @@ public class UIManager : MonoBehaviour
 
         BuyVatNuoi.onClick.AddListener(delegate
         {
+            if(_vatnuoi == null)
+            {
+                _vatnuoi = DataGlobal.instance.listVatNuoi[0];
+                soluongVatnuoi = 1;
+            }
             if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi))
             {
                 DataGlobal.instance.SubGold(_vatnuoi.gold * soluongVatnuoi);

@@ -7,7 +7,9 @@ public class LandFactory : MonoBehaviour
     public int id;
     public int levelUnlock;
 
-    public enum StateLandFactory { NONE, WAITING, BUILD}
+    public int idLevelFactory;
+
+    public enum StateLandFactory { NONE, WAITING, BUILD, BUILD1, BUILD2}
     public StateLandFactory stateLandFactory;
 
     private int idFactory;
@@ -26,6 +28,8 @@ public class LandFactory : MonoBehaviour
 
     public bool ELSE = false;
 
+    public int stt; // 0: None, 2: Waiting, 3: Build;
+
     private void Start()
     {
         if(DataGlobal.instance.GetLevel() >= levelUnlock)
@@ -35,6 +39,7 @@ public class LandFactory : MonoBehaviour
         {
             effect.SetActive(false);
         }
+        LoadDataOnGame();
     }
 
 
@@ -60,11 +65,11 @@ public class LandFactory : MonoBehaviour
                     UIManager.instance.OnClickToFactory(id);
                 } else if(stateLandFactory == StateLandFactory.WAITING)
                 {
-                    UIManager.instance.OnClickToWaiting();
-                } else if(stateLandFactory == StateLandFactory.BUILD)
+                    UIManager.instance.OnClickToWaiting(factory);
+                } else if(stateLandFactory == StateLandFactory.BUILD || stateLandFactory == StateLandFactory.BUILD1 || stateLandFactory == StateLandFactory.BUILD2)
                 {
                     active = true;
-                    UIManager.instance.ShowBuildFactory();
+                    UIManager.instance.ShowBuildFactory(factory);
                 }
             } else
             {
@@ -74,12 +79,15 @@ public class LandFactory : MonoBehaviour
         }
     }
 
+    // State 0: None, 2:Waiting, 3:Build;
     public void OnWaiting(DetailFactory factory)
     {
         effect.SetActive(false);
         idFactory = factory.id;
         this.factory = factory;
         stateLandFactory = StateLandFactory.WAITING;
+        PlayerPrefs.SetInt("idFactory" + id, idFactory);
+        PlayerPrefs.SetInt("stateLandFactory" + id, 2);
         GetComponent<SpriteRenderer>().sprite = factory.sp0;
     }
 
@@ -90,6 +98,7 @@ public class LandFactory : MonoBehaviour
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
         }
         stateLandFactory = StateLandFactory.BUILD;
+        PlayerPrefs.SetInt("stateLandFactory" + id, 3);
         GetComponent<SpriteRenderer>().sprite = factory.sp1;
         StartCoroutine(FactoryWork());
     }
@@ -100,7 +109,8 @@ public class LandFactory : MonoBehaviour
         {
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
         }
-        stateLandFactory = StateLandFactory.BUILD;
+        stateLandFactory = StateLandFactory.BUILD1;
+        PlayerPrefs.SetInt("stateLandFactory" + id, 4);
         GetComponent<SpriteRenderer>().sprite = factory.sp2;
         StartCoroutine(FactoryWork());
     }
@@ -111,7 +121,8 @@ public class LandFactory : MonoBehaviour
         {
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
         }
-        stateLandFactory = StateLandFactory.BUILD;
+        stateLandFactory = StateLandFactory.BUILD2;
+        PlayerPrefs.SetInt("stateLandFactory" + id, 5);
         GetComponent<SpriteRenderer>().sprite = factory.sp3;
         StartCoroutine(FactoryWork());
     }
@@ -137,14 +148,15 @@ public class LandFactory : MonoBehaviour
         time = 0;
         count = 0;
 
-        if (active)
-        {
-            textCount.text = count + "/" + countMax;
-            textTime.text = time + "/" + timeMax;
-        }
+        
 
         while (count < countMax)
         {
+            if (active)
+            {
+                textCount.text = count + "/" + countMax;
+                textTime.text = time + "/" + timeMax;
+            }
             yield return new WaitForSeconds(1);
             if(time < timeMax)
             {
@@ -193,5 +205,88 @@ public class LandFactory : MonoBehaviour
     public void setActive()
     {
         active = false;
+    }
+
+    public void LoadDataOnGame()
+    {
+        stt = PlayerPrefs.GetInt("stateLandFactory" + id);
+
+        if(stt == 0)
+        {
+            stateLandFactory = StateLandFactory.NONE;
+        } else if(stt == 2)
+        {
+            stateLandFactory = StateLandFactory.WAITING;
+            idFactory = PlayerPrefs.GetInt("idFactory" + id);
+
+            for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
+            {
+                if(idFactory == DataGlobal.instance.listFactory[i].id)
+                {
+                    factory = DataGlobal.instance.listFactory[i];
+                    break;
+                }
+            }
+            GetComponent<SpriteRenderer>().sprite = factory.sp0;
+        } else if(stt == 3)
+        {
+            idFactory = PlayerPrefs.GetInt("idFactory" + id);
+            if (idFactory == 0)
+            {
+                GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+            }
+            stateLandFactory = StateLandFactory.BUILD;
+            idLevelFactory = 0;
+            for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
+            {
+                if (idFactory == DataGlobal.instance.listFactory[i].id)
+                {
+                    factory = DataGlobal.instance.listFactory[i];
+                    break;
+                }
+            }
+            GetComponent<SpriteRenderer>().sprite = factory.sp1;
+            StartCoroutine(FactoryWork());
+        } else if(stt == 4)
+        {
+            idLevelFactory = 1;
+            idFactory = PlayerPrefs.GetInt("idFactory" + id);
+            if (idFactory == 0)
+            {
+                GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+            }
+            stateLandFactory = StateLandFactory.BUILD1;
+
+            for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
+            {
+                if (idFactory == DataGlobal.instance.listFactory[i].id)
+                {
+                    factory = DataGlobal.instance.listFactory[i];
+                    break;
+                }
+            }
+            GetComponent<SpriteRenderer>().sprite = factory.sp2;
+            StartCoroutine(FactoryWork());
+        } else if(stt == 5)
+        {
+            idLevelFactory = 2;
+            idFactory = PlayerPrefs.GetInt("idFactory" + id);
+            if (idFactory == 0)
+            {
+                GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+            }
+            stateLandFactory = StateLandFactory.BUILD2;
+
+            for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
+            {
+                if (idFactory == DataGlobal.instance.listFactory[i].id)
+                {
+                    factory = DataGlobal.instance.listFactory[i];
+                    break;
+                }
+            }
+            GetComponent<SpriteRenderer>().sprite = factory.sp3;
+            StartCoroutine(FactoryWork());
+        }
     }
 }
