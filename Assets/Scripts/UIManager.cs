@@ -312,20 +312,28 @@ public class UIManager : MonoBehaviour
         {
             if(_levelChoice == 2)
             {
+                Debug.Log("ID Factory: " + idFactory);
                 if(DataGlobal.instance.GetGold() >= _factory1.gold2 && DataGlobal.instance.GetLevel() >= _factory1.level2
-                && DataGlobal.instance.GetLevelHouse() == 2 && DataGlobal.instance.levelCurrentOfFactory[_factory1.id] == 0)
+                && DataGlobal.instance.GetLevelHouse() >= 2 && DataGlobal.instance.levelCurrentOfFactory[idFactory] == 0)
                 {
-                    DataGlobal.instance.levelCurrentOfFactory[_factory1.id] = 1;
+                    DataGlobal.instance.levelCurrentOfFactory[idFactory] = 1;
                     DataGlobal.instance.SubGold(_factory1.gold2);
+                    PanelBuild.SetActive(false);
+                    DataGlobal.instance.AllowMouseDown = true;
+                    MainCamera.instance.camLock = false;
                     DataGlobal.instance.ArrayLandFactory[_factory1.id].GetComponent<LandFactory>().OnBuild1();
                 }
             } else if(_levelChoice == 3)
             {
+                Debug.Log("ID Factory: " + idFactory);
                 if (DataGlobal.instance.GetGold() >= _factory1.gold3 && DataGlobal.instance.GetLevel() >= _factory1.level3
-                && DataGlobal.instance.GetLevelHouse() == 3 && DataGlobal.instance.levelCurrentOfFactory[_factory1.id] == 1)
+                && DataGlobal.instance.GetLevelHouse() >= 3 && DataGlobal.instance.levelCurrentOfFactory[idFactory] == 1)
                 {
-                    DataGlobal.instance.levelCurrentOfFactory[_factory1.id] = 2;
+                    DataGlobal.instance.levelCurrentOfFactory[idFactory] = 2;
                     DataGlobal.instance.SubGold(_factory1.gold3);
+                    PanelBuild.SetActive(false);
+                    DataGlobal.instance.AllowMouseDown = true;
+                    MainCamera.instance.camLock = false;
                     DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().OnBuild2();
                 }
             }
@@ -333,6 +341,7 @@ public class UIManager : MonoBehaviour
 
         btn_ExitPB.onClick.AddListener(delegate
         {
+            Debug.Log(idFactory);
             DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().setActive();
             PanelBuild.SetActive(false);
             DataGlobal.instance.AllowMouseDown = true;
@@ -340,9 +349,10 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void ShowBuildFactory(DetailFactory factoryBuild)
+    public void ShowBuildFactory(DetailFactory factoryBuild, int idNhamay)
     {
         _factory1 = factoryBuild;
+        idFactory = idNhamay;
         DataGlobal.instance.AllowMouseDown = false;
         PanelBuild.SetActive(true);
         MainCamera.instance.camLock = true;
@@ -354,6 +364,9 @@ public class UIManager : MonoBehaviour
     public void OnClickToBuild(int levelChoice)
     {
         _levelChoice = levelChoice;
+        Debug.Log("Level choice: " + _levelChoice);
+        Debug.Log("Level current of factory: " + DataGlobal.instance.levelCurrentOfFactory[idFactory]);
+        Debug.Log("Id Factory: " + idFactory);
         if(levelChoice - 1 <= DataGlobal.instance.levelCurrentOfFactory[idFactory])
         {
             LockPB.SetActive(false);
@@ -365,7 +378,7 @@ public class UIManager : MonoBehaviour
             LockPB.SetActive(true);
             unLockPb.SetActive(false);
             levelPB.text = "+ Level: " + _factory1.level2;
-            mainHousePB.text = "+ Main house level: " + _factory1.mainhouse2; 
+            mainHousePB.text = "+ Main house level: " + _factory1.mainhouse2;
             goldPB.text = "+ Gold: " + _factory1.gold2;
 
             if (DataGlobal.instance.GetLevel() >= _factory1.level2)
@@ -492,7 +505,6 @@ public class UIManager : MonoBehaviour
         iconPS.sprite = _item.icon;
         haveOwned.text = "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
     }
-
 
     public GameObject PanelBan;
     public Button btnExitPB;
@@ -772,7 +784,6 @@ public class UIManager : MonoBehaviour
                 thieu3.SetActive(true);
                 du3.SetActive(false);
             }
-
         }
         imageHouse.sprite = _house.imgHouse;
     }

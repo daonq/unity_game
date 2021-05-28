@@ -75,55 +75,63 @@ public class Chuong : MonoBehaviour
                     StartCoroutine(HideTime());
                 } else if(state == StateChuong.DONE)
                 {
-                    if(idVatnuoi == 13)
-                    {
-                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
-                        ef.transform.Rotate(new Vector3(-90, 0, 0));
-                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[0];
-                        Destroy(ef, 3);
-                    } else if(idVatnuoi == 14)
-                    {
-                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
-                        ef.transform.Rotate(new Vector3(-90, 0, 0));
-                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[1];
-                        Destroy(ef, 3);
-                    } else if(idVatnuoi == 15)
-                    {
-                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
-                        ef.transform.Rotate(new Vector3(-90, 0, 0));
-                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[2];
-                        Destroy(ef, 3);
-                    } else if(idVatnuoi == 16)
-                    {
-                        GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
-                        ef.transform.Rotate(new Vector3(-90, 0, 0));
-                        ef.GetComponent<ParticleSystemRenderer>().material = listMat[3];
-                        Destroy(ef, 3);
-                    }
-
-                    state = StateChuong.NONE;
-                    PlayerPrefs.SetInt("statusChuong" + id, 0);
-
-                    for (int i = 0; i < listVatNuoi.Count; i++)
-                    {
-                        Destroy(listVatNuoi[i]);
-                    }
-                    listVatNuoi.Clear();
-                    DataGlobal.instance.ArrayAmount[idVatnuoi] += sl;
-                    int reward = 0;
-                    for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
-                    {
-                        if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
-                        {
-                            reward = DataGlobal.instance.listVatNuoi[i].rewards;
-                            break;
-                        }
-                    }
-                    DataGlobal.instance.AddStar(sl*reward);
-                    thu_hoach.SetActive(false);
+                    
                 }
             }
         }
+    }
+
+    public void thuhoach()
+    {
+        if (idVatnuoi == 13)
+        {
+            GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+            ef.transform.Rotate(new Vector3(-90, 0, 0));
+            ef.GetComponent<ParticleSystemRenderer>().material = listMat[0];
+            Destroy(ef, 3);
+        }
+        else if (idVatnuoi == 14)
+        {
+            GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+            ef.transform.Rotate(new Vector3(-90, 0, 0));
+            ef.GetComponent<ParticleSystemRenderer>().material = listMat[1];
+            Destroy(ef, 3);
+        }
+        else if (idVatnuoi == 15)
+        {
+            GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+            ef.transform.Rotate(new Vector3(-90, 0, 0));
+            ef.GetComponent<ParticleSystemRenderer>().material = listMat[2];
+            Destroy(ef, 3);
+        }
+        else if (idVatnuoi == 16)
+        {
+            GameObject ef = Instantiate(effectThuHoach, transform.position, Quaternion.identity);
+            ef.transform.Rotate(new Vector3(-90, 0, 0));
+            ef.GetComponent<ParticleSystemRenderer>().material = listMat[3];
+            Destroy(ef, 3);
+        }
+
+        state = StateChuong.NONE;
+        PlayerPrefs.SetInt("statusChuong" + id, 0);
+
+        for (int i = 0; i < listVatNuoi.Count; i++)
+        {
+            Destroy(listVatNuoi[i]);
+        }
+        listVatNuoi.Clear();
+        DataGlobal.instance.ArrayAmount[idVatnuoi] += sl;
+        int reward = 0;
+        for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
+        {
+            if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
+            {
+                reward = DataGlobal.instance.listVatNuoi[i].rewards;
+                break;
+            }
+        }
+        DataGlobal.instance.AddStar(sl * reward);
+        thu_hoach.SetActive(false);
     }
 
     IEnumerator HideTime()
@@ -141,6 +149,7 @@ public class Chuong : MonoBehaviour
         PlayerPrefs.SetInt("soluongvatnuoi" + id, sl);
         PlayerPrefs.SetInt("idvatnuoi" + id, vatnuoi.id);
         _vatnuoi = vatnuoi;
+        idVatnuoi = vatnuoi.id;
 
         GetComponent<SpriteRenderer>().sprite = vatnuoi.imageChuong1;
         chuong2.GetComponent<SpriteRenderer>().sprite = vatnuoi.imageChuong2;
@@ -213,6 +222,7 @@ public class Chuong : MonoBehaviour
                 {
                     listVatNuoi[i].GetComponent<SkeletonAnimation>().AnimationName = "lo";
                 }
+                thu_hoach.SetActive(true);
                 PlayerPrefs.SetInt("statusChuong" + id, 3);
             } else
             {
@@ -328,6 +338,7 @@ public class Chuong : MonoBehaviour
             if(currentTime <= 1)
             {
                 state = StateChuong.DONE;
+                thu_hoach.SetActive(true);
             }
         }
 

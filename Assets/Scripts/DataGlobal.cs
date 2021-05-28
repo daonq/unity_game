@@ -9,6 +9,7 @@ public class DataGlobal : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        ArrayAmount = new int[17];
         ArrayHaveOwnedItem = new int[3];
         levelCurrentOfFactory = new int[10];
         _level = PlayerPrefs.GetInt("level", 1);
@@ -23,6 +24,11 @@ public class DataGlobal : MonoBehaviour
         for (int i = 0; i < ArrayAmount.Length; i++)
         {
             ArrayAmount[i] = PlayerPrefs.GetInt("arrayAmount" + i);
+        }
+
+        for (int i = 0; i < levelCurrentOfFactory.Length; i++)
+        {
+            levelCurrentOfFactory[i] = PlayerPrefs.GetInt("levelCurrentOfFactory" + i);
         }
     }
 
@@ -50,6 +56,11 @@ public class DataGlobal : MonoBehaviour
         for (int i = 0; i < ArrayAmount.Length; i++)
         {
             PlayerPrefs.SetInt("arrayAmount" + i, ArrayAmount[i]);
+        }
+
+        for (int i = 0; i < levelCurrentOfFactory.Length; i++)
+        {
+            PlayerPrefs.SetInt("levelCurrentOfFactory" + i, levelCurrentOfFactory[i]);
         }
     }
 
@@ -120,6 +131,7 @@ public class DataGlobal : MonoBehaviour
                     ArrayLandFactory[i].GetComponent<LandFactory>().effect.SetActive(true);
                 }
             }
+            UIManager.instance.ShowPanelHouse();
         }
         txtStar.text = _star.ToString();
     }
