@@ -622,8 +622,8 @@ public class UIManager : MonoBehaviour
     public void ShowPanelChuong(int idChuong)
     {
         _idChuong = idChuong;
-        DataGlobal.instance.AllowMouseDown = false;
         PanelChuong.SetActive(true);
+        DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
     }
 
@@ -752,7 +752,7 @@ public class UIManager : MonoBehaviour
             title2.text = "House upgrade";
             title2.alignment = TextAlignmentOptions.Center;
 
-            levelRequire.text = "Level: " + _house.levelRQ;
+            levelRequire.text = "+ Level: " + _house.levelRQ;
             if(_house.levelRQ <= DataGlobal.instance.GetLevel())
             {
                 thieu1.SetActive(false);
@@ -763,7 +763,7 @@ public class UIManager : MonoBehaviour
                 du1.SetActive(false);
             }
 
-            goldRequire.text = "Gold: " + _house.goldRQ;
+            goldRequire.text = "+ Gold: " + _house.goldRQ;
             if(_house.goldRQ <= DataGlobal.instance.GetGold())
             {
                 thieu2.SetActive(false);
@@ -774,7 +774,7 @@ public class UIManager : MonoBehaviour
                 du2.SetActive(false);
             }
 
-            oilRequire.text = "Oil: " + _house.goldRQ;
+            oilRequire.text = "+ Oil: " + _house.goldRQ;
             if(_house.oilRQ <= DataGlobal.instance.GetOil())
             {
                 thieu3.SetActive(false);

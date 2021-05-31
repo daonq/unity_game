@@ -64,6 +64,8 @@ public class DataGlobal : MonoBehaviour
         }
     }
 
+    public GameObject goldUI;
+
     public Text txtLevel;
     public Text txtStar;
     public Text txtGold;
@@ -98,6 +100,11 @@ public class DataGlobal : MonoBehaviour
     public List<DetailFactory> listFactory = new List<DetailFactory>();
 
     public Sprite sprOdat;
+
+    public List<Sprite> iconThuHoachFactory = new List<Sprite>();
+    public List<Material> listMatFactory = new List<Material>();
+
+    public GameObject ToMoveStar;
 
     public void AddStar(int star)
     {

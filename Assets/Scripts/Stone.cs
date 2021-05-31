@@ -14,6 +14,9 @@ public class Stone : MonoBehaviour
 
     public GameObject phao; // Pháo :))))
 
+    public GameObject tungDa;
+    public Material mat;
+
     private void Start()
     {
         currentTime = PlayerPrefs.GetInt("TimeStone" + id);
@@ -40,7 +43,17 @@ public class Stone : MonoBehaviour
                 phao.SetActive(true);
                 StartCoroutine(HidePhao());
             }
+            else if (DataGlobal.instance.GetGold() < 10)
+            {
+                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+                StartCoroutine(HetTienEnd());
+            }
         }
+    }
+    IEnumerator HetTienEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
     }
 
     IEnumerator HidePhao()
@@ -56,6 +69,12 @@ public class Stone : MonoBehaviour
     {
         GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
         Destroy(ef, 3);
+
+        GameObject ef2 = Instantiate(tungDa, transform.position, Quaternion.identity);
+        ef2.transform.Rotate(new Vector3(-90, 0, 0));
+        ef2.GetComponent<ParticleSystemRenderer>().material = mat;
+        Destroy(ef2, 3);
+
         DataGlobal.instance.SubGold(10);
         DataGlobal.instance.AddStone(2);
         DataGlobal.instance.AddStar(2);

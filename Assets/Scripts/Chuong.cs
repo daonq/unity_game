@@ -81,6 +81,24 @@ public class Chuong : MonoBehaviour
         }
     }
 
+    /*
+    public void updateIconThuhoach()
+    {
+        if(idVatnuoi == 13)
+        {
+            icon_thu_hoach = DataGlobal.instance.iconThuHoachVatNuoi[0];
+        } else if(idVatnuoi == 14)
+        {
+            icon_thu_hoach = DataGlobal.instance.iconThuHoachVatNuoi[1];
+        } else if(idVatnuoi == 15)
+        {
+            icon_thu_hoach = DataGlobal.instance.iconThuHoachVatNuoi[2];
+        } else if(idVatnuoi == 16)
+        {
+            icon_thu_hoach = DataGlobal.instance.iconThuHoachVatNuoi[3];
+        }
+    }*/
+
     public void thuhoach()
     {
         if (idVatnuoi == 13)
@@ -182,19 +200,7 @@ public class Chuong : MonoBehaviour
             listVatNuoi[i].GetComponent<SkeletonAnimation>().AnimationName = "an";
         }
 
-        if(_vatnuoi.id == 13)
-        {
-            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[0];
-        } else if(_vatnuoi.id == 14)
-        {
-            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[1];
-        } else if(_vatnuoi.id == 15)
-        {
-            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[2];
-        } else if(_vatnuoi.id == 16)
-        {
-            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[3];
-        }
+        UpdateIconVatnuoi();
     }
 
     IEnumerator VatNuoiBatDau()
@@ -235,6 +241,26 @@ public class Chuong : MonoBehaviour
         }
     }
 
+    public void UpdateIconVatnuoi()
+    {
+        if (idVatnuoi == 13)
+        {
+            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[0];
+        }
+        else if (idVatnuoi == 14)
+        {
+            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[1];
+        }
+        else if (idVatnuoi == 15)
+        {
+            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[2];
+        }
+        else if (idVatnuoi == 16)
+        {
+            icon_thu_hoach.GetComponent<SpriteRenderer>().sprite = listIconThuHoach[3];
+        }
+    }
+
     public void LoadDataOnGame()
     {
         DetailVatnuoi _vatnuoi = null;
@@ -247,6 +273,8 @@ public class Chuong : MonoBehaviour
             timeOut = CurrencyManager.Offline(PlayerPrefs.GetString("timethuchuong" + id));
             idVatnuoi = PlayerPrefs.GetInt("idvatnuoi" + id);
             sl = PlayerPrefs.GetInt("soluongvatnuoi" + id);
+
+            UpdateIconVatnuoi();
 
             listVatNuoi.Clear();
             for (int i = 0; i < sl; i++)
@@ -285,11 +313,10 @@ public class Chuong : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = _vatnuoi.imageChuong1;
             chuong2.GetComponent<SpriteRenderer>().sprite = _vatnuoi.imageChuong2;
 
-            Debug.Log("Time out: " + timeOut);
-            Debug.Log("Vat nuoi time: " + _vatnuoi.time);
             if (timeOut > _vatnuoi.time)
             {
                 state = StateChuong.DONE;
+                thu_hoach.SetActive(true);
             }
             else
             {
@@ -300,6 +327,7 @@ public class Chuong : MonoBehaviour
         } else if(stt == 3)
         {
             state = StateChuong.DONE;
+            thu_hoach.SetActive(true);
             for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
             {
                 if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)

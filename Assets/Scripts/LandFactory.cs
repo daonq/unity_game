@@ -13,7 +13,7 @@ public class LandFactory : MonoBehaviour
     public enum StateLandFactory { NONE, WAITING, BUILD, BUILD1, BUILD2 }
     public StateLandFactory stateLandFactory;
 
-    private int idFactory;
+    public int idFactory;
     private DetailFactory factory;
 
     public GameObject icon_thu_hoach;
@@ -30,6 +30,12 @@ public class LandFactory : MonoBehaviour
     public bool ELSE = false;
 
     public int stt; // 0: None, 2: Waiting, 3: Build;
+
+    public GameObject thuhoach;
+    public GameObject icon_thuHoach;
+
+    public GameObject effectBanTungToe;
+    public Material matEffectTren;
 
     private void Start()
     {
@@ -102,6 +108,7 @@ public class LandFactory : MonoBehaviour
     {
         effect.SetActive(false);
         idFactory = factory.id;
+        icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
         this.factory = factory;
         stateLandFactory = StateLandFactory.WAITING;
         PlayerPrefs.SetInt("idFactory" + id, idFactory);
@@ -174,6 +181,7 @@ public class LandFactory : MonoBehaviour
             {
                 time = 0;
                 count++;
+                thuhoach.SetActive(true);
                 if (active)
                 {
                     textCount.text = count + "/" + countMax;
@@ -193,24 +201,47 @@ public class LandFactory : MonoBehaviour
         PlayerPrefs.SetString("timethucNhamay" + id, DateTime.Now.ToString());
     }
 
+    public void UpdateIconThuHoach()
+    {
+        icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
+    }
+
     public void OnThuHoach(int idFactory)
     {
+        thuhoach.SetActive(false);
         if(idFactory == 0)
         {
             DataGlobal.instance.AddWater(count);
+            matEffectTren = DataGlobal.instance.listMatFactory[0];
         } else if(idFactory == 1)
         {
             DataGlobal.instance.AddStone(count);
+            matEffectTren = DataGlobal.instance.listMatFactory[1];
         } else if(idFactory == 2)
         {
             DataGlobal.instance.AddWood(count);
+            matEffectTren = DataGlobal.instance.listMatFactory[2];
         } else if(idFactory == 3)
         {
             DataGlobal.instance.AddGold(count);
+            matEffectTren = DataGlobal.instance.listMatFactory[3];
         } else if(idFactory == 4)
         {
             DataGlobal.instance.AddOil(count);
+            matEffectTren = DataGlobal.instance.listMatFactory[4];
         }
+        GameObject efNe = Instantiate(effectBanTungToe, thuhoach.transform.position, Quaternion.identity);
+        efNe.transform.Rotate(new Vector3(-90, 0, 0));
+        efNe.GetComponent<ParticleSystemRenderer>().material = matEffectTren;
+        Destroy(efNe, 3);
+
+        /*
+        GameObject starMove = Instantiate(DataGlobal.instance.ToMoveStar, thuhoach.transform.position, Quaternion.identity);
+        starMove.GetComponent<MoveStar>().Move();
+        //Destroy(starMove, 1);
+        */
+        DataGlobal.instance.AddStar(count);
+
         count = 0;
         PlayerPrefs.SetInt("countNhamay" + id, count);
         if (active)
@@ -235,7 +266,8 @@ public class LandFactory : MonoBehaviour
         {
             stateLandFactory = StateLandFactory.WAITING;
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
-            
+            icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
+
             for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
             {
                 if(idFactory == DataGlobal.instance.listFactory[i].id)
@@ -249,6 +281,8 @@ public class LandFactory : MonoBehaviour
         {
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             idLevelFactory = 0;
+            icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
+
             for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
             {
                 if (idFactory == DataGlobal.instance.listFactory[i].id)
@@ -268,6 +302,10 @@ public class LandFactory : MonoBehaviour
             {
                 count = countMax;
             }
+            if(count > 0)
+            {
+                thuhoach.SetActive(true);
+            }
 
             if (idFactory == 0)
             {
@@ -280,6 +318,8 @@ public class LandFactory : MonoBehaviour
         {
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             idLevelFactory = 1;
+            icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
+
             for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
             {
                 if (idFactory == DataGlobal.instance.listFactory[i].id)
@@ -298,6 +338,10 @@ public class LandFactory : MonoBehaviour
             if (count >= countMax)
             {
                 count = countMax;
+            }
+            if (count > 0)
+            {
+                thuhoach.SetActive(true);
             }
 
             if (idFactory == 0)
@@ -312,6 +356,8 @@ public class LandFactory : MonoBehaviour
         {
             idLevelFactory = 2;
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
+            icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
+
             for (int i = 0; i < DataGlobal.instance.listFactory.Count; i++)
             {
                 if (idFactory == DataGlobal.instance.listFactory[i].id)
@@ -330,6 +376,10 @@ public class LandFactory : MonoBehaviour
             if (count >= countMax)
             {
                 count = countMax;
+            }
+            if (count > 0)
+            {
+                thuhoach.SetActive(true);
             }
 
             if (idFactory == 0)

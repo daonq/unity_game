@@ -43,7 +43,18 @@ public class cr2 : MonoBehaviour
                 cua.SetActive(true);
                 StartCoroutine(HideCua());
             }
+            else if (DataGlobal.instance.GetGold() < 10)
+            {
+                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+                StartCoroutine(HetTienEnd());
+            }
         }
+    }
+
+    IEnumerator HetTienEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
     }
 
     IEnumerator HideCua()

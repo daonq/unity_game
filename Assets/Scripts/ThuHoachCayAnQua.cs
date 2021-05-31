@@ -44,8 +44,18 @@ public class ThuHoachCayAnQua : MonoBehaviour
             {
                 gio.SetActive(true);
                 StartCoroutine(HideGio());
+            } else if(DataGlobal.instance.GetGold() < 10)
+            {
+                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+                StartCoroutine(HetTienEnd());
             }
         }
+    }
+
+    IEnumerator HetTienEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
     }
 
     IEnumerator HideGio()

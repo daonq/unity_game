@@ -161,13 +161,14 @@ public class MainCamera : MonoBehaviour
         }
         else if (camLock == true)
         {
+            /*
             if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 oldTouchPositions[0] = transform.position;
                 Vector3 worlPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hitInfo = Physics2D.Raycast(worlPoint, Vector3.zero);
                 if (hitInfo.collider == null) DisableAll();
-            }
+            }*/
         }
 
         // Move Camera -----------------------------------------------------------------
