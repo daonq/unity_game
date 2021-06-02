@@ -35,7 +35,9 @@ public class LandFactory : MonoBehaviour
     public GameObject icon_thuHoach;
 
     public GameObject effectBanTungToe;
-    public Material matEffectTren;
+    [HideInInspector] public Material matEffectTren;
+
+    public GameObject bien;
 
     private void Start()
     {
@@ -97,6 +99,7 @@ public class LandFactory : MonoBehaviour
                 }
             } else
             {
+                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
                 ELSE = true;
                 //UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
             }
@@ -107,6 +110,7 @@ public class LandFactory : MonoBehaviour
     public void OnWaiting(DetailFactory factory)
     {
         effect.SetActive(false);
+        bien.SetActive(false);
         idFactory = factory.id;
         icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
         this.factory = factory;
@@ -118,6 +122,8 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild()
     {
+        effect.SetActive(false);
+        bien.SetActive(false);
         if (factory.id == 0)
         {
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
@@ -131,6 +137,8 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild1()
     {
+        effect.SetActive(false);
+        bien.SetActive(false);
         if (factory.id == 0)
         {
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
@@ -145,6 +153,8 @@ public class LandFactory : MonoBehaviour
 
     public void OnBuild2()
     {
+        effect.SetActive(false);
+        bien.SetActive(false);
         if (factory.id == 0)
         {
             GameObject hn = Instantiate(hoinuoc, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
@@ -265,6 +275,8 @@ public class LandFactory : MonoBehaviour
         } else if(stt == 2)
         {
             stateLandFactory = StateLandFactory.WAITING;
+            effect.SetActive(false);
+            bien.SetActive(false);
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
 
@@ -279,6 +291,8 @@ public class LandFactory : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = factory.sp0;
         } else if(stt == 3)
         {
+            effect.SetActive(false);
+            bien.SetActive(false);
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             idLevelFactory = 0;
             icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
@@ -316,6 +330,8 @@ public class LandFactory : MonoBehaviour
             StartCoroutine(FactoryWork());
         } else if(stt == 4)
         {
+            effect.SetActive(false);
+            bien.SetActive(false);
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             idLevelFactory = 1;
             icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];
@@ -354,6 +370,8 @@ public class LandFactory : MonoBehaviour
             StartCoroutine(FactoryWork());
         } else if(stt == 5)
         {
+            effect.SetActive(false);
+            bien.SetActive(false);
             idLevelFactory = 2;
             idFactory = PlayerPrefs.GetInt("idFactory" + id);
             icon_thuHoach.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.iconThuHoachFactory[idFactory];

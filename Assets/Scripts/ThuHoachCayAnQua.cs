@@ -40,23 +40,28 @@ public class ThuHoachCayAnQua : MonoBehaviour
         {
             transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
 
-            if (cothepha && DataGlobal.instance.GetGold() >= 10)
+            if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[2] > 0)
             {
                 gio.SetActive(true);
                 StartCoroutine(HideGio());
-            } else if(DataGlobal.instance.GetGold() < 10)
-            {
-                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-                StartCoroutine(HetTienEnd());
             }
+            else
+            {
+                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+            }
+            //else if(DataGlobal.instance.GetGold() < 10)
+            //{
+            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+            //    StartCoroutine(HetTienEnd());
+            //}
         }
     }
 
-    IEnumerator HetTienEnd()
-    {
-        yield return new WaitForSeconds(0.1f);
-        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    }
+    //IEnumerator HetTienEnd()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
+    //}
 
     IEnumerator HideGio()
     {
@@ -69,9 +74,11 @@ public class ThuHoachCayAnQua : MonoBehaviour
 
     public void thuhoach()
     {
-        DataGlobal.instance.SubGold(10);
+        //DataGlobal.instance.SubGold(10);
+        DataGlobal.instance.ArrayHaveOwnedItem[2] -= 1;
         DataGlobal.instance.AddStar(2);
         DataGlobal.instance.ArrayAmount[indexAmount] += 5;
+        DataGlobal.instance.UpdateDataAmount();
 
         GameObject ef = Instantiate(qua, transform.position, Quaternion.identity);
         ef.transform.Rotate(new Vector3(-90, 0, 0));

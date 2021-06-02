@@ -38,23 +38,27 @@ public class Stone : MonoBehaviour
         if (DataGlobal.instance.AllowMouseDown)
         {
             transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if (DataGlobal.instance.GetGold() >= 10 && Cothepha)
+            if (DataGlobal.instance.ArrayHaveOwnedItem[1] > 0 && Cothepha)
             {
                 phao.SetActive(true);
                 StartCoroutine(HidePhao());
             }
-            else if (DataGlobal.instance.GetGold() < 10)
+            else
             {
-                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-                StartCoroutine(HetTienEnd());
-            }
+                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+            }    
+            //else if (DataGlobal.instance.GetGold() < 10)
+            //{
+            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+            //    StartCoroutine(HetTienEnd());
+            //}
         }
     }
-    IEnumerator HetTienEnd()
-    {
-        yield return new WaitForSeconds(0.1f);
-        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    }
+    //IEnumerator HetTienEnd()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
+    //}
 
     IEnumerator HidePhao()
     {
@@ -75,7 +79,8 @@ public class Stone : MonoBehaviour
         ef2.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef2, 3);
 
-        DataGlobal.instance.SubGold(10);
+        //DataGlobal.instance.SubGold(10);
+        DataGlobal.instance.ArrayHaveOwnedItem[1] -= 1;
         DataGlobal.instance.AddStone(2);
         DataGlobal.instance.AddStar(2);
         Cothepha = false;
@@ -106,11 +111,11 @@ public class Stone : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = anhGoc;
                 Cothepha = true;
             }
-            else
-            {
-                Cothepha = false;
-                GetComponent<SpriteRenderer>().sprite = sprHo;
-            }
+            //else
+            //{
+            //    Cothepha = false;
+            //    GetComponent<SpriteRenderer>().sprite = sprHo;
+            //}
             PlayerPrefs.SetInt("TimeStone" + id, currentTime);
         }
     }

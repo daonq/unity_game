@@ -30,16 +30,25 @@ public class DataGlobal : MonoBehaviour
         {
             levelCurrentOfFactory[i] = PlayerPrefs.GetInt("levelCurrentOfFactory" + i);
         }
+
+        for (int i = 0; i < ArrayHaveOwnedItem.Length; i++)
+        {
+            ArrayHaveOwnedItem[i] = PlayerPrefs.GetInt("arrayHaveOwnedItem" + i);
+        }
     }
 
     private void Start()
     {
-        txtLevel.text = _level.ToString();
-        txtStar.text = _star.ToString();
+        //txtStar.text = _star.ToString();
+        img_slide.fillAmount = ((float)_star / (float)levelContain[_level - 1].star);
         txtGold.text = _gold.ToString();
         txtWood.text = _wood.ToString();
+        txtLevel.text = _level.ToString();
         txtStone.text = _stone.ToString();
         txtWater.text = _water.ToString();
+        txtOil.text = _oil.ToString();
+
+        UpdateDataAmount();
     }
 
     private void OnApplicationQuit()
@@ -62,6 +71,11 @@ public class DataGlobal : MonoBehaviour
         {
             PlayerPrefs.SetInt("levelCurrentOfFactory" + i, levelCurrentOfFactory[i]);
         }
+
+        for (int i = 0; i < ArrayHaveOwnedItem.Length; i++)
+        {
+            PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
+        }
     }
 
     public GameObject goldUI;
@@ -72,7 +86,9 @@ public class DataGlobal : MonoBehaviour
     public Text txtWood;
     public Text txtStone;
     public Text txtWater;
-    //public Text txtOil;
+    public Text txtOil;
+
+    public Text[] listTextAmount;
 
     public bool AllowMouseDown; // Cho phep click vao object trong scene
     [SerializeField] private int _level; // Level hien tai cua nguoi choi
@@ -98,6 +114,7 @@ public class DataGlobal : MonoBehaviour
     public List<DetailSeed> listSeed = new List<DetailSeed>();
     public List<DetailVatnuoi> listVatNuoi = new List<DetailVatnuoi>();
     public List<DetailFactory> listFactory = new List<DetailFactory>();
+    public List<Sprite> listSeedsLucGieoHat = new List<Sprite>();
 
     public Sprite sprOdat;
 
@@ -106,9 +123,22 @@ public class DataGlobal : MonoBehaviour
 
     public GameObject ToMoveStar;
 
+    public int sound; // 0: on, 1: off
+
+    public Image img_slide;
+
+    public void UpdateDataAmount()
+    {
+        for (int i = 0; i < ArrayAmount.Length; i++)
+        {
+            listTextAmount[i].text = ArrayAmount[i].ToString();
+        }
+    }
+
     public void AddStar(int star)
     {
         _star += star;
+        img_slide.fillAmount = ((float)_star / (float)levelContain[_level - 1].star);
         if(_star >= levelContain[_level - 1].star)
         {
             _level++;
@@ -140,13 +170,13 @@ public class DataGlobal : MonoBehaviour
             }
             UIManager.instance.ShowPanelHouse();
         }
-        txtStar.text = _star.ToString();
+        img_slide.fillAmount = ((float)_star / (float)levelContain[_level - 1].star);
     }
 
     public void AddOil(int oil)
     {
         _oil += oil;
-        //txtOil.text = _oil.ToString();
+        txtOil.text = _oil.ToString();
     }
 
     public void SubOil(int oil)

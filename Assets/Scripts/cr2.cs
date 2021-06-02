@@ -16,6 +16,8 @@ public class cr2 : MonoBehaviour
 
     public GameObject cua; // Cái cưa ý nhé :v
 
+    public GameObject animationCua;
+
     private void Start()
     {
         time = PlayerPrefs.GetInt("Timecr2" + id);
@@ -38,24 +40,28 @@ public class cr2 : MonoBehaviour
         if(DataGlobal.instance.AllowMouseDown)
         {
             transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if(cothepha && DataGlobal.instance.GetGold() >= 10)
+            if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
             {
                 cua.SetActive(true);
                 StartCoroutine(HideCua());
             }
-            else if (DataGlobal.instance.GetGold() < 10)
+            else
             {
-                DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-                StartCoroutine(HetTienEnd());
+                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
             }
+            //else if (DataGlobal.instance.GetGold() < 10)
+            //{
+            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
+            //    StartCoroutine(HetTienEnd());
+            //}
         }
     }
 
-    IEnumerator HetTienEnd()
-    {
-        yield return new WaitForSeconds(0.1f);
-        DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    }
+    //IEnumerator HetTienEnd()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
+    //}
 
     IEnumerator HideCua()
     {
@@ -68,12 +74,20 @@ public class cr2 : MonoBehaviour
 
     public void cuanhe()
     {
+        GetComponent<Animator>().enabled = false;
+        animationCua.SetActive(true);
+        StartCoroutine(HieuUng());
+    }
+
+    IEnumerator HieuUng()
+    {
+        yield return new WaitForSeconds(3);
         GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
         ef.transform.Rotate(new Vector3(-90, 0, 0));
         ef.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef, 3);
 
-        DataGlobal.instance.SubGold(10);
+        DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         DataGlobal.instance.AddWood(2);
         DataGlobal.instance.AddStar(2);
 
@@ -81,6 +95,7 @@ public class cr2 : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sp1;
         time = 180;
         PlayerPrefs.SetInt("Timecr2" + id, time);
+        animationCua.SetActive(false);
 
         StartCoroutine(HoiSinh());
     }
@@ -100,6 +115,7 @@ public class cr2 : MonoBehaviour
             {
                 cothepha = true;
                 GetComponent<SpriteRenderer>().sprite = sp2;
+                GetComponent<Animator>().enabled = true;
             } else
             {
                 cothepha = false;

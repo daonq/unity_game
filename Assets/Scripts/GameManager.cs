@@ -2,7 +2,6 @@
 
 public class GameManager : MonoBehaviour
 {
-
     private void Start()
     {
         //DataGlobal.instance.ArrayLand = GameObject.FindGameObjectsWithTag("Land");
@@ -11,6 +10,5 @@ public class GameManager : MonoBehaviour
         //DataGlobal.instance.ArrayAmount = new int[20];
         //DataGlobal.instance.ArrayChuong = GameObject.FindGameObjectsWithTag("Chuong");
         UIManager.instance.WhereHouse = GameObject.FindGameObjectWithTag("House");
-        
     }
 }

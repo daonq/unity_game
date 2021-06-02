@@ -78,6 +78,10 @@ public class Chuong : MonoBehaviour
                     
                 }
             }
+            else
+            {
+                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
+            }
         }
     }
 
@@ -139,6 +143,7 @@ public class Chuong : MonoBehaviour
         }
         listVatNuoi.Clear();
         DataGlobal.instance.ArrayAmount[idVatnuoi] += sl;
+        DataGlobal.instance.UpdateDataAmount();
         int reward = 0;
         for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
         {
@@ -274,6 +279,7 @@ public class Chuong : MonoBehaviour
             idVatnuoi = PlayerPrefs.GetInt("idvatnuoi" + id);
             sl = PlayerPrefs.GetInt("soluongvatnuoi" + id);
 
+            bien.SetActive(false);
             UpdateIconVatnuoi();
 
             listVatNuoi.Clear();
@@ -327,6 +333,7 @@ public class Chuong : MonoBehaviour
         } else if(stt == 3)
         {
             state = StateChuong.DONE;
+            bien.SetActive(false);
             thu_hoach.SetActive(true);
             for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
             {

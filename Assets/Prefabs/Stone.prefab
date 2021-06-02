@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 464067714262061216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4244337379394021205}
   m_Father: {fileID: 1780530926640997060}
@@ -294,6 +294,8 @@ MonoBehaviour:
   effect: {fileID: 4818527489017043633, guid: c349a8018e5f38e45ae43da030433c03, type: 3}
   currentTime: 0
   phao: {fileID: 464067714262061216}
+  tungDa: {fileID: 0}
+  mat: {fileID: 0}
 --- !u!58 &4801532025849357522
 CircleCollider2D:
   m_ObjectHideFlags: 0

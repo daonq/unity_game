@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using DG.Tweening;
 
 public class Land : MonoBehaviour
 {
@@ -103,7 +104,7 @@ public class Land : MonoBehaviour
                 }
             } else
             {
-                //UIManager.instance.Hienthongbao("The plot of land is opened at the level " + levelUnlock);
+                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
             }
         }
     }
@@ -114,20 +115,28 @@ public class Land : MonoBehaviour
         objectTime.SetActive(false);
     }
 
+
     private int _exp;
     private Sprite _sp4;
+    public GameObject roiSeed;
     public void Seeded(int id, int time, Sprite sp1, Sprite sp2, Sprite sp3, int exp, Sprite sp4, Material mat)
     {
         _sp4 = sp4;
         _exp = exp;
         _idSeed = id;
         this.mat = mat;
+        GameObject rs = Instantiate(roiSeed, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        rs.GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.listSeedsLucGieoHat[id];
+        rs.transform.DOMoveY(transform.position.y, 0.9f);
+
+        Destroy(rs, 1);
         StartCoroutine(OnSeeded(time, sp1, sp2, sp3));
     }
 
     IEnumerator OnSeeded(int time, Sprite sp1, Sprite sp2, Sprite sp3)
     {
         stateLand = StateLand.SEEDED;
+        yield return new WaitForSeconds(1);
         Seed.GetComponent<SpriteRenderer>().sprite = sp1;
         int timeDefaut = time;
         textTime.text = time + "s";
@@ -173,6 +182,7 @@ public class Land : MonoBehaviour
         stateLand = StateLand.NONE;
         PlayerPrefs.SetInt("statusOdat" + id, 1);
         DataGlobal.instance.ArrayAmount[idSeed] += 5;
+        DataGlobal.instance.UpdateDataAmount();
         DataGlobal.instance.AddStar(_exp);
         GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
         ef.transform.Rotate(new Vector3(-90, 0, 0));

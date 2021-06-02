@@ -94,11 +94,11 @@ public class UIManager : MonoBehaviour
             }
             else if (DataGlobal.instance.GetLevel() >= seedClick.levelUnlock && DataGlobal.instance.GetGold() < seedClick.gold)
             {
-                Debug.Log("Ban chua du Gold de mua seed nay!");
+                PanelNotify.instance.ShowContent("You don't have enough gold to buy this seed!");
             }
             else if (DataGlobal.instance.GetLevel() < seedClick.levelUnlock)
             {
-                Debug.Log("Ban chua du Level de mua seed nay!");
+                PanelNotify.instance.ShowContent("You don't have enough level to buy this seed!");
             }
         });
     }
@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
             }
             else if (DataGlobal.instance.GetGold() < _factory1.gold)
             {
-                Debug.Log("Ban khong du GOLD de xay nha may nay!");
+                PanelNotify.instance.ShowContent("You don't have enough gold to buy this factory!");
             }
         });
     }
@@ -228,7 +228,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ban khong du tai nguyen de nang cap!");
+                PanelNotify.instance.ShowContent("You don't have enough resources to upgrade this factory!");
             }
         });
     }
@@ -312,7 +312,6 @@ public class UIManager : MonoBehaviour
         {
             if(_levelChoice == 2)
             {
-                Debug.Log("ID Factory: " + idFactory);
                 if(DataGlobal.instance.GetGold() >= _factory1.gold2 && DataGlobal.instance.GetLevel() >= _factory1.level2
                 && DataGlobal.instance.GetLevelHouse() >= 2 && DataGlobal.instance.levelCurrentOfFactory[idFactory] == 0)
                 {
@@ -325,7 +324,6 @@ public class UIManager : MonoBehaviour
                 }
             } else if(_levelChoice == 3)
             {
-                Debug.Log("ID Factory: " + idFactory);
                 if (DataGlobal.instance.GetGold() >= _factory1.gold3 && DataGlobal.instance.GetLevel() >= _factory1.level3
                 && DataGlobal.instance.GetLevelHouse() >= 3 && DataGlobal.instance.levelCurrentOfFactory[idFactory] == 1)
                 {
@@ -364,9 +362,7 @@ public class UIManager : MonoBehaviour
     public void OnClickToBuild(int levelChoice)
     {
         _levelChoice = levelChoice;
-        Debug.Log("Level choice: " + _levelChoice);
-        Debug.Log("Level current of factory: " + DataGlobal.instance.levelCurrentOfFactory[idFactory]);
-        Debug.Log("Id Factory: " + idFactory);
+        
         if(levelChoice - 1 <= DataGlobal.instance.levelCurrentOfFactory[idFactory])
         {
             LockPB.SetActive(false);
@@ -487,6 +483,10 @@ public class UIManager : MonoBehaviour
                 DataGlobal.instance.SubGold(10);
                 haveOwned.text = "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
             }
+            else
+            {
+                PanelNotify.instance.ShowContent("You don't have enough gold to buy this item!");
+            }
         });
     }
 
@@ -528,10 +528,13 @@ public class UIManager : MonoBehaviour
 
         btnSell.onClick.AddListener(delegate
         {
-            DataGlobal.instance.AddGold(DataGlobal.instance.ArrayAmount[_nongsan.id] * _nongsan.unitPrice);
+            int totalDue = DataGlobal.instance.ArrayAmount[_nongsan.id] * _nongsan.unitPrice;
+            DataGlobal.instance.AddGold(totalDue);
             DataGlobal.instance.ArrayAmount[_nongsan.id] = 0;
+            DataGlobal.instance.UpdateDataAmount();
             TotalMoney.text = "0";
             amount.text = "0";
+            PanelNotify.instance.ShowContent("You have received " + totalDue + " Gold");
         });
     }
 
@@ -552,7 +555,6 @@ public class UIManager : MonoBehaviour
         iconNongsan1.sprite = _nongsan.icon;
         iconNongSan2.sprite = _nongsan.icon;
     }
-
 
     public GameObject PanelChuong;
     public TextMeshProUGUI titleChuong;
@@ -615,6 +617,10 @@ public class UIManager : MonoBehaviour
                 DataGlobal.instance.AllowMouseDown = true;
                 PanelChuong.SetActive(false);
                 MainCamera.instance.camLock = false;
+            }
+            else
+            {
+                PanelNotify.instance.ShowContent("You don't have enough gold to buy this animals!");
             }
         });
     }
@@ -718,9 +724,10 @@ public class UIManager : MonoBehaviour
                 PanelHouse.SetActive(false);
                 MainCamera.instance.camLock = false;
                 DataGlobal.instance.AllowMouseDown = true;
-            } else
+            } 
+            else
             {
-                Debug.Log("Ban chua du dieu kien de nang cap!");
+                PanelNotify.instance.ShowContent("You are not eligible to upgrade!");
             }
         });
     }
