@@ -28,6 +28,7 @@ public class DetailFactory
     public int id;
     public string title;
     public string rawMat;
+    public int levelUnlock;
     public int gold;
     public int time1;
     public int count1;

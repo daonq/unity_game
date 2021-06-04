@@ -47,6 +47,7 @@ public class cr2 : MonoBehaviour
             }
             else
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
             }
             //else if (DataGlobal.instance.GetGold() < 10)

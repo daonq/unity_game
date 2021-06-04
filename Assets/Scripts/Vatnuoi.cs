@@ -30,4 +30,5 @@ public class DetailVatnuoi
     public string harvest;
     public int time;
     public int rewards;
+    public int levelUnlock;
 }

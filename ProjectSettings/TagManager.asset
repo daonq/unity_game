@@ -20,6 +20,7 @@ TagManager:
   - MIA
   - FxTemporaire
   - BIEN
+  - Stone
   layers:
   - Default
   - TransparentFX

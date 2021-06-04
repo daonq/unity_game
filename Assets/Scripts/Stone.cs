@@ -43,22 +43,13 @@ public class Stone : MonoBehaviour
                 phao.SetActive(true);
                 StartCoroutine(HidePhao());
             }
-            else
+            else if(DataGlobal.instance.ArrayHaveOwnedItem[1] == 0 && Cothepha)
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
             }    
-            //else if (DataGlobal.instance.GetGold() < 10)
-            //{
-            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-            //    StartCoroutine(HetTienEnd());
-            //}
         }
     }
-    //IEnumerator HetTienEnd()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    //}
 
     IEnumerator HidePhao()
     {
@@ -87,7 +78,14 @@ public class Stone : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sprHo;
         currentTime = 100;
         PlayerPrefs.SetInt("TimeStone" + id, currentTime);
+        StartCoroutine(HideHo());
         StartCoroutine(HoiSinh());
+    }
+
+    IEnumerator HideHo()
+    {
+        yield return new WaitForSeconds(5);
+        GetComponent<SpriteRenderer>().sprite = null;
     }
 
     private void OnMouseUp()

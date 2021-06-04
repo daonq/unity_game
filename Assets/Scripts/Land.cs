@@ -104,6 +104,7 @@ public class Land : MonoBehaviour
                 }
             } else
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
             }
         }
@@ -139,7 +140,7 @@ public class Land : MonoBehaviour
         yield return new WaitForSeconds(1);
         Seed.GetComponent<SpriteRenderer>().sprite = sp1;
         int timeDefaut = time;
-        textTime.text = time + "s";
+        textTime.text = formatTime(time);
         while (time > 0)
         {
             yield return new WaitForSeconds(1);
@@ -172,8 +173,19 @@ public class Land : MonoBehaviour
             // stt = 1: None, stt = 2: seeded, stt = 3: done
             PlayerPrefs.SetInt("statusOdat" + id, stt);
 
-            textTime.text = time + "s";
+            textTime.text = formatTime(time);
         }
+    }
+
+    public string formatTime(int t)
+    {
+        int phut = t / 60;
+        int s = t % 60;
+        if (phut == 0)
+        {
+            return s + "s";
+        }   
+        return phut + "m" + s + "s";
     }
 
     public void OnDone(int idSeed)

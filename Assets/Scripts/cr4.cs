@@ -48,7 +48,13 @@ public class cr4 : MonoBehaviour
             }
             else
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+            }
+            if(DataGlobal.instance.firstGame == 6)
+            {
+                DataGlobal.instance.firstGame = 7;
+                Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, 75, 0);
             }
             //else if(DataGlobal.instance.GetGold() < 10)
             //{
@@ -75,6 +81,7 @@ public class cr4 : MonoBehaviour
 
     public void cuanhe()
     {
+        Tutorial.instance.caitay.SetActive(false);
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
         StartCoroutine(HieuUng());

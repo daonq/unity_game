@@ -15,7 +15,9 @@ public class PanelNotify : MonoBehaviour
 
     public void ShowContent(string str)
     {
-        gameObject.transform.DOScale(1, 0.5f).SetEase(Ease.Flash);
+        DataGlobal.instance.AllowMouseDown = false;
+        MainCamera.instance.camLock = true;
+        gameObject.transform.DOScale(1, 0.2f).SetEase(Ease.Flash);
         content.text = str;
     }
 }

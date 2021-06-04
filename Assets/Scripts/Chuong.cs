@@ -80,9 +80,21 @@ public class Chuong : MonoBehaviour
             }
             else
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
             }
         }
+    }
+
+    public string formatTime(int t)
+    {
+        int phut = t / 60;
+        int giay = t % 60;
+        if(phut == 0)
+        {
+            return giay + "s";
+        }
+        return phut + "m" + giay + "s";
     }
 
     /*
@@ -221,7 +233,7 @@ public class Chuong : MonoBehaviour
         state = StateChuong.DONE;*/
 
         int timeMax = _vatnuoi.time;
-        textTime.text = timeMax + "s";
+        textTime.text = formatTime(timeMax);
         while (timeMax > 0)
         {
             yield return new WaitForSeconds(1);
@@ -240,7 +252,7 @@ public class Chuong : MonoBehaviour
                 state = StateChuong.WAITING;
                 PlayerPrefs.SetInt("statusChuong" + id, 2);
             }
-            textTime.text = timeMax + "s";
+            textTime.text = formatTime(timeMax);
             PlayerPrefs.SetInt("timechuong" + id, timeMax);
             PlayerPrefs.SetString("timethuchuong" + id, DateTime.Now.ToString());
         }
@@ -348,12 +360,12 @@ public class Chuong : MonoBehaviour
 
     IEnumerator CountTime(int currentTime, DetailVatnuoi vatnuoi)
     {
-        textTime.text = currentTime + "s";
+        textTime.text = formatTime(currentTime);
         while (currentTime > 0)
         {
             yield return new WaitForSeconds(1);
             currentTime--;
-            textTime.text = currentTime + "s";
+            textTime.text = formatTime(currentTime);
             PlayerPrefs.SetInt("idvatnuoi" + id, vatnuoi.id);
             PlayerPrefs.SetString("timethuchuong" + id, DateTime.Now.ToString());
 

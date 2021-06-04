@@ -13,39 +13,6 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
-    public Text thongbao;
-
-    public void Hienthongbao(string mes)
-    {
-        thongbao.text = mes;
-        thongbao.gameObject.SetActive(true);
-        thongbao.GetComponent<RectTransform>().DOMove(thongbao.transform.position + new Vector3(0, 300, 0), 1f);
-        //StartCoroutine(thongbaoText());
-    }
-
-    public void AnThongBao()
-    {
-        StartCoroutine(ANTHONGBAO());
-    }
-
-    IEnumerator ANTHONGBAO()
-    {
-        yield return new WaitForSeconds(1);
-        thongbao.text = "";
-        thongbao.gameObject.SetActive(false);
-        thongbao.GetComponent<RectTransform>().localPosition = Vector3.zero;
-    }
-
-    /*
-    IEnumerator thongbaoText()
-    {
-        thongbao.gameObject.SetActive(true);
-        thongbao.GetComponent<RectTransform>().DOMove(thongbao.transform.position + new Vector3(0, 300, 0), 2f);
-        yield return new WaitForSeconds(2f);
-        thongbao.gameObject.SetActive(false);
-        thongbao.GetComponent<RectTransform>().localPosition = Vector3.zero;
-    }*/
-
     private void Start()
     {
         AddListenForPanelSeeds();
@@ -72,6 +39,8 @@ public class UIManager : MonoBehaviour
     public Image image;
     private int idLand;
     private DetailSeed seedClick;
+
+    public GameObject effectBuyHat;
 
     public void AddListenForPanelSeeds()
     {
@@ -100,12 +69,21 @@ public class UIManager : MonoBehaviour
             {
                 PanelNotify.instance.ShowContent("You don't have enough level to buy this seed!");
             }
+
+            effectBuyHat.SetActive(false);
+            Tutorial.instance.TutorialFactory();
         });
     }
 
     public void OnClickToLand(int id)
     {
         idLand = id;
+        if(DataGlobal.instance.firstGame == 0)
+        {
+            Tutorial.instance.muiten.SetActive(false);
+            effectBuyHat.SetActive(true);
+            DataGlobal.instance.firstGame = 1;
+        }
         PanelSeeds.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
@@ -134,11 +112,14 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rawMatF1;
     public TextMeshProUGUI timeF1;
     public TextMeshProUGUI productF1;
+    public TextMeshProUGUI levelUnlockF1;
     public Button btnBuyF1;
     public Button btnExitF1;
     public Image imageF1;
     private int idFactory; // Vi tri nha may
     private DetailFactory _factory1;
+
+    public GameObject effectBuyNhaMay;
 
     public void AddListenForPanelFactory1()
     {
@@ -156,7 +137,7 @@ public class UIManager : MonoBehaviour
             {
 
             }
-            else if (DataGlobal.instance.GetGold() >= _factory1.gold)
+            else if (DataGlobal.instance.GetGold() >= _factory1.gold && DataGlobal.instance.GetLevel() >= _factory1.levelUnlock)
             {
                 PanelFactory1.SetActive(false);
                 DataGlobal.instance.AllowMouseDown = true;
@@ -164,15 +145,31 @@ public class UIManager : MonoBehaviour
                 DataGlobal.instance.SubGold(_factory1.gold);
                 DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().OnWaiting(_factory1);
             }
-            else if (DataGlobal.instance.GetGold() < _factory1.gold)
+            else if (DataGlobal.instance.GetGold() < _factory1.gold && DataGlobal.instance.GetLevel() >= _factory1.levelUnlock)
             {
                 PanelNotify.instance.ShowContent("You don't have enough gold to buy this factory!");
             }
+            else if (DataGlobal.instance.GetGold() >= _factory1.gold && DataGlobal.instance.GetLevel() < _factory1.levelUnlock)
+            {
+                PanelNotify.instance.ShowContent("You don't have reach level to buy this factory!");
+            }
+            else
+            {
+                PanelNotify.instance.ShowContent("You don't have enough gold and level to buy this factory!");
+            }
+            effectBuyNhaMay.SetActive(false);
+            Tutorial.instance.TutorialWaiting();
         });
     }
 
     public void OnClickToFactory(int id)
     {
+        if(DataGlobal.instance.firstGame == 1)
+        {
+            Tutorial.instance.caitay.SetActive(false);
+            effectBuyNhaMay.SetActive(true);
+            DataGlobal.instance.firstGame = 2;
+        }
         idFactory = id;
         PanelFactory1.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
@@ -187,6 +184,7 @@ public class UIManager : MonoBehaviour
         rawMatF1.text = "Raw materials: " + factory.rawMat;
         timeF1.text = "Time: " + factory.time1 + "s/" + factory.nameProduct;
         productF1.text = "Product: " + factory.nameProduct;
+        levelUnlockF1.text = "Level unlock: " + factory.levelUnlock;
         imageF1.sprite = factory.sp3;
     }
 
@@ -204,6 +202,8 @@ public class UIManager : MonoBehaviour
     public Image du1W;
     public Image du2W;
     public Image du3W;
+
+    public GameObject effectWaitingNhaMay;
 
     public void AddListenForPanelWaiting()
     {
@@ -230,11 +230,19 @@ public class UIManager : MonoBehaviour
             {
                 PanelNotify.instance.ShowContent("You don't have enough resources to upgrade this factory!");
             }
+            effectWaitingNhaMay.SetActive(false);
+            Tutorial.instance.TutorialAnimals();
         });
     }
 
     public void OnClickToWaiting(DetailFactory factoryWating)
     {
+        if(DataGlobal.instance.firstGame == 2)
+        {
+            Tutorial.instance.caitay.SetActive(false);
+            effectWaitingNhaMay.SetActive(true);
+            DataGlobal.instance.firstGame = 3;
+        }
         _factory1 = factoryWating;
         PanelWaiting.SetActive(true);
         textWater.text = "" + factoryWating.water;
@@ -322,6 +330,10 @@ public class UIManager : MonoBehaviour
                     MainCamera.instance.camLock = false;
                     DataGlobal.instance.ArrayLandFactory[_factory1.id].GetComponent<LandFactory>().OnBuild1();
                 }
+                else
+                {
+                    PanelNotify.instance.ShowContent("You can't upgrade!");
+                }
             } else if(_levelChoice == 3)
             {
                 if (DataGlobal.instance.GetGold() >= _factory1.gold3 && DataGlobal.instance.GetLevel() >= _factory1.level3
@@ -334,12 +346,15 @@ public class UIManager : MonoBehaviour
                     MainCamera.instance.camLock = false;
                     DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().OnBuild2();
                 }
+                else
+                {
+                    PanelNotify.instance.ShowContent("You can't upgrade!");
+                }
             }
         });
 
         btn_ExitPB.onClick.AddListener(delegate
         {
-            Debug.Log(idFactory);
             DataGlobal.instance.ArrayLandFactory[idFactory].GetComponent<LandFactory>().setActive();
             PanelBuild.SetActive(false);
             DataGlobal.instance.AllowMouseDown = true;
@@ -456,7 +471,6 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-
     public GameObject PanelStore;
     public Button btnBuyPS;
     public Button btnExitPS;
@@ -466,6 +480,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI haveOwned;
     private DetailItem _item;
 
+    public GameObject effectBuyItem;
+
     public void AddListnerForPS()
     {
         btnExitPS.onClick.AddListener(delegate
@@ -473,6 +489,8 @@ public class UIManager : MonoBehaviour
             PanelStore.SetActive(false);
             DataGlobal.instance.AllowMouseDown = true;
             MainCamera.instance.camLock = false;
+            effectBuyItem.SetActive(false);
+            Tutorial.instance.TutorialChatCay();
         });
 
         btnBuyPS.onClick.AddListener(delegate
@@ -487,11 +505,17 @@ public class UIManager : MonoBehaviour
             {
                 PanelNotify.instance.ShowContent("You don't have enough gold to buy this item!");
             }
+            effectBuyItem.GetComponent<RectTransform>().localPosition = new Vector3(50, 100, 0);
         });
     }
 
     public void ShowPS()
     {
+        if (DataGlobal.instance.firstGame == 5)
+        {
+            effectBuyItem.SetActive(true);
+            DataGlobal.instance.firstGame = 6;
+        }
         PanelStore.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
@@ -562,6 +586,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timeChuong;
     public TextMeshProUGUI rewardsChuong;
     public TextMeshProUGUI goldChuong;
+    public TextMeshProUGUI levelUnlockChuong;
     public Image imageChuong;
     public Image imageVatnuoi1;
     public Image imageVatnuoi2;
@@ -575,6 +600,8 @@ public class UIManager : MonoBehaviour
     private DetailVatnuoi _vatnuoi = null;
     private int _idChuong;
     private int soluongVatnuoi;
+
+    public GameObject effectBuyAnimals;
 
     public void AddListenerForPanelChuong()
     {
@@ -610,7 +637,7 @@ public class UIManager : MonoBehaviour
                 _vatnuoi = DataGlobal.instance.listVatNuoi[0];
                 soluongVatnuoi = 1;
             }
-            if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi))
+            if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi) && DataGlobal.instance.GetLevel() >= _vatnuoi.levelUnlock)
             {
                 DataGlobal.instance.SubGold(_vatnuoi.gold * soluongVatnuoi);
                 DataGlobal.instance.ArrayChuong[_idChuong].GetComponent<Chuong>().Build(_vatnuoi, soluongVatnuoi);
@@ -618,15 +645,31 @@ public class UIManager : MonoBehaviour
                 PanelChuong.SetActive(false);
                 MainCamera.instance.camLock = false;
             }
-            else
+            else if(DataGlobal.instance.GetGold() < (_vatnuoi.gold * soluongVatnuoi) && DataGlobal.instance.GetLevel() >= _vatnuoi.levelUnlock)
             {
                 PanelNotify.instance.ShowContent("You don't have enough gold to buy this animals!");
             }
+            else if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi) && DataGlobal.instance.GetLevel() < _vatnuoi.levelUnlock)
+            {
+                PanelNotify.instance.ShowContent("You don't have reach level to buy this animals!");
+            }
+            else
+            {
+                PanelNotify.instance.ShowContent("You don't have enough gold and level to buy this animals!");
+            }
+            effectBuyAnimals.SetActive(false);
+            Tutorial.instance.TutorialMuaCua();
         });
     }
 
     public void ShowPanelChuong(int idChuong)
     {
+        if(DataGlobal.instance.firstGame == 3)
+        {
+            effectBuyAnimals.SetActive(true);
+            Tutorial.instance.caitay.SetActive(false);
+            DataGlobal.instance.firstGame = 4;
+        }
         _idChuong = idChuong;
         PanelChuong.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
@@ -641,6 +684,7 @@ public class UIManager : MonoBehaviour
         titleChuong.text = _vatnuoi.title;
         harvestChuong.text = "Harvest: " + _vatnuoi.harvest;
         timeChuong.text = "Time: " + _vatnuoi.time;
+        levelUnlockChuong.text = "Level unlock: " + _vatnuoi.levelUnlock;
         CapnhatSoluongvatnuoi();
     }
 
@@ -746,18 +790,22 @@ public class UIManager : MonoBehaviour
         {
             Contain.SetActive(true);
             Upgrade.SetActive(false);
-            title2.text = "Farm level: " + DataGlobal.instance.GetLevel();
-            title2.alignment = TextAlignmentOptions.Left;
-            containOil.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].oil;
+            title2.text = "Level: " + DataGlobal.instance.GetLevel();
+            //title2.alignment = TextAlignmentOptions.Left;
+            containOil.text   = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].oil;
             containWater.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].water;
             containStone.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].stone;
-            containWood.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].wood;
+            containWood.text  = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].wood;
+            content1.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct1;
+            content2.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct2;
+            content3.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct3;
+            content4.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct4;
         } else
         {
             Contain.SetActive(false);
             Upgrade.SetActive(true);
-            title2.text = "House upgrade";
-            title2.alignment = TextAlignmentOptions.Center;
+            title2.text = "Upgrade";
+            //title2.alignment = TextAlignmentOptions.Center;
 
             levelRequire.text = "+ Level: " + _house.levelRQ;
             if(_house.levelRQ <= DataGlobal.instance.GetLevel())

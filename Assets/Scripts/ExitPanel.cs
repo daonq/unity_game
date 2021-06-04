@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class ExitPanel : MonoBehaviour
 {
@@ -10,7 +9,13 @@ public class ExitPanel : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(delegate
         {
-            panel.transform.DOScale(0, 0.5f).SetEase(Ease.Flash);
+            if (DataGlobal.instance.ClickObject)
+            {
+                DataGlobal.instance.ClickObject = false;
+                DataGlobal.instance.AllowMouseDown = true;
+                MainCamera.instance.camLock = false;
+            }
+            panel.transform.localScale = Vector3.zero;
         });
     }
 }

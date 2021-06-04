@@ -99,6 +99,7 @@ public class LandFactory : MonoBehaviour
                 }
             } else
             {
+                DataGlobal.instance.ClickObject = true;
                 PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
                 ELSE = true;
                 //UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");

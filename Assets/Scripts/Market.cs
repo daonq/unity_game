@@ -15,7 +15,9 @@ public class Market : MonoBehaviour
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            vongtron.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 1);
+            vongtron.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
+            Tutorial.instance.caitay.SetActive(false);
+            Tutorial.instance.TutorialMuaCua1();
             StartCoroutine(Hide());
             //UIManager.instance.ShowPB();
         }
@@ -24,6 +26,6 @@ public class Market : MonoBehaviour
     IEnumerator Hide()
     {
         yield return new WaitForSeconds(5);
-        vongtron.transform.DOScale(new Vector3(0, 0, 0), 1);
+        vongtron.transform.DOScale(new Vector3(0, 0, 0), 0);
     }
 }

@@ -35,7 +35,10 @@ public class DataGlobal : MonoBehaviour
         {
             ArrayHaveOwnedItem[i] = PlayerPrefs.GetInt("arrayHaveOwnedItem" + i);
         }
+        firstGame = PlayerPrefs.GetInt("FirstGame");
     }
+
+    public int firstGame;
 
     private void Start()
     {
@@ -61,6 +64,7 @@ public class DataGlobal : MonoBehaviour
         PlayerPrefs.SetInt("star", _star);
         PlayerPrefs.SetInt("oil", _oil);
         PlayerPrefs.SetInt("levelHouse", _levelHouse);
+        PlayerPrefs.SetInt("FirstGame", firstGame);
 
         for (int i = 0; i < ArrayAmount.Length; i++)
         {
@@ -78,10 +82,12 @@ public class DataGlobal : MonoBehaviour
         }
     }
 
+    public bool ClickObject;
+
     public GameObject goldUI;
 
     public Text txtLevel;
-    public Text txtStar;
+    //public Text txtStar;
     public Text txtGold;
     public Text txtWood;
     public Text txtStone;
@@ -121,11 +127,11 @@ public class DataGlobal : MonoBehaviour
     public List<Sprite> iconThuHoachFactory = new List<Sprite>();
     public List<Material> listMatFactory = new List<Material>();
 
-    public GameObject ToMoveStar;
-
     public int sound; // 0: on, 1: off
 
     public Image img_slide;
+
+    public List<ContentOfHouse> listContentOFHOUSE = new List<ContentOfHouse>();
 
     public void UpdateDataAmount()
     {
@@ -288,4 +294,13 @@ public class LevelContain
     public int stone;
     public int oil;
     public int water;
+}
+
+[System.Serializable]
+public struct ContentOfHouse
+{
+    public string ct1;
+    public string ct2;
+    public string ct3;
+    public string ct4;
 }
