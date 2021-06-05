@@ -9,6 +9,8 @@ public class HandlerGift : MonoBehaviour
     {
         GetComponent<ButtonGift>().OnGift += delegate
         {
+            DataGlobal.instance.AllowMouseDown = false;
+            MainCamera.instance.camLock = true;
             panel.gameObject.SetActive(true);
         };
     }

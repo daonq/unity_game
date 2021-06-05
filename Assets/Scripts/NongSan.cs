@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class NongSan : MonoBehaviour
 {
-    [SerializeField] DetailNongSan nongSan;
+    public DetailNongSan nongSan;
     private void Start()
     {
         Toggle toggle = GetComponent<Toggle>();
@@ -27,6 +27,7 @@ public class DetailNongSan
 {
     public int id;
     public string title;
+    public string titleVN;
     public Sprite icon;
     public int unitPrice;
 }

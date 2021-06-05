@@ -1,0 +1,1877 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6676637844139668877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6676637844139668878}
+  - component: {fileID: 6676637844139668879}
+  m_Layer: 0
+  m_Name: DataGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6676637844139668878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676637844139668877}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6676637844139668879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676637844139668877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32552c827e2efb45867c0c70c65a55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstGame: 0
+  ClickObject: 0
+  goldUI: {fileID: 0}
+  txtLevel: {fileID: 0}
+  txtGold: {fileID: 0}
+  txtWood: {fileID: 0}
+  txtStone: {fileID: 0}
+  txtWater: {fileID: 0}
+  txtOil: {fileID: 0}
+  tiengviet: 0
+  listTextAmount:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AllowMouseDown: 1
+  _level: 20
+  _gold: 10000
+  _water: 500
+  _stone: 500
+  _wood: 500
+  _star: 0
+  _oil: 10000
+  _levelHouse: 1
+  ArrayLand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ArrayAmount: 
+  ArrayLandFactory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ArrayHaveOwnedItem: 
+  ArrayChuong:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  levelContain:
+  - level: 1
+    star: 50
+    wood: 500
+    stone: 500
+    oil: 500
+    water: 500
+  - level: 2
+    star: 60
+    wood: 510
+    stone: 510
+    oil: 510
+    water: 510
+  - level: 3
+    star: 70
+    wood: 520
+    stone: 520
+    oil: 520
+    water: 520
+  - level: 4
+    star: 80
+    wood: 530
+    stone: 530
+    oil: 530
+    water: 530
+  - level: 5
+    star: 90
+    wood: 540
+    stone: 540
+    oil: 540
+    water: 540
+  - level: 6
+    star: 100
+    wood: 550
+    stone: 550
+    oil: 550
+    water: 550
+  - level: 7
+    star: 110
+    wood: 560
+    stone: 560
+    oil: 560
+    water: 560
+  - level: 8
+    star: 120
+    wood: 570
+    stone: 570
+    oil: 570
+    water: 570
+  - level: 9
+    star: 130
+    wood: 580
+    stone: 580
+    oil: 580
+    water: 580
+  - level: 10
+    star: 140
+    wood: 590
+    stone: 590
+    oil: 590
+    water: 590
+  - level: 11
+    star: 150
+    wood: 600
+    stone: 600
+    oil: 600
+    water: 600
+  - level: 12
+    star: 160
+    wood: 610
+    stone: 610
+    oil: 610
+    water: 610
+  - level: 13
+    star: 170
+    wood: 620
+    stone: 620
+    oil: 620
+    water: 620
+  - level: 14
+    star: 180
+    wood: 630
+    stone: 630
+    oil: 630
+    water: 630
+  - level: 15
+    star: 190
+    wood: 640
+    stone: 640
+    oil: 640
+    water: 640
+  - level: 16
+    star: 200
+    wood: 650
+    stone: 650
+    oil: 650
+    water: 650
+  - level: 17
+    star: 210
+    wood: 660
+    stone: 660
+    oil: 660
+    water: 660
+  - level: 18
+    star: 220
+    wood: 670
+    stone: 670
+    oil: 670
+    water: 670
+  - level: 19
+    star: 230
+    wood: 680
+    stone: 680
+    oil: 680
+    water: 680
+  - level: 20
+    star: 240
+    wood: 690
+    stone: 690
+    oil: 690
+    water: 690
+  - level: 21
+    star: 250
+    wood: 700
+    stone: 700
+    oil: 700
+    water: 700
+  - level: 22
+    star: 260
+    wood: 710
+    stone: 710
+    oil: 710
+    water: 710
+  - level: 23
+    star: 270
+    wood: 720
+    stone: 720
+    oil: 720
+    water: 720
+  - level: 24
+    star: 280
+    wood: 730
+    stone: 730
+    oil: 730
+    water: 730
+  - level: 25
+    star: 290
+    wood: 740
+    stone: 740
+    oil: 740
+    water: 740
+  - level: 26
+    star: 300
+    wood: 750
+    stone: 750
+    oil: 750
+    water: 750
+  - level: 27
+    star: 310
+    wood: 760
+    stone: 760
+    oil: 760
+    water: 760
+  - level: 28
+    star: 320
+    wood: 770
+    stone: 770
+    oil: 770
+    water: 770
+  - level: 29
+    star: 330
+    wood: 780
+    stone: 780
+    oil: 780
+    water: 780
+  - level: 30
+    star: 340
+    wood: 790
+    stone: 790
+    oil: 790
+    water: 790
+  - level: 31
+    star: 350
+    wood: 800
+    stone: 800
+    oil: 800
+    water: 800
+  - level: 32
+    star: 360
+    wood: 810
+    stone: 810
+    oil: 810
+    water: 810
+  - level: 33
+    star: 370
+    wood: 820
+    stone: 820
+    oil: 820
+    water: 820
+  - level: 34
+    star: 380
+    wood: 830
+    stone: 830
+    oil: 830
+    water: 830
+  - level: 35
+    star: 390
+    wood: 840
+    stone: 840
+    oil: 840
+    water: 840
+  - level: 36
+    star: 400
+    wood: 850
+    stone: 850
+    oil: 850
+    water: 850
+  - level: 37
+    star: 410
+    wood: 860
+    stone: 860
+    oil: 860
+    water: 860
+  - level: 38
+    star: 420
+    wood: 870
+    stone: 870
+    oil: 870
+    water: 870
+  - level: 39
+    star: 430
+    wood: 880
+    stone: 880
+    oil: 880
+    water: 880
+  - level: 40
+    star: 440
+    wood: 890
+    stone: 890
+    oil: 890
+    water: 890
+  - level: 41
+    star: 450
+    wood: 900
+    stone: 900
+    oil: 900
+    water: 900
+  - level: 42
+    star: 460
+    wood: 910
+    stone: 910
+    oil: 910
+    water: 910
+  - level: 43
+    star: 470
+    wood: 920
+    stone: 920
+    oil: 920
+    water: 920
+  - level: 44
+    star: 480
+    wood: 930
+    stone: 930
+    oil: 930
+    water: 930
+  - level: 45
+    star: 490
+    wood: 940
+    stone: 940
+    oil: 940
+    water: 940
+  - level: 46
+    star: 500
+    wood: 950
+    stone: 950
+    oil: 950
+    water: 950
+  - level: 47
+    star: 510
+    wood: 960
+    stone: 960
+    oil: 960
+    water: 960
+  - level: 48
+    star: 520
+    wood: 970
+    stone: 970
+    oil: 970
+    water: 970
+  - level: 49
+    star: 530
+    wood: 980
+    stone: 980
+    oil: 980
+    water: 980
+  - level: 50
+    star: 540
+    wood: 990
+    stone: 990
+    oil: 990
+    water: 990
+  - level: 51
+    star: 550
+    wood: 1000
+    stone: 1000
+    oil: 1000
+    water: 1000
+  - level: 52
+    star: 560
+    wood: 1010
+    stone: 1010
+    oil: 1010
+    water: 1010
+  - level: 53
+    star: 570
+    wood: 1020
+    stone: 1020
+    oil: 1020
+    water: 1020
+  - level: 54
+    star: 580
+    wood: 1030
+    stone: 1030
+    oil: 1030
+    water: 1030
+  - level: 55
+    star: 590
+    wood: 1040
+    stone: 1040
+    oil: 1040
+    water: 1040
+  - level: 56
+    star: 600
+    wood: 1050
+    stone: 1050
+    oil: 1050
+    water: 1050
+  - level: 57
+    star: 610
+    wood: 1060
+    stone: 1060
+    oil: 1060
+    water: 1060
+  - level: 58
+    star: 620
+    wood: 1070
+    stone: 1070
+    oil: 1070
+    water: 1070
+  - level: 59
+    star: 630
+    wood: 1080
+    stone: 1080
+    oil: 1080
+    water: 1080
+  - level: 60
+    star: 640
+    wood: 1090
+    stone: 1090
+    oil: 1090
+    water: 1090
+  - level: 61
+    star: 650
+    wood: 1100
+    stone: 1100
+    oil: 1100
+    water: 1100
+  - level: 62
+    star: 660
+    wood: 1110
+    stone: 1110
+    oil: 1110
+    water: 1110
+  - level: 63
+    star: 670
+    wood: 1120
+    stone: 1120
+    oil: 1120
+    water: 1120
+  - level: 64
+    star: 680
+    wood: 1130
+    stone: 1130
+    oil: 1130
+    water: 1130
+  - level: 65
+    star: 690
+    wood: 1140
+    stone: 1140
+    oil: 1140
+    water: 1140
+  - level: 66
+    star: 700
+    wood: 1150
+    stone: 1150
+    oil: 1150
+    water: 1150
+  - level: 67
+    star: 710
+    wood: 1160
+    stone: 1160
+    oil: 1160
+    water: 1160
+  - level: 68
+    star: 720
+    wood: 1170
+    stone: 1170
+    oil: 1170
+    water: 1170
+  - level: 69
+    star: 730
+    wood: 1180
+    stone: 1180
+    oil: 1180
+    water: 1180
+  - level: 70
+    star: 740
+    wood: 1190
+    stone: 1190
+    oil: 1190
+    water: 1190
+  - level: 71
+    star: 750
+    wood: 1200
+    stone: 1200
+    oil: 1200
+    water: 1200
+  - level: 72
+    star: 760
+    wood: 1210
+    stone: 1210
+    oil: 1210
+    water: 1210
+  - level: 73
+    star: 770
+    wood: 1220
+    stone: 1220
+    oil: 1220
+    water: 1220
+  - level: 74
+    star: 780
+    wood: 1230
+    stone: 1230
+    oil: 1230
+    water: 1230
+  - level: 75
+    star: 790
+    wood: 1240
+    stone: 1240
+    oil: 1240
+    water: 1240
+  - level: 76
+    star: 800
+    wood: 1250
+    stone: 1250
+    oil: 1250
+    water: 1250
+  - level: 77
+    star: 810
+    wood: 1260
+    stone: 1260
+    oil: 1260
+    water: 1260
+  - level: 78
+    star: 820
+    wood: 1270
+    stone: 1270
+    oil: 1270
+    water: 1270
+  - level: 79
+    star: 830
+    wood: 1280
+    stone: 1280
+    oil: 1280
+    water: 1280
+  - level: 80
+    star: 840
+    wood: 1290
+    stone: 1290
+    oil: 1290
+    water: 1290
+  - level: 81
+    star: 850
+    wood: 1300
+    stone: 1300
+    oil: 1300
+    water: 1300
+  - level: 82
+    star: 860
+    wood: 1310
+    stone: 1310
+    oil: 1310
+    water: 1310
+  - level: 83
+    star: 870
+    wood: 1320
+    stone: 1320
+    oil: 1320
+    water: 1320
+  - level: 84
+    star: 880
+    wood: 1330
+    stone: 1330
+    oil: 1330
+    water: 1330
+  - level: 85
+    star: 890
+    wood: 1340
+    stone: 1340
+    oil: 1340
+    water: 1340
+  - level: 86
+    star: 900
+    wood: 1350
+    stone: 1350
+    oil: 1350
+    water: 1350
+  - level: 87
+    star: 910
+    wood: 1360
+    stone: 1360
+    oil: 1360
+    water: 1360
+  - level: 88
+    star: 920
+    wood: 1370
+    stone: 1370
+    oil: 1370
+    water: 1370
+  - level: 89
+    star: 930
+    wood: 1380
+    stone: 1380
+    oil: 1380
+    water: 1380
+  - level: 90
+    star: 940
+    wood: 1390
+    stone: 1390
+    oil: 1390
+    water: 1390
+  - level: 91
+    star: 950
+    wood: 1400
+    stone: 1400
+    oil: 1400
+    water: 1400
+  - level: 92
+    star: 960
+    wood: 1410
+    stone: 1410
+    oil: 1410
+    water: 1410
+  - level: 93
+    star: 970
+    wood: 1420
+    stone: 1420
+    oil: 1420
+    water: 1420
+  - level: 94
+    star: 980
+    wood: 1430
+    stone: 1430
+    oil: 1430
+    water: 1430
+  - level: 95
+    star: 990
+    wood: 1440
+    stone: 1440
+    oil: 1440
+    water: 1440
+  - level: 96
+    star: 1000
+    wood: 1450
+    stone: 1450
+    oil: 1450
+    water: 1450
+  - level: 97
+    star: 1010
+    wood: 1460
+    stone: 1460
+    oil: 1460
+    water: 1460
+  - level: 98
+    star: 1020
+    wood: 1470
+    stone: 1470
+    oil: 1470
+    water: 1470
+  - level: 99
+    star: 1030
+    wood: 1480
+    stone: 1480
+    oil: 1480
+    water: 1480
+  levelCurrentOfFactory: 
+  RoiIcon: {fileID: 8984399531844546585, guid: e22858cfde9bc394aaca92a59c7e68af, type: 3}
+  SeedObject: {fileID: 5716062780858637787, guid: 10328dc73e8cd7c439a11c0ad296b66d,
+    type: 3}
+  listSeed:
+  - id: 0
+    title: Wheat
+    titleVN: "L\xFAa m\xEC"
+    gold: 1
+    exp: 1
+    time: 30
+    nameProduct: Rice
+    nameProductVN: "G\u1EA1o"
+    levelUnlock: 1
+    spr1: {fileID: 21300000, guid: 22aa296321b09874898de313afc869b1, type: 3}
+    spr2: {fileID: 21300000, guid: 9aca2805167570641aa219d5b74931fb, type: 3}
+    spr3: {fileID: 21300000, guid: f1c6cff91c22ffe448e620279ecb57ab, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 8f3a264d1060bfc40bf83b9418a7452b, type: 2}
+  - id: 1
+    title: Potato
+    titleVN: "Khoai t\xE2y"
+    gold: 2
+    exp: 2
+    time: 50
+    nameProduct: Potato
+    nameProductVN: "Khoai t\xE2y"
+    levelUnlock: 3
+    spr1: {fileID: 21300000, guid: ca203ba5e01daa24eab4c52bf5bd485f, type: 3}
+    spr2: {fileID: 21300000, guid: ec46ff8c13777524ebf462f1224973d2, type: 3}
+    spr3: {fileID: 21300000, guid: 4d090e4b4ab9c82438782a2c3d5d7f02, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: ec8850ea0dd16d44eaf09cd5a92c8497, type: 2}
+  - id: 2
+    title: Maize
+    titleVN: "B\u1EAFp"
+    gold: 3
+    exp: 3
+    time: 70
+    nameProduct: Corn
+    nameProductVN: "Ng\xF4"
+    levelUnlock: 5
+    spr1: {fileID: 21300000, guid: c2cb7fee242209b40b8b4ccee45ce655, type: 3}
+    spr2: {fileID: 21300000, guid: 49e8163ea03314d4898c1ce37183478e, type: 3}
+    spr3: {fileID: 21300000, guid: 51a85c1bdbe0f11419810d1e3527a1b7, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 52268b9eda697e049b486a3a0ff02b3e, type: 2}
+  - id: 3
+    title: Tomato
+    titleVN: "C\xE0 chua"
+    gold: 4
+    exp: 4
+    time: 90
+    nameProduct: Tomato
+    nameProductVN: "C\xE0 chua"
+    levelUnlock: 7
+    spr1: {fileID: 21300000, guid: 975f2df6fd0d0c94da05b4d0e66b8cbf, type: 3}
+    spr2: {fileID: 21300000, guid: 677ecb36ecffccc4a8abc2f59680bc44, type: 3}
+    spr3: {fileID: 21300000, guid: 274eddc6310e41f4794e903a31b7e514, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: b31ebc39d90f47a45a9378c8282347bc, type: 2}
+  - id: 4
+    title: Soybean
+    titleVN: "\u0110\u1EADu t\u01B0\u01A1ng"
+    gold: 5
+    exp: 5
+    time: 110
+    nameProduct: Pea
+    nameProductVN: "\u0110\u1EADu xanh"
+    levelUnlock: 9
+    spr1: {fileID: 21300000, guid: 6df124dfb87c90143a8f8123af8e50e1, type: 3}
+    spr2: {fileID: 21300000, guid: 87b639cc2f325af4a9cb2922940746ea, type: 3}
+    spr3: {fileID: 21300000, guid: 7f8602315febbc342aa095b58bfac7a6, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 024a3073542d82b4fbeebf8007f0149b, type: 2}
+  - id: 5
+    title: Eggplant
+    titleVN: "C\xE0 t\xEDm"
+    gold: 6
+    exp: 6
+    time: 130
+    nameProduct: Eggplant
+    nameProductVN: "C\xE0 t\xEDm"
+    levelUnlock: 11
+    spr1: {fileID: 21300000, guid: 2e75448745045b648ba87bb75fafd6cd, type: 3}
+    spr2: {fileID: 21300000, guid: 2f4a606d1eafa9e419bb1337b0fca185, type: 3}
+    spr3: {fileID: 21300000, guid: f82c6795120e4f8419d1cd48cccb31f5, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: a9bd316040c7c604abb3e1fa18f77c81, type: 2}
+  - id: 6
+    title: Pumpkin
+    titleVN: "Qu\u1EA3 b\xED ng\xF4"
+    gold: 7
+    exp: 7
+    time: 150
+    nameProduct: Pumpkin
+    nameProductVN: "Qu\u1EA3 b\xED ng\xF4"
+    levelUnlock: 13
+    spr1: {fileID: 21300000, guid: 9438db5cd94533e4ab165ab25aa5ddbf, type: 3}
+    spr2: {fileID: 21300000, guid: a6a5d980c9b7f4b49afe57d6ff0c9bf6, type: 3}
+    spr3: {fileID: 21300000, guid: 3f8e78537da617c4b884f139e1edb291, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 141b2f51f2dfb1144abc06ec4c07a6d8, type: 2}
+  - id: 7
+    title: Strawberry
+    titleVN: "D\xE2u"
+    gold: 8
+    exp: 8
+    time: 170
+    nameProduct: Strawberry
+    nameProductVN: "D\xE2u"
+    levelUnlock: 15
+    spr1: {fileID: 21300000, guid: e0b16c357abaa6249b869b47a61f39a6, type: 3}
+    spr2: {fileID: 21300000, guid: f3a47d7f8fe7ea44ea34f83424effca8, type: 3}
+    spr3: {fileID: 21300000, guid: 7a373f51007626149931f0ecbb70c1e9, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 3d520f0408d2bf84889ea8c1cd950461, type: 2}
+  - id: 8
+    title: Watermelon
+    titleVN: "D\u01B0a h\u1EA5u"
+    gold: 9
+    exp: 9
+    time: 190
+    nameProduct: Watermelon
+    nameProductVN: "D\u01B0a h\u1EA5u"
+    levelUnlock: 17
+    spr1: {fileID: 21300000, guid: 8b1a3ae0cd7f40145b7b61b36d18bbf6, type: 3}
+    spr2: {fileID: 21300000, guid: ded71bdd382bc514ebdfb8b2c925eb60, type: 3}
+    spr3: {fileID: 21300000, guid: 041a439006d9ac447a92424ffa6af78a, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: d9f64a36ecbf2434ca8887a745801249, type: 2}
+  - id: 9
+    title: Sugar cane
+    titleVN: "\u0110\u01B0\u1EDDng m\xEDa"
+    gold: 10
+    exp: 10
+    time: 210
+    nameProduct: Cane
+    nameProductVN: "M\xEDa"
+    levelUnlock: 19
+    spr1: {fileID: 21300000, guid: 0c99d72d18ddb08459d6cf0d684bccfd, type: 3}
+    spr2: {fileID: 21300000, guid: 04f5c04f8eea63041b2abb86a464168a, type: 3}
+    spr3: {fileID: 21300000, guid: d168b2638ab3a6147a8854f900f2dbc6, type: 3}
+    spr4: {fileID: 0}
+    mat: {fileID: 2100000, guid: 9145fe96143d71c4f996959a0327526c, type: 2}
+  listVatNuoi:
+  - id: 13
+    title: Henhouse
+    titleVN: "Chu\u1ED3ng g\xE0"
+    imageChuong1: {fileID: 21300000, guid: 3db211e0fc7fcde48a6f6be7dbc8d8e1, type: 3}
+    imageChuong2: {fileID: 21300000, guid: f9cd4c2fa2865584a9672c7226f29e3d, type: 3}
+    imageVatnuoi: {fileID: 21300000, guid: 7ecf3c8dfb225ac4abccf18c27d7e3d8, type: 3}
+    gold: 10
+    harvest: Egg
+    harvestVN: "Tr\u1EE9ng"
+    time: 210
+    rewards: 10
+    levelUnlock: 1
+  - id: 14
+    title: Pigsty
+    titleVN: "Chu\u1ED3ng l\u1EE3n"
+    imageChuong1: {fileID: 21300000, guid: 39e97dc37cc7e5c42aad11d0719bd389, type: 3}
+    imageChuong2: {fileID: 21300000, guid: 16696f641900d3c4fbdb2b2a4859298b, type: 3}
+    imageVatnuoi: {fileID: 21300000, guid: e528c766b929b9547a717800049cf4a1, type: 3}
+    gold: 20
+    harvest: Pork
+    harvestVN: "Th\u1ECBt heo"
+    time: 360
+    rewards: 20
+    levelUnlock: 7
+  - id: 15
+    title: Byre
+    titleVN: "Chu\u1ED3ng b\xF2"
+    imageChuong1: {fileID: 21300000, guid: a4c4c268b67cca941bc0ff3035f87be3, type: 3}
+    imageChuong2: {fileID: 21300000, guid: 2de0f76e40d8c5e48a4cefa44b827fa1, type: 3}
+    imageVatnuoi: {fileID: 21300000, guid: 4b191dd6eb31d034d83e78ab56dabcbc, type: 3}
+    gold: 30
+    harvest: Beef
+    harvestVN: "Th\u1ECBt b\xF2"
+    time: 480
+    rewards: 30
+    levelUnlock: 14
+  - id: 16
+    title: Sheep Sheds
+    titleVN: "Chu\u1ED3ng c\u1EEBu"
+    imageChuong1: {fileID: 21300000, guid: 7291a099d9b6c6a4d927435459316d48, type: 3}
+    imageChuong2: {fileID: 21300000, guid: 450be817e47d33f40b21513bfdafe1a5, type: 3}
+    imageVatnuoi: {fileID: 21300000, guid: 09c64454fa148584fa4226285d018ab3, type: 3}
+    gold: 40
+    harvest: Lamb
+    harvestVN: "S\u1EEFa c\u1EEBu"
+    time: 620
+    rewards: 40
+    levelUnlock: 21
+  listFactory:
+  - id: 0
+    title: Water Factory
+    titleVN: "Nh\xE0 m\xE1y n\u01B0\u1EDBc"
+    rawMat: Water
+    rawMatVN: "N\u01B0\u1EDBc"
+    levelUnlock: 1
+    gold: 90
+    time1: 20
+    count1: 20
+    time2: 18
+    count2: 25
+    time3: 15
+    count3: 30
+    water: 100
+    stone: 120
+    wood: 120
+    nameProduct: Droplets
+    nameProductVN: "Gi\u1ECDt b\u1EAFn"
+    sp0: {fileID: 21300000, guid: a74b78e1ea80d3449ac40e998b539b8e, type: 3}
+    sp1: {fileID: 21300000, guid: 3729ada50afed684498cf8e781dbf10a, type: 3}
+    sp2: {fileID: 21300000, guid: 5afa1b356d2140e42834b99a6d10b256, type: 3}
+    sp3: {fileID: 21300000, guid: dc67eaf75ce1b9e4e99c1b9e5d5f5bcd, type: 3}
+    level2: 5
+    gold2: 110
+    mainhouse2: 2
+    level3: 9
+    gold3: 130
+    mainhouse3: 3
+  - id: 1
+    title: Stone Factory
+    titleVN: "Nh\xE0 m\xE1y \u0111\xE1"
+    rawMat: Stone
+    rawMatVN: "C\u1EE5c \u0111\xE1"
+    levelUnlock: 3
+    gold: 110
+    time1: 20
+    count1: 20
+    time2: 18
+    count2: 25
+    time3: 15
+    count3: 30
+    water: 150
+    stone: 100
+    wood: 120
+    nameProduct: Stone
+    nameProductVN: "C\u1EE5c \u0111\xE1"
+    sp0: {fileID: 21300000, guid: 8993723c7a12f744eba5bd515d35b4f6, type: 3}
+    sp1: {fileID: 21300000, guid: c8bf90d2c71063a40bf7c4c5d5f3dec5, type: 3}
+    sp2: {fileID: 21300000, guid: 2dc75049b2a619d4d9bb371eac97cb57, type: 3}
+    sp3: {fileID: 21300000, guid: 581b29c5385fa7e46b0c9d544a45c5d7, type: 3}
+    level2: 7
+    gold2: 130
+    mainhouse2: 2
+    level3: 11
+    gold3: 150
+    mainhouse3: 3
+  - id: 2
+    title: Wood Workshop
+    titleVN: "X\u01B0\u1EDFng g\u1ED7"
+    rawMat: Wood
+    rawMatVN: "G\u1ED7"
+    levelUnlock: 5
+    gold: 130
+    time1: 20
+    count1: 20
+    time2: 18
+    count2: 25
+    time3: 15
+    count3: 30
+    water: 170
+    stone: 150
+    wood: 100
+    nameProduct: Wood
+    nameProductVN: "G\u1ED7"
+    sp0: {fileID: 21300000, guid: d4e351ae121095a4d97970fa2a6dfe6d, type: 3}
+    sp1: {fileID: 21300000, guid: bb0579c25b4279749902b486fa7b8e2d, type: 3}
+    sp2: {fileID: 21300000, guid: fec75a0979aa2394983b937e149318e3, type: 3}
+    sp3: {fileID: 21300000, guid: 92cc9d374963327409d16b3fd5f8e0a9, type: 3}
+    level2: 9
+    gold2: 150
+    mainhouse2: 2
+    level3: 13
+    gold3: 170
+    mainhouse3: 3
+  - id: 3
+    title: Gold mine
+    titleVN: "M\u1ECF v\xE0ng"
+    rawMat: Sand
+    rawMatVN: "C\xE1t"
+    levelUnlock: 7
+    gold: 150
+    time1: 30
+    count1: 20
+    time2: 28
+    count2: 25
+    time3: 25
+    count3: 30
+    water: 250
+    stone: 250
+    wood: 250
+    nameProduct: Gold
+    nameProductVN: "V\xE0ng"
+    sp0: {fileID: 21300000, guid: 3db39e4b6b6f98749a4aee646dad6ecb, type: 3}
+    sp1: {fileID: 21300000, guid: d9a0f66720a0df24480ff70aff65a6eb, type: 3}
+    sp2: {fileID: 21300000, guid: e0ea971108daef94582fd4483287a8ef, type: 3}
+    sp3: {fileID: 21300000, guid: 889cddc207f2a6a43b7362f84338bd77, type: 3}
+    level2: 11
+    gold2: 170
+    mainhouse2: 2
+    level3: 15
+    gold3: 190
+    mainhouse3: 3
+  - id: 4
+    title: Oil Factory
+    titleVN: "Nh\xE0 m\xE1y d\u1EA7u"
+    rawMat: Crude oil
+    rawMatVN: "D\u1EA7u th\xF4"
+    levelUnlock: 9
+    gold: 170
+    time1: 20
+    count1: 20
+    time2: 18
+    count2: 25
+    time3: 15
+    count3: 30
+    water: 210
+    stone: 210
+    wood: 210
+    nameProduct: Oil
+    nameProductVN: "D\u1EA7u"
+    sp0: {fileID: 21300000, guid: f7b71de689c996b4a9482396d2fabf8c, type: 3}
+    sp1: {fileID: 21300000, guid: 5159a40b169afb24086a16a1b26be39d, type: 3}
+    sp2: {fileID: 21300000, guid: 7af9fff5c3b66b548b6770beb1907720, type: 3}
+    sp3: {fileID: 21300000, guid: d4fe7e0ff9a600041a619f2b176caa09, type: 3}
+    level2: 13
+    gold2: 190
+    mainhouse2: 2
+    level3: 17
+    gold3: 210
+    mainhouse3: 3
+  listSeedsLucGieoHat:
+  - {fileID: 21300000, guid: bfa1d26790e31164ea31e7b0fb062159, type: 3}
+  - {fileID: 21300000, guid: 59f76c25d72932147b7079210462bfc3, type: 3}
+  - {fileID: 21300000, guid: a081ed776ff4dfe4a8cc54e6443c97bf, type: 3}
+  - {fileID: 21300000, guid: 902135f181abb9c44893915ee4495ee1, type: 3}
+  - {fileID: 21300000, guid: 9aec69f0d3bfe3b49ab3147e98bcc47c, type: 3}
+  - {fileID: 21300000, guid: f99a71f05b06e5340a5f2b544a4a1e5e, type: 3}
+  - {fileID: 21300000, guid: 089d0f83c98a82e499f05c7efa331e1f, type: 3}
+  - {fileID: 21300000, guid: 0e195ca67a29d8942a6b5652b0766849, type: 3}
+  - {fileID: 21300000, guid: f06a32e485e818e46a5615196a75b22f, type: 3}
+  - {fileID: 21300000, guid: 3abfea967e5e24346819f8e3d044ea00, type: 3}
+  sprOdat: {fileID: 21300000, guid: a0441b763e5b48045868575230cecbd1, type: 3}
+  iconThuHoachFactory:
+  - {fileID: 21300000, guid: 81fa491dd45a60c40a601a7eff5168b9, type: 3}
+  - {fileID: 21300000, guid: c3524df134f01304b8864d3f8cce9afd, type: 3}
+  - {fileID: 21300000, guid: 13042050596ae414887b76bfb987e454, type: 3}
+  - {fileID: 21300000, guid: 11e1090bf7aa38a40be98b06291fff52, type: 3}
+  - {fileID: 21300000, guid: a488833c7a15b3e4499999145dc32eb3, type: 3}
+  listMatFactory:
+  - {fileID: 2100000, guid: e110c86c787734345b1f809c2918e709, type: 2}
+  - {fileID: 2100000, guid: c8eb7d94dbf6a884ba7591ef2d81f3ed, type: 2}
+  - {fileID: 2100000, guid: fc43c45ac28c74e4faf66ba18f735681, type: 2}
+  - {fileID: 2100000, guid: 25878cd2bb46a5f4db58b22f4412a6c8, type: 2}
+  - {fileID: 2100000, guid: 3ddd47176e7a7b2409942d36c6150baa, type: 2}
+  sound: 0
+  img_slide: {fileID: 0}
+  listContentOFHOUSE:
+  - ct1: + Wheat
+    ct1VN: "+ L\xFAa m\xEC"
+    ct2: + Water Factory
+    ct2VN: "+ Nh\xE0 m\xE1y n\u01B0\u1EDBc"
+    ct3: + Henhouse
+    ct3VN: "+ Chu\u1ED3ng g\xE0"
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Potato
+    ct1VN: "+ Khoai t\xE2y"
+    ct2: + Stone Factory
+    ct2VN: "+ Nh\xE0 m\xE1y \u0111\xE1"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Maize
+    ct1VN: "+ B\u1EAFp"
+    ct2: + Wood Factory
+    ct2VN: "+ X\u01B0\u1EDFng g\u1ED7"
+    ct3: + Water Factory 2
+    ct3VN: "+ Nh\xE0 m\xE1y n\u01B0\u1EDBc 2"
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Tomato
+    ct1VN: "+ C\xE0 chua"
+    ct2: + Gold Factory
+    ct2VN: "+ Nh\xE0 m\xE1y v\xE0ng"
+    ct3: + Pigsty
+    ct3VN: "+ Chu\u1ED3ng l\u1EE3n"
+    ct4: + Stone Factory 2
+    ct4VN: "+ Nh\xE0 m\xE1y \u0111\xE1 2"
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Soybean
+    ct1VN: "+ \u0110\u1EADu t\u01B0\u01A1ng"
+    ct2: + Oil Factory
+    ct2VN: "+ Nh\xE0 m\xE1y d\u1EA7u"
+    ct3: + Water Factory 3
+    ct3VN: "+ Nh\xE0 m\xE1y n\u01B0\u1EDBc 3"
+    ct4: + Wood Factory 2
+    ct4VN: "+ X\u01B0\u1EDFng g\u1ED7 2"
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Eggplant
+    ct1VN: "+ C\xE0 t\xEDm"
+    ct2: + Stone Factory 3
+    ct2VN: "+ Nh\xE0 m\xE1y \u0111\xE1 3"
+    ct3: + Gold Factory 2
+    ct3VN: "+ Nh\xE0 m\xE1y v\xE0ng 2"
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Pumpkin
+    ct1VN: "+ Qu\u1EA3 b\xED ng\xF4"
+    ct2: + Wood Factory 3
+    ct2VN: "+ X\u01B0\u1EDFng g\u1ED7 3"
+    ct3: + Oil Factory 2
+    ct3VN: "+ Nh\xE0 m\xE1y d\u1EA7u 2"
+    ct4: 
+    ct4VN: 
+  - ct1: + Byre
+    ct1VN: "+ Chu\u1ED3ng b\xF2"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Strawberry
+    ct1VN: "+ D\xE2u"
+    ct2: + Gold Factory 3
+    ct2VN: "+ Nh\xE0 m\xE1y v\xE0ng 3"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Watermelon
+    ct1VN: "+ D\u01B0a h\u1EA5u"
+    ct2: + Oil Factory 3
+    ct2VN: "+ Nh\xE0 m\xE1y d\u1EA7u 3"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Sugar cane
+    ct1VN: "+ \u0110\u01B0\u1EDDng m\xEDa"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Sheep sheds
+    ct1VN: "+ Chu\u1ED3ng c\u1EEBu"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you happy gaming
+    ct1VN: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: + Wish you
+    ct1VN: "+ Ch\xFAc b\u1EA1n"
+    ct2: + Happy gaming
+    ct2VN: "+ Ch\u01A1i vui v\u1EBB"
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 
+  - ct1: 
+    ct1VN: 
+    ct2: 
+    ct2VN: 
+    ct3: 
+    ct3VN: 
+    ct4: 
+    ct4VN: 

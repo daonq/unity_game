@@ -9,17 +9,12 @@ public class HandlerSound : MonoBehaviour
 
     private void Awake()
     {
+        icon_sound.sprite = DataGlobal.instance.sound == 0 ? sound_on : sound_off;
+
         GetComponent<ButtonSound>().OnSound += delegate
         {
-            if(DataGlobal.instance.sound == 0)
-            {
-                icon_sound.GetComponent<Image>().sprite = sound_on;
-                DataGlobal.instance.sound = 1;
-            } else
-            {
-                icon_sound.GetComponent<Image>().sprite = sound_off;
-                DataGlobal.instance.sound = 0;
-            }
+            icon_sound.sprite = DataGlobal.instance.sound == 0 ? sound_off : sound_on;
+            DataGlobal.instance.sound = DataGlobal.instance.sound == 0 ? 1 : 0;
         };
     }
 }

@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8899866463453012328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8899866463453012118}
+  - component: {fileID: 8899866463453012329}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8899866463453012118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899866463453012328}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8899866463453012329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899866463453012328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee4381616f8aea43853ed6406db5086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelSeeds: {fileID: 0}
+  title: {fileID: 0}
+  exp: {fileID: 0}
+  time: {fileID: 0}
+  product: {fileID: 0}
+  levelUL: {fileID: 0}
+  gold: {fileID: 0}
+  textButtonBuySeed: {fileID: 0}
+  btnBuy: {fileID: 0}
+  btnExit: {fileID: 0}
+  image: {fileID: 0}
+  effectBuyHat: {fileID: 0}
+  toggleGieoHat: {fileID: 0}
+  PanelFactory1: {fileID: 0}
+  titleF1: {fileID: 0}
+  goldF1: {fileID: 0}
+  rawMatF1: {fileID: 0}
+  timeF1: {fileID: 0}
+  productF1: {fileID: 0}
+  levelUnlockF1: {fileID: 0}
+  textButtonBuyFactory: {fileID: 0}
+  btnBuyF1: {fileID: 0}
+  btnExitF1: {fileID: 0}
+  imageF1: {fileID: 0}
+  effectBuyNhaMay: {fileID: 0}
+  toggleMuanhamay: {fileID: 0}
+  PanelWaiting: {fileID: 0}
+  textWater: {fileID: 0}
+  textStone: {fileID: 0}
+  textWood: {fileID: 0}
+  btnBuild: {fileID: 0}
+  btnExitPW: {fileID: 0}
+  du1W: {fileID: 0}
+  du2W: {fileID: 0}
+  du3W: {fileID: 0}
+  effectWaitingNhaMay: {fileID: 0}
+  PanelBuild: {fileID: 0}
+  titlePB1: {fileID: 0}
+  titlePB2: {fileID: 0}
+  levelPB: {fileID: 0}
+  mainHousePB: {fileID: 0}
+  goldPB: {fileID: 0}
+  imagePB: {fileID: 0}
+  imageLevel1: {fileID: 0}
+  imageLevel2: {fileID: 0}
+  imageLevel3: {fileID: 0}
+  iconHarvest: {fileID: 0}
+  LockPB: {fileID: 0}
+  unLockPb: {fileID: 0}
+  not1: {fileID: 0}
+  tick1: {fileID: 0}
+  not2: {fileID: 0}
+  tick2: {fileID: 0}
+  not3: {fileID: 0}
+  tick3: {fileID: 0}
+  btn_ThuHoach: {fileID: 0}
+  btn_NangCap: {fileID: 0}
+  btn_ExitPB: {fileID: 0}
+  toggleBuild: {fileID: 0}
+  PanelStore: {fileID: 0}
+  textButtonStore: {fileID: 0}
+  textTitleStore: {fileID: 0}
+  btnBuyPS: {fileID: 0}
+  btnExitPS: {fileID: 0}
+  unitPrice: {fileID: 0}
+  des: {fileID: 0}
+  iconPS: {fileID: 0}
+  haveOwned: {fileID: 0}
+  effectBuyItem: {fileID: 0}
+  toggleStore: {fileID: 0}
+  PanelBan: {fileID: 0}
+  textButtonSell: {fileID: 0}
+  btnExitPB: {fileID: 0}
+  btnSell: {fileID: 0}
+  amount: {fileID: 0}
+  unityPrice: {fileID: 0}
+  TotalMoney: {fileID: 0}
+  titleBan: {fileID: 0}
+  textOrder: {fileID: 0}
+  textUnitPrice: {fileID: 0}
+  textTotolMoney: {fileID: 0}
+  textAmount: {fileID: 0}
+  iconNongsan1: {fileID: 0}
+  iconNongSan2: {fileID: 0}
+  toggleBan: {fileID: 0}
+  PanelChuong: {fileID: 0}
+  titleChuong: {fileID: 0}
+  harvestChuong: {fileID: 0}
+  timeChuong: {fileID: 0}
+  rewardsChuong: {fileID: 0}
+  goldChuong: {fileID: 0}
+  levelUnlockChuong: {fileID: 0}
+  textButtonMuaVatNuoi: {fileID: 0}
+  imageChuong: {fileID: 0}
+  imageVatnuoi1: {fileID: 0}
+  imageVatnuoi2: {fileID: 0}
+  imageVatnuoi3: {fileID: 0}
+  imageVatnuoi4: {fileID: 0}
+  BuyVatNuoi: {fileID: 0}
+  ExitChuong: {fileID: 0}
+  Muathem: {fileID: 0}
+  MuaGiam: {fileID: 0}
+  toggleChuong: {fileID: 0}
+  effectBuyAnimals: {fileID: 0}
+  PanelHouse: {fileID: 0}
+  titleHouseHehe: {fileID: 0}
+  containWater: {fileID: 0}
+  containStone: {fileID: 0}
+  containWood: {fileID: 0}
+  containOil: {fileID: 0}
+  title2: {fileID: 0}
+  Contain: {fileID: 0}
+  content1: {fileID: 0}
+  content2: {fileID: 0}
+  content3: {fileID: 0}
+  content4: {fileID: 0}
+  Upgrade: {fileID: 0}
+  levelRequire: {fileID: 0}
+  thieu1: {fileID: 0}
+  du1: {fileID: 0}
+  goldRequire: {fileID: 0}
+  thieu2: {fileID: 0}
+  du2: {fileID: 0}
+  oilRequire: {fileID: 0}
+  thieu3: {fileID: 0}
+  du3: {fileID: 0}
+  exitMainHouse: {fileID: 0}
+  NangCapHouse: {fileID: 0}
+  imageHouse: {fileID: 0}
+  WhereHouse: {fileID: 0}
+  toggleHouse: {fileID: 0}

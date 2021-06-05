@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 829396865367892847}
   - component: {fileID: 829396865367892753}
   - component: {fileID: 829396865367892846}
+  - component: {fileID: 442348492870442047}
   m_Layer: 5
   m_Name: title
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Distilled Water
+--- !u!114 &442348492870442047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829396865367892844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306079bda9d7ca3499203b82aa6db80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vn: 
+  en: 
 --- !u!1 &829396865385586682
 GameObject:
   m_ObjectHideFlags: 0

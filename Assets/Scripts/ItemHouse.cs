@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ItemHouse : MonoBehaviour
 {
-    [SerializeField] DetailHouse house;
+    public DetailHouse house;
 
     private void Start()
     {

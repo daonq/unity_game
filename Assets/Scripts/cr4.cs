@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class cr4 : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class cr4 : MonoBehaviour
 
     public GameObject animationCua;
 
+    private string nameDown;
+
     private void Start()
     {
         time = PlayerPrefs.GetInt("Timecr4" + id);
-        if(time > 0)
+        if (time > 0)
         {
             cothepha = false;
         }
@@ -40,35 +43,46 @@ public class cr4 : MonoBehaviour
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                cua.SetActive(true);
-                StartCoroutine(HideCua());
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            else
+ #else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            if(DataGlobal.instance.firstGame == 6)
-            {
-                DataGlobal.instance.firstGame = 7;
-                Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, 75, 0);
-            }
-            //else if(DataGlobal.instance.GetGold() < 10)
-            //{
-            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-            //    StartCoroutine(HetTienEnd());
-            //}
+            else nameDown = "";
+#endif
         }
     }
 
-    //IEnumerator HetTienEnd()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    //}
+    public void Handler()
+    {
+        nameDown = "";
+        if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
+        {
+            cua.SetActive(true);
+            StartCoroutine(HideCua());
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có cưa để chặt cây.\nVui lòng mua nó ở cửa hàng!" : "You don't have item. Let's buy it on market!");
+        }
+        if (DataGlobal.instance.firstGame == 6)
+        {
+            DataGlobal.instance.firstGame = 7;
+            Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, 75, 0);
+        }
+    }
 
     IEnumerator HideCua()
     {
@@ -112,28 +126,34 @@ public class cr4 : MonoBehaviour
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     IEnumerator HoiSinh()
     {
-        while(time > 0)
+        while (time > 0)
         {
             yield return new WaitForSeconds(1);
             time--;
-            if(time <= 0)
+            if (time <= 0)
             {
                 cothepha = true;
                 GetComponent<SpriteRenderer>().sprite = sp4;
                 GetComponent<Animator>().enabled = true;
-            } else if(time > 0 && time <= 60)
+            }
+            else if (time > 0 && time <= 60)
             {
                 cothepha = false;
                 GetComponent<SpriteRenderer>().sprite = sp3;
-            } else if(time > 60 && time <= 120)
+            }
+            else if (time > 60 && time <= 120)
             {
                 cothepha = false;
                 GetComponent<SpriteRenderer>().sprite = sp2;
-            } else if(time > 120 && time <= 180)
+            }
+            else if (time > 120 && time <= 180)
             {
                 cothepha = false;
                 GetComponent<SpriteRenderer>().sprite = sp1;

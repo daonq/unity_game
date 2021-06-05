@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // Su dung cho nhung cay co 2 trang thai sprite thoi
 public class cr2 : MonoBehaviour
@@ -18,6 +19,8 @@ public class cr2 : MonoBehaviour
 
     public GameObject animationCua;
 
+    private string nameDown;
+
     private void Start()
     {
         time = PlayerPrefs.GetInt("Timecr2" + id);
@@ -35,34 +38,53 @@ public class cr2 : MonoBehaviour
         }
     }
 
+    private void OnMouseUp()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if(nameDown == hit.collider?.name) Handler();
+    }
+
     private void OnMouseDown()
     {
         if(DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                cua.SetActive(true);
-                StartCoroutine(HideCua());
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            else
+            #else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            //else if (DataGlobal.instance.GetGold() < 10)
-            //{
-            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-            //    StartCoroutine(HetTienEnd());
-            //}
+            else nameDown = "";
+            #endif
         }
     }
 
-    //IEnumerator HetTienEnd()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    //}
+    public void Handler()
+    {
+        nameDown = "";
+        if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
+        {
+            cua.SetActive(true);
+            StartCoroutine(HideCua());
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có cưa để chặt cây.\nVui lòng mua nó ở cửa hàng!" : "You don't have item.\nLet's buy it on market!");
+        }
+    }
 
     IEnumerator HideCua()
     {
@@ -101,10 +123,6 @@ public class cr2 : MonoBehaviour
         StartCoroutine(HoiSinh());
     }
 
-    private void OnMouseUp()
-    {
-        transform.localScale = new Vector3(1, 1, 1);
-    }
 
     IEnumerator HoiSinh()
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ThuHoachCayAnQua : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ThuHoachCayAnQua : MonoBehaviour
     public int currentTime;
 
     public GameObject gio;
+
+    private string nameDown;
 
     private void Start()
     {
@@ -38,31 +41,40 @@ public class ThuHoachCayAnQua : MonoBehaviour
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-
-            if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[2] > 0)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                gio.SetActive(true);
-                StartCoroutine(HideGio());
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            else
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            //else if(DataGlobal.instance.GetGold() < 10)
-            //{
-            //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", true);
-            //    StartCoroutine(HetTienEnd());
-            //}
+#endif
         }
     }
 
-    //IEnumerator HetTienEnd()
-    //{
-    //    yield return new WaitForSeconds(0.1f);
-    //    DataGlobal.instance.goldUI.GetComponent<Animator>().SetBool("hetTien", false);
-    //}
+    public void Handler()
+    {
+        nameDown = "";
+        if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[2] > 0)
+        {
+            gio.SetActive(true);
+            StartCoroutine(HideGio());
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có giỏ cây để hái quả.\nVui lòng mua nó ở cửa hàng!" : "You don't have item. Let's buy it on market!");
+        }
+    }
 
     IEnumerator HideGio()
     {
@@ -75,7 +87,6 @@ public class ThuHoachCayAnQua : MonoBehaviour
 
     public void thuhoach()
     {
-        //DataGlobal.instance.SubGold(10);
         DataGlobal.instance.ArrayHaveOwnedItem[2] -= 1;
         DataGlobal.instance.AddStar(2);
         DataGlobal.instance.ArrayAmount[indexAmount] += 5;
@@ -95,6 +106,9 @@ public class ThuHoachCayAnQua : MonoBehaviour
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     IEnumerator HoiSinh()

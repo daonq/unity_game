@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
-using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,6 +32,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI product;
     public TextMeshProUGUI levelUL;
     public TextMeshProUGUI gold;
+    public TextMeshProUGUI textButtonBuySeed;
     public Button btnBuy;
     public Button btnExit;
     public Image image;
@@ -41,6 +40,8 @@ public class UIManager : MonoBehaviour
     private DetailSeed seedClick;
 
     public GameObject effectBuyHat;
+
+    public Toggle toggleGieoHat;
 
     public void AddListenForPanelSeeds()
     {
@@ -63,11 +64,11 @@ public class UIManager : MonoBehaviour
             }
             else if (DataGlobal.instance.GetLevel() >= seedClick.levelUnlock && DataGlobal.instance.GetGold() < seedClick.gold)
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold to buy this seed!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ tiền để mua hạt giống này!" : "You don't have enough gold to buy this seed!");
             }
             else if (DataGlobal.instance.GetLevel() < seedClick.levelUnlock)
             {
-                PanelNotify.instance.ShowContent("You don't have enough level to buy this seed!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ cấp độ để mở khóa hạt giống này!" : "You don't have enough level to buy this seed!");
             }
 
             effectBuyHat.SetActive(false);
@@ -84,19 +85,22 @@ public class UIManager : MonoBehaviour
             effectBuyHat.SetActive(true);
             DataGlobal.instance.firstGame = 1;
         }
+        textButtonBuySeed.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelSeeds.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+        toggleGieoHat.isOn = true;
+        OnSelectSeed(DataGlobal.instance.listSeed[0]);
     }
 
     public void OnSelectSeed(DetailSeed seed)
     {
         seedClick = seed;
-        title.text = seed.title;
-        exp.text = "Experience: " + seed.exp;
-        time.text = "Time: " + seed.time;
-        product.text = "Product: 5 " + seed.nameProduct;
-        levelUL.text = "Level unlock: " + seed.levelUnlock;
+        title.text = DataGlobal.instance.tiengviet ? seed.titleVN : seed.title;
+        exp.text = DataGlobal.instance.tiengviet ? "+ Kinh nghiệm: " + seed.exp : "+ Experience: " + seed.exp;
+        time.text = DataGlobal.instance.tiengviet ? "+ Thời gian: " + formatTime(seed.time) : "+ Time: " + formatTime(seed.time);
+        product.text = DataGlobal.instance.tiengviet ? "+ Sản phẩm: 5 " + seed.nameProductVN : "+ Product: 5 " + seed.nameProduct;
+        levelUL.text = DataGlobal.instance.tiengviet ? "+ Cấp độ mở khóa: " + seed.levelUnlock : "+ Level unlock: " + seed.levelUnlock;
         gold.text = "" + seed.gold;
         image.sprite = seed.spr3;
     }
@@ -113,6 +117,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timeF1;
     public TextMeshProUGUI productF1;
     public TextMeshProUGUI levelUnlockF1;
+    public TextMeshProUGUI textButtonBuyFactory;
     public Button btnBuyF1;
     public Button btnExitF1;
     public Image imageF1;
@@ -120,6 +125,8 @@ public class UIManager : MonoBehaviour
     private DetailFactory _factory1;
 
     public GameObject effectBuyNhaMay;
+
+    public Toggle toggleMuanhamay;
 
     public void AddListenForPanelFactory1()
     {
@@ -147,15 +154,15 @@ public class UIManager : MonoBehaviour
             }
             else if (DataGlobal.instance.GetGold() < _factory1.gold && DataGlobal.instance.GetLevel() >= _factory1.levelUnlock)
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold to buy this factory!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ tiền để mua nhà máy này!" : "You don't have enough gold to buy this factory!");
             }
             else if (DataGlobal.instance.GetGold() >= _factory1.gold && DataGlobal.instance.GetLevel() < _factory1.levelUnlock)
             {
-                PanelNotify.instance.ShowContent("You don't have reach level to buy this factory!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ cấp độ để mở khóa nhà máy này!" : "You don't have reach level to buy this factory!");
             }
             else
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold and level to buy this factory!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ cấp độ và tiền để mua nhà máy này!" : "You don't have enough gold and level to buy this factory!");
             }
             effectBuyNhaMay.SetActive(false);
             Tutorial.instance.TutorialWaiting();
@@ -171,20 +178,24 @@ public class UIManager : MonoBehaviour
             DataGlobal.instance.firstGame = 2;
         }
         idFactory = id;
+        textButtonBuyFactory.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelFactory1.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+
+        toggleMuanhamay.isOn = true;
+        OnSelectFactory(DataGlobal.instance.listFactory[0]);
     }
 
     public void OnSelectFactory(DetailFactory factory)
     {
         _factory1 = factory;
-        titleF1.text = factory.title;
+        titleF1.text = DataGlobal.instance.tiengviet ? factory.titleVN : factory.title;
         goldF1.text = "" + factory.gold;
-        rawMatF1.text = "Raw materials: " + factory.rawMat;
-        timeF1.text = "Time: " + factory.time1 + "s/" + factory.nameProduct;
-        productF1.text = "Product: " + factory.nameProduct;
-        levelUnlockF1.text = "Level unlock: " + factory.levelUnlock;
+        rawMatF1.text = DataGlobal.instance.tiengviet ? "+ Nguyên liệu: " + factory.rawMatVN : "+ Raw materials: " + factory.rawMat;
+        timeF1.text = DataGlobal.instance.tiengviet ? "+ Thời gian: " + formatTime(factory.time1) + "/" + factory.nameProduct : "+ Time: " + formatTime(factory.time1) + "s/" + factory.nameProduct;
+        productF1.text = DataGlobal.instance.tiengviet ? "+ Sản phẩm: " + factory.nameProductVN : "+ Product: " + factory.nameProduct;
+        levelUnlockF1.text = DataGlobal.instance.tiengviet ? "+ Cấp độ yêu cầu: " + factory.levelUnlock : "+ Level unlock: " + factory.levelUnlock;
         imageF1.sprite = factory.sp3;
     }
 
@@ -228,7 +239,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                PanelNotify.instance.ShowContent("You don't have enough resources to upgrade this factory!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có đủ tài nguyên để nâng cấp nhà máy này!" : "You don't have enough resources to upgrade this factory!");
             }
             effectWaitingNhaMay.SetActive(false);
             Tutorial.instance.TutorialAnimals();
@@ -305,6 +316,8 @@ public class UIManager : MonoBehaviour
     public Button btn_NangCap;
     public Button btn_ExitPB;
 
+    public Toggle toggleBuild;
+
     public void AddListenerToPanelBuild()
     {
         btn_ThuHoach.onClick.AddListener(delegate
@@ -332,7 +345,7 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    PanelNotify.instance.ShowContent("You can't upgrade!");
+                    PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không thể nâng cấp!" : "You can't upgrade!");
                 }
             } else if(_levelChoice == 3)
             {
@@ -348,7 +361,7 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    PanelNotify.instance.ShowContent("You can't upgrade!");
+                    PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không thể nâng cấp!" : "You can't upgrade!");
                 }
             }
         });
@@ -366,12 +379,16 @@ public class UIManager : MonoBehaviour
     {
         _factory1 = factoryBuild;
         idFactory = idNhamay;
+        titlePB1.text = DataGlobal.instance.tiengviet ? _factory1.titleVN : _factory1.title;
+        titlePB2.text = DataGlobal.instance.tiengviet ? "Thông tin" : "Detail";
         DataGlobal.instance.AllowMouseDown = false;
         PanelBuild.SetActive(true);
         MainCamera.instance.camLock = true;
         imageLevel1.sprite = factoryBuild.sp1;
         imageLevel2.sprite = factoryBuild.sp2;
         imageLevel3.sprite = factoryBuild.sp3;
+        toggleBuild.isOn = true;
+        OnClickToBuild(1);
     }
     private int _levelChoice;
     public void OnClickToBuild(int levelChoice)
@@ -383,14 +400,15 @@ public class UIManager : MonoBehaviour
             LockPB.SetActive(false);
             unLockPb.SetActive(true);
             imagePB.sprite = _factory1.sp1;
+            iconHarvest.sprite = DataGlobal.instance.iconThuHoachFactory[_factory1.id];
         } else if(levelChoice == 2)
         {
             imagePB.sprite = _factory1.sp2;
             LockPB.SetActive(true);
             unLockPb.SetActive(false);
-            levelPB.text = "+ Level: " + _factory1.level2;
-            mainHousePB.text = "+ Main house level: " + _factory1.mainhouse2;
-            goldPB.text = "+ Gold: " + _factory1.gold2;
+            levelPB.text = DataGlobal.instance.tiengviet ? "+ Cấp độ: " + _factory1.level2 : "+ Level: " + _factory1.level2;
+            mainHousePB.text = DataGlobal.instance.tiengviet ? "+ Nhà chính: " + _factory1.mainhouse2 : "+ Main house level: " + _factory1.mainhouse2;
+            goldPB.text = DataGlobal.instance.tiengviet ? "+ Vàng: " + _factory1.gold2 : "+ Gold: " + _factory1.gold2;
 
             if (DataGlobal.instance.GetLevel() >= _factory1.level2)
             {
@@ -430,9 +448,9 @@ public class UIManager : MonoBehaviour
             imagePB.sprite = _factory1.sp3;
             LockPB.SetActive(true);
             unLockPb.SetActive(false);
-            levelPB.text = "+ Level: " + _factory1.level3;
-            mainHousePB.text = "+ Main house level: " + _factory1.mainhouse3;
-            goldPB.text = "+ Gold: " + _factory1.gold3;
+            levelPB.text = DataGlobal.instance.tiengviet ? "+ Cấp độ: " + _factory1.level3 : "+ Level: " + _factory1.level3;
+            mainHousePB.text = DataGlobal.instance.tiengviet ? "+ Nhà chính: " + _factory1.mainhouse3 : "+ Main house level: " + _factory1.mainhouse3;
+            goldPB.text = DataGlobal.instance.tiengviet ? "+ Vàng: " + _factory1.gold3 : "+ Gold: " + _factory1.gold3;
 
             if (DataGlobal.instance.GetLevel() >= _factory1.level3)
             {
@@ -472,6 +490,8 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public GameObject PanelStore;
+    public TextMeshProUGUI textButtonStore;
+    public TextMeshProUGUI textTitleStore;
     public Button btnBuyPS;
     public Button btnExitPS;
     public TextMeshProUGUI unitPrice;
@@ -481,6 +501,8 @@ public class UIManager : MonoBehaviour
     private DetailItem _item;
 
     public GameObject effectBuyItem;
+
+    public Toggle toggleStore;
 
     public void AddListnerForPS()
     {
@@ -499,11 +521,11 @@ public class UIManager : MonoBehaviour
             {
                 DataGlobal.instance.ArrayHaveOwnedItem[_item.id] += 1;
                 DataGlobal.instance.SubGold(10);
-                haveOwned.text = "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
+                haveOwned.text = DataGlobal.instance.tiengviet ? "Đang có: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id] : "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
             }
             else
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold to buy this item!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ tiền để mua vật phẩm này!" : "You don't have enough gold to buy this item!");
             }
             effectBuyItem.GetComponent<RectTransform>().localPosition = new Vector3(50, 100, 0);
         });
@@ -517,28 +539,41 @@ public class UIManager : MonoBehaviour
             DataGlobal.instance.firstGame = 6;
         }
         PanelStore.SetActive(true);
+        textButtonStore.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
+        textTitleStore.text = DataGlobal.instance.tiengviet ? "Cửa hàng" : "Store";
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+        toggleStore.isOn = true;
+        OnSelectItem(toggleStore.GetComponent<Item>().item);
     }
 
     public void OnSelectItem(DetailItem item)
     {
         _item = item;
         unitPrice.text = "" + _item.unitPrice;
-        des.text = _item.des;
+        des.text = DataGlobal.instance.tiengviet ? _item.desVN : _item.des;
         iconPS.sprite = _item.icon;
-        haveOwned.text = "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
+        haveOwned.text = DataGlobal.instance.tiengviet ? "Đang có: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id] : "Have owned: " + DataGlobal.instance.ArrayHaveOwnedItem[_item.id];
     }
 
     public GameObject PanelBan;
+    public TextMeshProUGUI textButtonSell;
     public Button btnExitPB;
     public Button btnSell;
     public TextMeshProUGUI amount;
     public TextMeshProUGUI unityPrice;
     public TextMeshProUGUI TotalMoney;
     public TextMeshProUGUI titleBan;
+
+    public TextMeshProUGUI textOrder;
+    public TextMeshProUGUI textUnitPrice;
+    public TextMeshProUGUI textTotolMoney;
+    public TextMeshProUGUI textAmount;
+
     public Image iconNongsan1;
     public Image iconNongSan2;
+
+    public Toggle toggleBan;
     private DetailNongSan _nongsan;
 
     public void AddListenerForPanelBan()
@@ -558,21 +593,28 @@ public class UIManager : MonoBehaviour
             DataGlobal.instance.UpdateDataAmount();
             TotalMoney.text = "0";
             amount.text = "0";
-            PanelNotify.instance.ShowContent("You have received " + totalDue + " Gold");
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn nhận được " + totalDue + " vàng" : "You have received " + totalDue + " Gold");
         });
     }
 
     public void ShowPB()
     {
-        DataGlobal.instance.AllowMouseDown = false;
+        textButtonSell.text = DataGlobal.instance.tiengviet ? "Bán" : "Sell";
+        textOrder.text = DataGlobal.instance.tiengviet ? "Hóa đơn" : "Order";
+        textUnitPrice.text = DataGlobal.instance.tiengviet ? "+ Đơn vị giá:" : "+ Unit price:";
+        textTotolMoney.text = DataGlobal.instance.tiengviet ? "+ Tổng tiền:" : "+ Total money:";
+        textAmount.text = DataGlobal.instance.tiengviet ? "+ Số lượng:" : "+ Amount:";
         PanelBan.SetActive(true);
+        DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+        toggleBan.isOn = true;
+        OnClickNongSan(toggleBan.GetComponent<NongSan>().nongSan);
     }
 
     public void OnClickNongSan(DetailNongSan nongSan)
     {
         _nongsan = nongSan;
-        titleBan.text = _nongsan.title;
+        titleBan.text = DataGlobal.instance.tiengviet ? _nongsan.titleVN : _nongsan.title;
         amount.text = "" + DataGlobal.instance.ArrayAmount[_nongsan.id];
         unityPrice.text = "" + _nongsan.unitPrice;
         TotalMoney.text = "" + (_nongsan.unitPrice * DataGlobal.instance.ArrayAmount[_nongsan.id]);
@@ -587,6 +629,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rewardsChuong;
     public TextMeshProUGUI goldChuong;
     public TextMeshProUGUI levelUnlockChuong;
+    public TextMeshProUGUI textButtonMuaVatNuoi;
     public Image imageChuong;
     public Image imageVatnuoi1;
     public Image imageVatnuoi2;
@@ -596,6 +639,8 @@ public class UIManager : MonoBehaviour
     public Button ExitChuong;
     public Button Muathem;
     public Button MuaGiam;
+
+    public Toggle toggleChuong;
 
     private DetailVatnuoi _vatnuoi = null;
     private int _idChuong;
@@ -647,15 +692,15 @@ public class UIManager : MonoBehaviour
             }
             else if(DataGlobal.instance.GetGold() < (_vatnuoi.gold * soluongVatnuoi) && DataGlobal.instance.GetLevel() >= _vatnuoi.levelUnlock)
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold to buy this animals!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ vàng để mua con vật này!" : "You don't have enough gold to buy this animals!");
             }
             else if(DataGlobal.instance.GetGold() >= (_vatnuoi.gold * soluongVatnuoi) && DataGlobal.instance.GetLevel() < _vatnuoi.levelUnlock)
             {
-                PanelNotify.instance.ShowContent("You don't have reach level to buy this animals!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ cấp độ để mở khóa con vật này!" : "You don't have reach level to buy this animals!");
             }
             else
             {
-                PanelNotify.instance.ShowContent("You don't have enough gold and level to buy this animals!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ vàng và cấp độ để mua con vật này!" : "You don't have enough gold and level to buy this animals!");
             }
             effectBuyAnimals.SetActive(false);
             Tutorial.instance.TutorialMuaCua();
@@ -671,9 +716,12 @@ public class UIManager : MonoBehaviour
             DataGlobal.instance.firstGame = 4;
         }
         _idChuong = idChuong;
+        textButtonMuaVatNuoi.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelChuong.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+        toggleChuong.isOn = true;
+        OnClickVatnuoi(DataGlobal.instance.listVatNuoi[0]);
     }
 
     public void OnClickVatnuoi(DetailVatnuoi vatnuoi)
@@ -681,10 +729,10 @@ public class UIManager : MonoBehaviour
         _vatnuoi = vatnuoi;
         soluongVatnuoi = 1;
         imageChuong.sprite = _vatnuoi.imageChuong1;
-        titleChuong.text = _vatnuoi.title;
-        harvestChuong.text = "Harvest: " + _vatnuoi.harvest;
-        timeChuong.text = "Time: " + _vatnuoi.time;
-        levelUnlockChuong.text = "Level unlock: " + _vatnuoi.levelUnlock;
+        titleChuong.text = DataGlobal.instance.tiengviet ? _vatnuoi.titleVN : _vatnuoi.title;
+        harvestChuong.text = DataGlobal.instance.tiengviet ? "+ Thu hoạch: " + _vatnuoi.harvestVN : "+ Harvest: " + _vatnuoi.harvest;
+        timeChuong.text = DataGlobal.instance.tiengviet ? "+ Thời gian: " + formatTime(_vatnuoi.time) : "+ Time: " + formatTime(_vatnuoi.time);
+        levelUnlockChuong.text = DataGlobal.instance.tiengviet ? "+ Cấp độ mở khóa: " + _vatnuoi.levelUnlock : "+ Level unlock: " + _vatnuoi.levelUnlock;
         CapnhatSoluongvatnuoi();
     }
 
@@ -695,7 +743,7 @@ public class UIManager : MonoBehaviour
         imageVatnuoi3.sprite = _vatnuoi.imageVatnuoi;
         imageVatnuoi4.sprite = _vatnuoi.imageVatnuoi;
         goldChuong.text = "" + _vatnuoi.gold * soluongVatnuoi;
-        rewardsChuong.text = "Rewards: +" + _vatnuoi.rewards * soluongVatnuoi + " exp";
+        rewardsChuong.text = DataGlobal.instance.tiengviet ? "+ Phần thưởng: +" + _vatnuoi.rewards * soluongVatnuoi + " sao" : "+ Rewards: +" + _vatnuoi.rewards * soluongVatnuoi + " exp";
         if (soluongVatnuoi == 1)
         {
             imageVatnuoi2.gameObject.SetActive(false);
@@ -723,6 +771,7 @@ public class UIManager : MonoBehaviour
     }
 
     public GameObject PanelHouse;
+    public TextMeshProUGUI titleHouseHehe;
     public TextMeshProUGUI containWater;
     public TextMeshProUGUI containStone;
     public TextMeshProUGUI containWood;
@@ -748,6 +797,8 @@ public class UIManager : MonoBehaviour
     public Image imageHouse;
     public GameObject WhereHouse;
 
+    public Toggle toggleHouse;
+
     private DetailHouse _house;
 
     public void AddEventListnerForPanelHouse()
@@ -771,7 +822,7 @@ public class UIManager : MonoBehaviour
             } 
             else
             {
-                PanelNotify.instance.ShowContent("You are not eligible to upgrade!");
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không thể nâng cấp!" : "You are not eligible to upgrade!");
             }
         });
     }
@@ -781,6 +832,9 @@ public class UIManager : MonoBehaviour
         PanelHouse.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
         MainCamera.instance.camLock = true;
+        titleHouseHehe.text = DataGlobal.instance.tiengviet ? "Nhà chính" : "Main house";
+        toggleHouse.isOn = true;
+        OnClickItemHouse(toggleHouse.GetComponent<ItemHouse>().house);
     }
 
     public void OnClickItemHouse(DetailHouse house)
@@ -790,24 +844,23 @@ public class UIManager : MonoBehaviour
         {
             Contain.SetActive(true);
             Upgrade.SetActive(false);
-            title2.text = "Level: " + DataGlobal.instance.GetLevel();
-            //title2.alignment = TextAlignmentOptions.Left;
-            containOil.text   = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].oil;
-            containWater.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].water;
-            containStone.text = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].stone;
-            containWood.text  = "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].wood;
-            content1.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct1;
-            content2.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct2;
-            content3.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct3;
-            content4.text = DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct4;
-        } else
+            title2.text = DataGlobal.instance.tiengviet ? "Cấp độ: " + DataGlobal.instance.GetLevel() : "Level: " + DataGlobal.instance.GetLevel();
+            containOil.text   = DataGlobal.instance.tiengviet ? "Sức chứa: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].oil   : "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].oil;
+            containWater.text = DataGlobal.instance.tiengviet ? "Sức chứa: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].water : "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].water;
+            containStone.text = DataGlobal.instance.tiengviet ? "Sức chứa: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].stone : "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].stone;
+            containWood.text  = DataGlobal.instance.tiengviet ? "Sức chứa: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].wood  : "Contain: " + DataGlobal.instance.levelContain[DataGlobal.instance.GetLevel() - 1].wood;
+            content1.text = DataGlobal.instance.tiengviet ? DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct1VN : DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct1;
+            content2.text = DataGlobal.instance.tiengviet ? DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct2VN : DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct2;
+            content3.text = DataGlobal.instance.tiengviet ? DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct3VN : DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct3;
+            content4.text = DataGlobal.instance.tiengviet ? DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct4VN : DataGlobal.instance.listContentOFHOUSE[DataGlobal.instance.GetLevel() - 1].ct4;
+        }
+        else
         {
             Contain.SetActive(false);
             Upgrade.SetActive(true);
-            title2.text = "Upgrade";
-            //title2.alignment = TextAlignmentOptions.Center;
+            title2.text = DataGlobal.instance.tiengviet ? "Nâng cấp" : "Upgrade";
 
-            levelRequire.text = "+ Level: " + _house.levelRQ;
+            levelRequire.text = DataGlobal.instance.tiengviet ? "+ Cấp độ: " + _house.levelRQ : "+ Level: " + _house.levelRQ;
             if(_house.levelRQ <= DataGlobal.instance.GetLevel())
             {
                 thieu1.SetActive(false);
@@ -818,7 +871,7 @@ public class UIManager : MonoBehaviour
                 du1.SetActive(false);
             }
 
-            goldRequire.text = "+ Gold: " + _house.goldRQ;
+            goldRequire.text = DataGlobal.instance.tiengviet ? "+ Vàng: " + _house.goldRQ : "+ Gold: " + _house.goldRQ;
             if(_house.goldRQ <= DataGlobal.instance.GetGold())
             {
                 thieu2.SetActive(false);
@@ -829,7 +882,7 @@ public class UIManager : MonoBehaviour
                 du2.SetActive(false);
             }
 
-            oilRequire.text = "+ Oil: " + _house.goldRQ;
+            oilRequire.text = DataGlobal.instance.tiengviet ? "+ Dầu: " + _house.oilRQ : "+ Oil: " + _house.oilRQ;
             if(_house.oilRQ <= DataGlobal.instance.GetOil())
             {
                 thieu3.SetActive(false);
@@ -842,5 +895,19 @@ public class UIManager : MonoBehaviour
         }
         imageHouse.sprite = _house.imgHouse;
     }
-   
+
+    public string formatTime(int t)
+    {
+        int phut = t / 60;
+        int giay = t % 60;
+        if (phut == 0)
+        {
+            return giay + "s";
+        }
+        if(giay == 0 && phut > 0)
+        {
+            return phut + "m";
+        }
+        return phut + "m" + giay + "s";
+    }
 }

@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class Land : MonoBehaviour
 {
     public int id;
     public int levelUnlock;
     public GameObject Seed;
-    public enum StateLand { NONE, SEEDED, DONE};
+    public enum StateLand { NONE, SEEDED, DONE };
     public StateLand stateLand;
 
     private int _idSeed;
@@ -30,7 +31,7 @@ public class Land : MonoBehaviour
 
     private void Start()
     {
-        if(DataGlobal.instance.GetLevel() < levelUnlock)
+        if (DataGlobal.instance.GetLevel() < levelUnlock)
         {
             GetComponent<SpriteRenderer>().sprite = spriteLock;
         }
@@ -48,13 +49,15 @@ public class Land : MonoBehaviour
     {
         // stt = 1: None, stt = 2: seeded, stt = 3: done
         stt = PlayerPrefs.GetInt("statusOdat");
-        if(stt == 1)
+        if (stt == 1)
         {
             stateLand = StateLand.NONE;
-        } else if(stt == 2)
+        }
+        else if (stt == 2)
         {
             stateLand = StateLand.SEEDED;
-        } else if(stt == 3)
+        }
+        else if (stt == 3)
         {
             stateLand = StateLand.DONE;
         }
@@ -66,7 +69,7 @@ public class Land : MonoBehaviour
         //co cay va duoc thu hoach
         //da co cay va cay chua lon
         timeOut = CurrencyManager.Offline(PlayerPrefs.GetString("timethucodat" + id));
-        if(timeOut >= PlayerPrefs.GetInt("timeodat" + id))
+        if (timeOut >= PlayerPrefs.GetInt("timeodat" + id))
         {
             //cay da lon va duoc thu hoach
         }
@@ -79,34 +82,64 @@ public class Land : MonoBehaviour
 
 
     }
+
+    private string nameDown;
+
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if (DataGlobal.instance.GetLevel() >= levelUnlock)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                if (stateLand == StateLand.NONE)
-                {
-                    UIManager.instance.OnClickToLand(id);
-                } else if(stateLand == StateLand.SEEDED)
-                {
-                    objectTime.SetActive(true);
-                    StartCoroutine(HideTime());
-                } else if(stateLand == StateLand.DONE)
-                {
-                    OnDone(_idSeed);
-                }
-            } else
-            {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
+            {
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
+            }
+#endif
+        }
+    }
+
+    public void Handler()
+    {
+        nameDown = "";
+        if (DataGlobal.instance.GetLevel() >= levelUnlock)
+        {
+            if (stateLand == StateLand.NONE)
+            {
+                UIManager.instance.OnClickToLand(id);
+            }
+            else if (stateLand == StateLand.SEEDED)
+            {
+                objectTime.SetActive(true);
+                StartCoroutine(HideTime());
+            }
+            else if (stateLand == StateLand.DONE)
+            {
+                OnDone(_idSeed);
+            }
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Vùng đất sẽ mở khóa khi bạn đạt cấp độ " + levelUnlock : "Land will unlock when you reach level " + levelUnlock);
         }
     }
 
@@ -154,19 +187,21 @@ public class Land : MonoBehaviour
             {
                 Seed.GetComponent<SpriteRenderer>().sprite = sp2;
             }
-            if(time == 1)
+            if (time == 1)
             {
                 stateLand = StateLand.DONE;
                 Seed.GetComponent<SpriteRenderer>().sprite = sp3;
             }
 
-            if(stateLand == StateLand.NONE)
+            if (stateLand == StateLand.NONE)
             {
                 stt = 1;
-            } else if(stateLand == StateLand.SEEDED)
+            }
+            else if (stateLand == StateLand.SEEDED)
             {
                 stt = 2;
-            } else if(stateLand == StateLand.DONE)
+            }
+            else if (stateLand == StateLand.DONE)
             {
                 stt = 3;
             }
@@ -184,7 +219,7 @@ public class Land : MonoBehaviour
         if (phut == 0)
         {
             return s + "s";
-        }   
+        }
         return phut + "m" + s + "s";
     }
 
@@ -215,24 +250,25 @@ public class Land : MonoBehaviour
         DetailSeed seed = null;
         // Lay trang thai o dat dau tien
         stt = PlayerPrefs.GetInt("statusOdat" + id);
-        if(stt == 1)
+        if (stt == 1)
         {
             stateLand = StateLand.NONE;
-        } else if(stt == 2)
+        }
+        else if (stt == 2)
         {
             timeOut = CurrencyManager.Offline(PlayerPrefs.GetString("timethucodat" + id));
             _idSeed = PlayerPrefs.GetInt("idhatgiong" + id);
-            
+
             for (int i = 0; i < DataGlobal.instance.listSeed.Count; i++)
             {
-                if(_idSeed == DataGlobal.instance.listSeed[i].id)
+                if (_idSeed == DataGlobal.instance.listSeed[i].id)
                 {
                     seed = DataGlobal.instance.listSeed[i];
                     break;
                 }
             }
 
-            if(timeOut >= seed.time)
+            if (timeOut >= seed.time)
             {
                 stateLand = StateLand.DONE;
                 Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
@@ -244,8 +280,10 @@ public class Land : MonoBehaviour
                 StartCoroutine(CountTime(currentTime, seed));
             }
             mat = seed.mat;
+            _exp = seed.exp;
 
-        } else if(stt == 3)
+        }
+        else if (stt == 3)
         {
             _idSeed = PlayerPrefs.GetInt("idhatgiong" + id);
             for (int i = 0; i < DataGlobal.instance.listSeed.Count; i++)
@@ -257,15 +295,16 @@ public class Land : MonoBehaviour
                 }
             }
             mat = seed.mat;
+            _exp = seed.exp;
             Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
             stateLand = StateLand.DONE;
         }
     }
-    
+
     IEnumerator CountTime(int currentTime, DetailSeed seed)
     {
-        textTime.text = currentTime + "s";
-        if(currentTime > seed.time / 2 && currentTime <= seed.time)
+        textTime.text = formatTime(currentTime);
+        if (currentTime > seed.time / 2 && currentTime <= seed.time)
         {
             Seed.GetComponent<SpriteRenderer>().sprite = seed.spr1;
         }
@@ -301,7 +340,7 @@ public class Land : MonoBehaviour
                 stateLand = StateLand.DONE;
                 Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
             }
-            textTime.text = currentTime + "s";
+            textTime.text = formatTime(currentTime);
         }
     }
 }

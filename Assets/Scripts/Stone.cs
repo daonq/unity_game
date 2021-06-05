@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Stone : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Stone : MonoBehaviour
 
     public GameObject tungDa;
     public Material mat;
+
+    private string nameDown;
 
     private void Start()
     {
@@ -37,17 +40,38 @@ public class Stone : MonoBehaviour
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if (DataGlobal.instance.ArrayHaveOwnedItem[1] > 0 && Cothepha)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                phao.SetActive(true);
-                StartCoroutine(HidePhao());
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            else if(DataGlobal.instance.ArrayHaveOwnedItem[1] == 0 && Cothepha)
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("You don't have item. Let's buy it on market!");
-            }    
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
+            }
+#endif
+        }
+    }
+
+    public void Handler()
+    {
+        nameDown = "";
+        if (DataGlobal.instance.ArrayHaveOwnedItem[1] > 0 && Cothepha)
+        {
+            phao.SetActive(true);
+            StartCoroutine(HidePhao());
+        }
+        else if (DataGlobal.instance.ArrayHaveOwnedItem[1] == 0 && Cothepha)
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có thuốc nổ để phá đá.\nVui lòng mua nó ở cửa hàng!" : "You don't have item.\nLet's buy it on market!");
         }
     }
 
@@ -91,6 +115,9 @@ public class Stone : MonoBehaviour
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     // Can mot bien thoi gian o ngoai, moi s giam 1 don vi

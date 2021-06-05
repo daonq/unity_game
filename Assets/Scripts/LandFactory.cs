@@ -2,6 +2,8 @@
 using System.Collections;
 using TMPro;
 using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LandFactory : MonoBehaviour
 {
@@ -27,8 +29,6 @@ public class LandFactory : MonoBehaviour
 
     public GameObject hoinuoc;
 
-    public bool ELSE = false;
-
     public int stt; // 0: None, 2: Waiting, 3: Build;
 
     public GameObject thuhoach;
@@ -38,6 +38,9 @@ public class LandFactory : MonoBehaviour
     [HideInInspector] public Material matEffectTren;
 
     public GameObject bien;
+    public Text textLevelUnlock;
+
+    private string nameDown;
 
     private void Start()
     {
@@ -48,7 +51,7 @@ public class LandFactory : MonoBehaviour
         {
             effect.SetActive(false);
         }
-        //GetTimeAndCount();
+        textLevelUnlock.text = DataGlobal.instance.tiengviet ? "Cấp độ " + levelUnlock : "Level " + levelUnlock;
         LoadDataOnGame();
     }
 
@@ -56,54 +59,58 @@ public class LandFactory : MonoBehaviour
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
-        if (ELSE)
-        {
-            ELSE = false;
-            //UIManager.instance.AnThongBao();
-        }
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if (DataGlobal.instance.GetLevel() >= levelUnlock)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                if(stateLandFactory == StateLandFactory.NONE)
-                {
-                    UIManager.instance.OnClickToFactory(id);
-                } else if(stateLandFactory == StateLandFactory.WAITING)
-                {
-                    UIManager.instance.OnClickToWaiting(factory);
-                } else if(stateLandFactory == StateLandFactory.BUILD || stateLandFactory == StateLandFactory.BUILD1 || stateLandFactory == StateLandFactory.BUILD2)
-                {
-                    active = true;
-                    UIManager.instance.ShowBuildFactory(factory, id);
-                    /*
-                    if (DataGlobal.instance.levelCurrentOfFactory[id] == 0)
-                    {
-                        timeMax = factory.time1;
-                        countMax = factory.count1;
-                    }
-                    else if (DataGlobal.instance.levelCurrentOfFactory[id] == 1)
-                    {
-                        timeMax = factory.time2;
-                        countMax = factory.count2;
-                    }
-                    else if (DataGlobal.instance.levelCurrentOfFactory[id] == 2)
-                    {
-                        timeMax = factory.time3;
-                        countMax = factory.count3;
-                    }*/
-                }
-            } else
-            {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
-                ELSE = true;
-                //UIManager.instance.Hienthongbao("You need to level " + levelUnlock + " to be able to open this land!");
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
+            {
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
+            }
+#endif
+        }
+    }
+
+    public void Handler()
+    {
+        nameDown = "";
+        if (DataGlobal.instance.GetLevel() >= levelUnlock)
+        {
+            if (stateLandFactory == StateLandFactory.NONE)
+            {
+                UIManager.instance.OnClickToFactory(id);
+            }
+            else if (stateLandFactory == StateLandFactory.WAITING)
+            {
+                UIManager.instance.OnClickToWaiting(factory);
+            }
+            else if (stateLandFactory == StateLandFactory.BUILD || stateLandFactory == StateLandFactory.BUILD1 || stateLandFactory == StateLandFactory.BUILD2)
+            {
+                active = true;
+                UIManager.instance.ShowBuildFactory(factory, id);
+            }
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Vùng đất sẽ mở khóa khi bạn đạt cấp độ " + levelUnlock : "Land will unlock when you reach level " + levelUnlock);
         }
     }
 

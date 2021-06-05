@@ -9,6 +9,7 @@ public class DataGlobal : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        tiengviet = Application.systemLanguage == SystemLanguage.Vietnamese ? true : false;
         ArrayAmount = new int[17];
         ArrayHaveOwnedItem = new int[3];
         levelCurrentOfFactory = new int[10];
@@ -54,6 +55,35 @@ public class DataGlobal : MonoBehaviour
         UpdateDataAmount();
     }
 
+#if UNITY_ANDROID
+    private void OnApplicationPause()
+    {
+        PlayerPrefs.SetInt("level", _level);
+        PlayerPrefs.SetInt("gold", _gold);
+        PlayerPrefs.SetInt("water", _water);
+        PlayerPrefs.SetInt("stone", _stone);
+        PlayerPrefs.SetInt("wood", _wood);
+        PlayerPrefs.SetInt("star", _star);
+        PlayerPrefs.SetInt("oil", _oil);
+        PlayerPrefs.SetInt("levelHouse", _levelHouse);
+        PlayerPrefs.SetInt("FirstGame", firstGame);
+
+        for (int i = 0; i < ArrayAmount.Length; i++)
+        {
+            PlayerPrefs.SetInt("arrayAmount" + i, ArrayAmount[i]);
+        }
+
+        for (int i = 0; i < levelCurrentOfFactory.Length; i++)
+        {
+            PlayerPrefs.SetInt("levelCurrentOfFactory" + i, levelCurrentOfFactory[i]);
+        }
+
+        for (int i = 0; i < ArrayHaveOwnedItem.Length; i++)
+        {
+            PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
+        }
+    }
+#else
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("level", _level);
@@ -81,7 +111,7 @@ public class DataGlobal : MonoBehaviour
             PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
         }
     }
-
+#endif
     public bool ClickObject;
 
     public GameObject goldUI;
@@ -93,6 +123,8 @@ public class DataGlobal : MonoBehaviour
     public Text txtStone;
     public Text txtWater;
     public Text txtOil;
+
+    public bool tiengviet;
 
     public Text[] listTextAmount;
 
@@ -300,7 +332,11 @@ public class LevelContain
 public struct ContentOfHouse
 {
     public string ct1;
+    public string ct1VN;
     public string ct2;
+    public string ct2VN;
     public string ct3;
+    public string ct3VN;
     public string ct4;
+    public string ct4VN;
 }

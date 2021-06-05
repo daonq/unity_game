@@ -104,7 +104,7 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 6)
         {
-            MainCamera.instance.camLock = true;
+            MainCamera.instance.camLock = false;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, -10, 0);

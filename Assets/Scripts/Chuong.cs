@@ -4,6 +4,7 @@ using UnityEngine;
 using Spine.Unity;
 using System;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Chuong : MonoBehaviour
 {
@@ -45,44 +46,75 @@ public class Chuong : MonoBehaviour
     public Text textTime;
     public GameObject objectTime;
 
+    public Text textlevelUnlock;
+
+    private string nameDown;
+
     private void Start()
     {
         if(DataGlobal.instance.GetLevel() >= levelUnlock)
         {
             effect.SetActive(true);
         }
+        textlevelUnlock.text = DataGlobal.instance.tiengviet ? "Cấp độ " + levelUnlock : "Level " + levelUnlock;
         LoadDataOnGame();
     }
 
     private void OnMouseUp()
     {
         transform.localScale = new Vector3(1, 1, 1);
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (nameDown == hit.collider?.name) Handler();
     }
 
     private void OnMouseDown()
     {
         if (DataGlobal.instance.AllowMouseDown)
         {
-            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-            if (DataGlobal.instance.GetLevel() >= levelUnlock)
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                if (state == StateChuong.NONE)
-                {
-                    UIManager.instance.ShowPanelChuong(id);
-                } else if(state == StateChuong.WAITING)
-                {
-                    objectTime.SetActive(true);
-                    StartCoroutine(HideTime());
-                } else if(state == StateChuong.DONE)
-                {
-                    
-                }
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
-            else
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                DataGlobal.instance.ClickObject = true;
-                PanelNotify.instance.ShowContent("Land will unlock when you reach level " + levelUnlock);
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
             }
+#endif
+        }
+    }
+
+    public void Handler()
+    {
+        nameDown = "";
+        if (DataGlobal.instance.GetLevel() >= levelUnlock)
+        {
+            if (state == StateChuong.NONE)
+            {
+                UIManager.instance.ShowPanelChuong(id);
+            }
+            else if (state == StateChuong.WAITING)
+            {
+                objectTime.SetActive(true);
+                StartCoroutine(HideTime());
+            }
+            else if (state == StateChuong.DONE)
+            {
+
+            }
+        }
+        else
+        {
+            DataGlobal.instance.ClickObject = true;
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Vùng đất sẽ mở khóa khi bạn đạt cấp độ " + levelUnlock : "Land will unlock when you reach level " + levelUnlock);
         }
     }
 

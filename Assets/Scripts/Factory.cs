@@ -27,7 +27,9 @@ public class DetailFactory
 {
     public int id;
     public string title;
+    public string titleVN;
     public string rawMat;
+    public string rawMatVN;
     public int levelUnlock;
     public int gold;
     public int time1;
@@ -40,6 +42,7 @@ public class DetailFactory
     public int stone;
     public int wood;
     public string nameProduct;
+    public string nameProductVN;
     public Sprite sp0;
     public Sprite sp1;
     public Sprite sp2;

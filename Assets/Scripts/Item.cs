@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] DetailItem item;
+    public DetailItem item;
 
     private void Start()
     {
@@ -28,6 +28,7 @@ public class DetailItem
 {
     public int id;
     public string des;
+    public string desVN;
     public Sprite icon;
     public int unitPrice;
 }
