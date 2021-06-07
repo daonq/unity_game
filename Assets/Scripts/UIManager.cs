@@ -83,7 +83,6 @@ public class UIManager : MonoBehaviour
         {
             Tutorial.instance.muiten.SetActive(false);
             effectBuyHat.SetActive(true);
-            DataGlobal.instance.firstGame = 1;
         }
         textButtonBuySeed.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelSeeds.SetActive(true);

@@ -29,6 +29,8 @@ public class Tutorial : MonoBehaviour
 
     public GameObject caitay;
 
+    public bool modeTutorial;
+
     private void Awake()
     {
         instance = this;
@@ -38,9 +40,11 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 0)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 2, -10);
             muiten.SetActive(true);
+            DataGlobal.instance.firstGame = 1;
         }
     }
 
@@ -48,10 +52,12 @@ public class Tutorial : MonoBehaviour
     {
         if (DataGlobal.instance.firstGame == 1)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
+            DataGlobal.instance.firstGame = 2;
         }
     }
 
@@ -59,10 +65,12 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 2)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
+            DataGlobal.instance.firstGame = 3;
         }
     }
 
@@ -70,10 +78,12 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 3)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-410, -120, 0);
+            DataGlobal.instance.firstGame = 4;
         }
     }
 
@@ -81,11 +91,12 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 4)
         {
-            DataGlobal.instance.firstGame = 5;
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-10, -100, 0);
+            DataGlobal.instance.firstGame = 5;
         }
     }
 
@@ -93,10 +104,12 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 5)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-160, -150, 0);
+            DataGlobal.instance.firstGame = 6;
         }
     }
 
@@ -104,10 +117,17 @@ public class Tutorial : MonoBehaviour
     {
         if(DataGlobal.instance.firstGame == 6)
         {
+            modeTutorial = true;
             MainCamera.instance.camLock = false;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, -10, 0);
+            DataGlobal.instance.firstGame = 7;
         }
+    }
+
+    public void EndTutorial()
+    {
+        modeTutorial = false;
     }
 }

@@ -7,7 +7,7 @@ public class House : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (DataGlobal.instance.AllowMouseDown)
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())

@@ -41,7 +41,7 @@ public class cr4 : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (DataGlobal.instance.AllowMouseDown)
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -51,7 +51,28 @@ public class cr4 : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
                 nameDown = hit.collider?.name;
             }
- #else
+#else
+            if (!EventSystem.current.IsPointerOverGameObject(0))
+            {
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
+            }
+            else nameDown = "";
+#endif
+        }
+        else if(DataGlobal.instance.AllowMouseDown && id == 65)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                nameDown = hit.collider?.name;
+            }
+#else
             if (!EventSystem.current.IsPointerOverGameObject(0))
             {
                 transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
@@ -96,6 +117,7 @@ public class cr4 : MonoBehaviour
     public void cuanhe()
     {
         Tutorial.instance.caitay.SetActive(false);
+        Tutorial.instance.EndTutorial();
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
         StartCoroutine(HieuUng());
