@@ -116,6 +116,7 @@ public class cr4 : MonoBehaviour
 
     public void cuanhe()
     {
+        DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         Tutorial.instance.caitay.SetActive(false);
         Tutorial.instance.EndTutorial();
         GetComponent<Animator>().enabled = false;
@@ -131,7 +132,7 @@ public class cr4 : MonoBehaviour
         ef.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef, 3);
 
-        DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
+        
         DataGlobal.instance.AddWood(2);
         DataGlobal.instance.AddStar(2);
 
@@ -140,14 +141,6 @@ public class cr4 : MonoBehaviour
         time = 180;
         PlayerPrefs.SetInt("Timecr4" + id, time);
         animationCua.SetActive(false);
-
-        DataGlobal.instance.ClickObject = true;
-        PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Chúc mừng bạn đã hoàn thành phần hướng dẫn!\nBạn nhận được 1000 Vàng, 200 Nước, 200 Đá, 200 Gỗ, 50 Dầu." : "Congratulations on completing the tutorial!\nYou get 1000 Gold, 200 Water, 200 Stone, 200 Wood, 50 Oil.");
-        DataGlobal.instance.AddGold(1000);
-        DataGlobal.instance.AddWater(200);
-        DataGlobal.instance.AddStone(200);
-        DataGlobal.instance.AddWood(200);
-        DataGlobal.instance.AddOil(50);
 
         StartCoroutine(HoiSinh());
     }

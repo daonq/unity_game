@@ -86,6 +86,7 @@ public class Stone : MonoBehaviour
 
     public void no()
     {
+        DataGlobal.instance.ArrayHaveOwnedItem[1] -= 1;
         GameObject ef = Instantiate(effect, transform.position, Quaternion.identity);
         Destroy(ef, 3);
 
@@ -94,8 +95,6 @@ public class Stone : MonoBehaviour
         ef2.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef2, 3);
 
-        //DataGlobal.instance.SubGold(10);
-        DataGlobal.instance.ArrayHaveOwnedItem[1] -= 1;
         DataGlobal.instance.AddStone(2);
         DataGlobal.instance.AddStar(2);
         Cothepha = false;

@@ -185,15 +185,14 @@ public class Tutorial : MonoBehaviour
             btnGift.interactable = true;
             MainCamera.instance.camLock = false;
             DataGlobal.instance.SetFirstGame(8);
+
             DataGlobal.instance.ClickObject = true;
-            /*
             PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Chúc mừng bạn đã hoàn thành phần hướng dẫn!\nBạn nhận được 1000 Vàng, 200 Nước, 200 Đá, 200 Gỗ, 50 Dầu." : "Congratulations on completing the tutorial!\nYou get 1000 Gold, 200 Water, 200 Stone, 200 Wood, 50 Oil.");
             DataGlobal.instance.AddGold(1000);
             DataGlobal.instance.AddWater(200);
             DataGlobal.instance.AddStone(200);
             DataGlobal.instance.AddWood(200);
             DataGlobal.instance.AddOil(50);
-            */
         }
     }
 }

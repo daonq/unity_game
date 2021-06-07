@@ -118,6 +118,7 @@ public class cr2 : MonoBehaviour
 
     public void cuanhe()
     {
+        DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
         StartCoroutine(HieuUng());
@@ -131,7 +132,6 @@ public class cr2 : MonoBehaviour
         ef.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef, 3);
 
-        DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         DataGlobal.instance.AddWood(2);
         DataGlobal.instance.AddStar(2);
 

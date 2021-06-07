@@ -105,7 +105,7 @@ public class DataGlobal : MonoBehaviour
         PlayerPrefs.SetInt("star", _star);
         PlayerPrefs.SetInt("oil", _oil);
         PlayerPrefs.SetInt("levelHouse", _levelHouse);
-        PlayerPrefs.SetInt("FirstGame", firstGame);
+        PlayerPrefs.SetInt("FirstGame", _firstGame);
 
         for (int i = 0; i < ArrayAmount.Length; i++)
         {
