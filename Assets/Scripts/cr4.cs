@@ -62,7 +62,7 @@ public class cr4 : MonoBehaviour
             else nameDown = "";
 #endif
         }
-        else if(DataGlobal.instance.AllowMouseDown && id == 65)
+        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 7)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -93,14 +93,14 @@ public class cr4 : MonoBehaviour
             cua.SetActive(true);
             StartCoroutine(HideCua());
         }
-        else
+        else if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] <= 0)
         {
             DataGlobal.instance.ClickObject = true;
             PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có cưa để chặt cây.\nVui lòng mua nó ở cửa hàng!" : "You don't have item. Let's buy it on market!");
         }
-        if (DataGlobal.instance.firstGame == 6)
+
+        if (DataGlobal.instance.GetFirstGame() == 6)
         {
-            DataGlobal.instance.firstGame = 7;
             Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, 75, 0);
         }
     }
@@ -131,7 +131,6 @@ public class cr4 : MonoBehaviour
         ef.GetComponent<ParticleSystemRenderer>().material = mat;
         Destroy(ef, 3);
 
-        //DataGlobal.instance.SubGold(10);
         DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         DataGlobal.instance.AddWood(2);
         DataGlobal.instance.AddStar(2);
@@ -142,15 +141,71 @@ public class cr4 : MonoBehaviour
         PlayerPrefs.SetInt("Timecr4" + id, time);
         animationCua.SetActive(false);
 
+        DataGlobal.instance.ClickObject = true;
+        PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Chúc mừng bạn đã hoàn thành phần hướng dẫn!\nBạn nhận được 1000 Vàng, 200 Nước, 200 Đá, 200 Gỗ, 50 Dầu." : "Congratulations on completing the tutorial!\nYou get 1000 Gold, 200 Water, 200 Stone, 200 Wood, 50 Oil.");
+        DataGlobal.instance.AddGold(1000);
+        DataGlobal.instance.AddWater(200);
+        DataGlobal.instance.AddStone(200);
+        DataGlobal.instance.AddWood(200);
+        DataGlobal.instance.AddOil(50);
+
         StartCoroutine(HoiSinh());
     }
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1, 1, 1);
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if (nameDown == hit.collider?.name) Handler();
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name)
+                {
+                    Handler();
+                }
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) 
+            { 
+                Handler(); 
+            }
+        }
+#endif
+        }
+        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 7)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name)
+                {
+                    Handler();
+                }
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) 
+            { 
+                Handler(); 
+            }
+        }
+#endif
+        }
     }
 
     IEnumerator HoiSinh()

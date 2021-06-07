@@ -31,12 +31,34 @@ public class House : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1, 1, 1);
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if(nameDown == hit.collider?.name) 
-            UIManager.instance.ShowPanelHouse();
-        nameDown = "";
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name)
+                {
+                    UIManager.instance.ShowPanelHouse();
+                    nameDown = "";
+                }
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name)
+            {
+                UIManager.instance.ShowPanelHouse();
+                nameDown = "";
+            }
+        }
+#endif
+        }
     }
 
     public void NangCapNha(Sprite imgHouse)

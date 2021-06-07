@@ -66,7 +66,7 @@ public class MainCamera : MonoBehaviour
             {
                 if (Input.GetTouch(1).phase == TouchPhase.Began)
                 {
-                    DisableAll();
+                    //DisableAll();
                 }
                 if (oldTouchPositions[1] == null)
                 {
@@ -108,7 +108,7 @@ public class MainCamera : MonoBehaviour
                 RaycastHit2D hitInfo = Physics2D.Raycast(worlPoint, Vector3.zero);
                 if (hitInfo.collider == null)
                 {
-                    DisableAll();
+                    //DisableAll();
                 }
             }
             if (Input.GetMouseButton(0))
@@ -190,7 +190,7 @@ public class MainCamera : MonoBehaviour
 
     public void DisableAll()
     {
-        unLockCam();
+        //unLockCam();
         //ManagerTool.instance.HideTool();
         //ManagerTool.instance.HideClock();
         //ManagerShop.instance.HideShop();

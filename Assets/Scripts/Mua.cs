@@ -9,8 +9,9 @@ public class Mua : MonoBehaviour
         if (DataGlobal.instance.AllowMouseDown)
         {
             market.GetComponent<Market>().vongtron.transform.localScale = new Vector3(0, 0, 0);
-            UIManager.instance.ShowPS();
             Tutorial.instance.caitay.SetActive(false);
+            Tutorial.instance.TutorialMuaCua1();
+            UIManager.instance.ShowPS();
         }
     }
 }

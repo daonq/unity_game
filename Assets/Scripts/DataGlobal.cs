@@ -14,10 +14,10 @@ public class DataGlobal : MonoBehaviour
         ArrayHaveOwnedItem = new int[3];
         levelCurrentOfFactory = new int[10];
         _level = PlayerPrefs.GetInt("level", 1);
-        _gold = PlayerPrefs.GetInt("gold", 1000);
-        _water = PlayerPrefs.GetInt("water", 500);
-        _stone = PlayerPrefs.GetInt("stone", 500);
-        _wood = PlayerPrefs.GetInt("wood", 500);
+        _gold = PlayerPrefs.GetInt("gold", 111);
+        _water = PlayerPrefs.GetInt("water", 100);
+        _stone = PlayerPrefs.GetInt("stone", 120);
+        _wood = PlayerPrefs.GetInt("wood", 120);
         _star = PlayerPrefs.GetInt("star", 0);
         _oil = PlayerPrefs.GetInt("oil", 0);
         _levelHouse = PlayerPrefs.GetInt("levelHouse", 1);
@@ -36,14 +36,23 @@ public class DataGlobal : MonoBehaviour
         {
             ArrayHaveOwnedItem[i] = PlayerPrefs.GetInt("arrayHaveOwnedItem" + i);
         }
-        firstGame = PlayerPrefs.GetInt("FirstGame");
+        _firstGame = PlayerPrefs.GetInt("FirstGame");
     }
 
-    public int firstGame;
+    private int _firstGame;
+
+    public int GetFirstGame()
+    {
+        return _firstGame;
+    }
+
+    public void SetFirstGame(int firstGame)
+    {
+        _firstGame = firstGame;
+    }
 
     private void Start()
     {
-        //txtStar.text = _star.ToString();
         img_slide.fillAmount = ((float)_star / (float)levelContain[_level - 1].star);
         txtGold.text = _gold.ToString();
         txtWood.text = _wood.ToString();
@@ -55,9 +64,10 @@ public class DataGlobal : MonoBehaviour
         UpdateDataAmount();
     }
 
-#if UNITY_ANDROID
-    private void OnApplicationPause()
+#if UNITY_EDITOR || UNITY_IOS
+    private void OnApplicationQuit()
     {
+        Debug.Log("QUIT");
         PlayerPrefs.SetInt("level", _level);
         PlayerPrefs.SetInt("gold", _gold);
         PlayerPrefs.SetInt("water", _water);
@@ -66,7 +76,7 @@ public class DataGlobal : MonoBehaviour
         PlayerPrefs.SetInt("star", _star);
         PlayerPrefs.SetInt("oil", _oil);
         PlayerPrefs.SetInt("levelHouse", _levelHouse);
-        PlayerPrefs.SetInt("FirstGame", firstGame);
+        PlayerPrefs.SetInt("FirstGame", _firstGame);
 
         for (int i = 0; i < ArrayAmount.Length; i++)
         {
@@ -83,9 +93,10 @@ public class DataGlobal : MonoBehaviour
             PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
         }
     }
-#else
-    private void OnApplicationQuit()
+#elif UNITY_ANDROID
+    private void OnApplicationPause()
     {
+        Debug.Log("PAUSE");
         PlayerPrefs.SetInt("level", _level);
         PlayerPrefs.SetInt("gold", _gold);
         PlayerPrefs.SetInt("water", _water);

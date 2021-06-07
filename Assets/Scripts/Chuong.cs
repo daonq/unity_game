@@ -12,7 +12,7 @@ public class Chuong : MonoBehaviour
     public int levelUnlock;
     public GameObject chuong2;
     public GameObject bien;
-    public enum StateChuong { NONE, WAITING, DONE};
+    public enum StateChuong { NONE, WAITING, DONE };
     public StateChuong state;
 
     public Transform[] vitri;
@@ -52,7 +52,7 @@ public class Chuong : MonoBehaviour
 
     private void Start()
     {
-        if(DataGlobal.instance.GetLevel() >= levelUnlock)
+        if (DataGlobal.instance.GetLevel() >= levelUnlock)
         {
             effect.SetActive(true);
         }
@@ -62,10 +62,44 @@ public class Chuong : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1, 1, 1);
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if (nameDown == hit.collider?.name) Handler();
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name) Handler();
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0)) {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) Handler();
+        }
+#endif
+        }
+        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 4)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name) Handler();
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0)) {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) Handler();
+        }
+#endif
+        }
     }
 
     private void OnMouseDown()
@@ -90,7 +124,7 @@ public class Chuong : MonoBehaviour
             }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 0)
+        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 4)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -142,7 +176,7 @@ public class Chuong : MonoBehaviour
     {
         int phut = t / 60;
         int giay = t % 60;
-        if(phut == 0)
+        if (phut == 0)
         {
             return giay + "s";
         }
@@ -245,19 +279,22 @@ public class Chuong : MonoBehaviour
         listVatNuoi.Clear();
         for (int i = 0; i < soluong; i++)
         {
-            if(_vatnuoi.id == 13)
+            if (_vatnuoi.id == 13)
             {
                 GameObject vn = Instantiate(ga, vitri[i].position, Quaternion.identity);
                 listVatNuoi.Add(vn);
-            } else if(_vatnuoi.id == 14)
+            }
+            else if (_vatnuoi.id == 14)
             {
                 GameObject vn = Instantiate(lon, vitri[i].position, Quaternion.identity);
                 listVatNuoi.Add(vn);
-            } else if(_vatnuoi.id == 15)
+            }
+            else if (_vatnuoi.id == 15)
             {
                 GameObject vn = Instantiate(bo, vitri[i].position, Quaternion.identity);
                 listVatNuoi.Add(vn);
-            } else if(_vatnuoi.id == 16)
+            }
+            else if (_vatnuoi.id == 16)
             {
                 GameObject vn = Instantiate(cuu, vitri[i].position, Quaternion.identity);
                 listVatNuoi.Add(vn);
@@ -290,7 +327,7 @@ public class Chuong : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             timeMax--;
-            if(timeMax <= 0)
+            if (timeMax <= 0)
             {
                 state = StateChuong.DONE;
                 for (int i = 0; i < listVatNuoi.Count; i++)
@@ -299,7 +336,8 @@ public class Chuong : MonoBehaviour
                 }
                 thu_hoach.SetActive(true);
                 PlayerPrefs.SetInt("statusChuong" + id, 3);
-            } else
+            }
+            else
             {
                 state = StateChuong.WAITING;
                 PlayerPrefs.SetInt("statusChuong" + id, 2);
@@ -334,10 +372,11 @@ public class Chuong : MonoBehaviour
     {
         DetailVatnuoi _vatnuoi = null;
         stt = PlayerPrefs.GetInt("statusChuong" + id);
-        if(stt == 0)
+        if (stt == 0)
         {
             state = StateChuong.NONE;
-        } else if(stt == 2)
+        }
+        else if (stt == 2)
         {
             timeOut = CurrencyManager.Offline(PlayerPrefs.GetString("timethuchuong" + id));
             idVatnuoi = PlayerPrefs.GetInt("idvatnuoi" + id);
@@ -373,7 +412,7 @@ public class Chuong : MonoBehaviour
 
             for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
             {
-                if(idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
+                if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
                 {
                     _vatnuoi = DataGlobal.instance.listVatNuoi[i];
                     break;
@@ -394,7 +433,8 @@ public class Chuong : MonoBehaviour
                 state = StateChuong.WAITING;
                 StartCoroutine(CountTime(currentTime, _vatnuoi));
             }
-        } else if(stt == 3)
+        }
+        else if (stt == 3)
         {
             state = StateChuong.DONE;
             bien.SetActive(false);
@@ -421,20 +461,22 @@ public class Chuong : MonoBehaviour
             PlayerPrefs.SetInt("idvatnuoi" + id, vatnuoi.id);
             PlayerPrefs.SetString("timethuchuong" + id, DateTime.Now.ToString());
 
-            if(state == StateChuong.NONE)
+            if (state == StateChuong.NONE)
             {
                 stt = 1;
-            } else if(state == StateChuong.WAITING)
+            }
+            else if (state == StateChuong.WAITING)
             {
                 stt = 2;
-            } else if(state == StateChuong.DONE)
+            }
+            else if (state == StateChuong.DONE)
             {
                 stt = 3;
             }
             // stt = 1: NONE, stt = 2: WAITING, stt = 3: DONE;
             PlayerPrefs.SetInt("statusChuong" + id, stt);
 
-            if(currentTime <= 1)
+            if (currentTime <= 1)
             {
                 state = StateChuong.DONE;
                 thu_hoach.SetActive(true);

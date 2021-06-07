@@ -16366,6 +16366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muiten: {fileID: 1036359866}
   caitay: {fileID: 2029612321}
+  modeTutorial: 0
+  btnGift: {fileID: 1145651792}
+  btnSetting: {fileID: 1731224861}
 --- !u!1 &646650308
 GameObject:
   m_ObjectHideFlags: 0
@@ -60193,6 +60196,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
         type: 3}
+      propertyPath: arrayToggleSeed.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleStore.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleChuong.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
       propertyPath: PanelSeeds
       value: 
       objectReference: {fileID: 535642011}
@@ -60846,5 +60869,120 @@ PrefabInstance:
       propertyPath: toggleHouse
       value: 
       objectReference: {fileID: 1016135671}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[0]
+      value: 
+      objectReference: {fileID: 1585113454}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[1]
+      value: 
+      objectReference: {fileID: 969799709}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[2]
+      value: 
+      objectReference: {fileID: 857701041}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[3]
+      value: 
+      objectReference: {fileID: 115717753}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[4]
+      value: 
+      objectReference: {fileID: 876723883}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[5]
+      value: 
+      objectReference: {fileID: 1902087058}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[6]
+      value: 
+      objectReference: {fileID: 14007544}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[7]
+      value: 
+      objectReference: {fileID: 539642825}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[8]
+      value: 
+      objectReference: {fileID: 524630408}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleSeed.Array.data[9]
+      value: 
+      objectReference: {fileID: 1963369403}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.data[0]
+      value: 
+      objectReference: {fileID: 572916639}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.data[1]
+      value: 
+      objectReference: {fileID: 319604576}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.data[2]
+      value: 
+      objectReference: {fileID: 204243428}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.data[3]
+      value: 
+      objectReference: {fileID: 1027255633}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleFactory.Array.data[4]
+      value: 
+      objectReference: {fileID: 1537322155}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleStore.Array.data[0]
+      value: 
+      objectReference: {fileID: 76142756}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleStore.Array.data[1]
+      value: 
+      objectReference: {fileID: 908613547}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleStore.Array.data[2]
+      value: 
+      objectReference: {fileID: 1383544019}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleChuong.Array.data[0]
+      value: 
+      objectReference: {fileID: 1901304976}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleChuong.Array.data[1]
+      value: 
+      objectReference: {fileID: 2115420607}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleChuong.Array.data[2]
+      value: 
+      objectReference: {fileID: 1954048824}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: arrayToggleChuong.Array.data[3]
+      value: 
+      objectReference: {fileID: 1360514261}
+    - target: {fileID: 8899866463453012329, guid: e5d3db77b9245cc44a7b8ebdb36ab7db,
+        type: 3}
+      propertyPath: scrollRect
+      value: 
+      objectReference: {fileID: 971937697}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5d3db77b9245cc44a7b8ebdb36ab7db, type: 3}

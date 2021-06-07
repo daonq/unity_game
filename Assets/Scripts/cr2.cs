@@ -40,10 +40,32 @@ public class cr2 : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1, 1, 1);
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if(nameDown == hit.collider?.name) Handler();
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name)
+                {
+                    Handler();
+                }
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name)
+            {
+                Handler();
+            }
+        }
+#endif
+        }
     }
 
     private void OnMouseDown()
@@ -58,7 +80,7 @@ public class cr2 : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
                 nameDown = hit.collider?.name;
             }
-            #else
+#else
             if (!EventSystem.current.IsPointerOverGameObject(0))
             {
                 transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
@@ -66,8 +88,7 @@ public class cr2 : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
                 nameDown = hit.collider?.name;
             }
-            else nameDown = "";
-            #endif
+#endif
         }
     }
 
@@ -79,7 +100,7 @@ public class cr2 : MonoBehaviour
             cua.SetActive(true);
             StartCoroutine(HideCua());
         }
-        else
+        else if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] <= 0)
         {
             DataGlobal.instance.ClickObject = true;
             PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không có cưa để chặt cây.\nVui lòng mua nó ở cửa hàng!" : "You don't have item.\nLet's buy it on market!");

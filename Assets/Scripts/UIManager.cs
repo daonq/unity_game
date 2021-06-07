@@ -43,6 +43,10 @@ public class UIManager : MonoBehaviour
 
     public Toggle toggleGieoHat;
 
+    public Toggle[] arrayToggleSeed;
+
+    public ScrollRect scrollRect;
+
     public void AddListenForPanelSeeds()
     {
         btnExit.onClick.AddListener(delegate
@@ -73,16 +77,28 @@ public class UIManager : MonoBehaviour
 
             effectBuyHat.SetActive(false);
             Tutorial.instance.TutorialFactory();
+            for (int i = 0; i < arrayToggleSeed.Length; i++)
+            {
+                arrayToggleSeed[i].interactable = true;
+            }
+            btnExit.interactable = true;
+            scrollRect.horizontal = true;
         });
     }
 
     public void OnClickToLand(int id)
     {
         idLand = id;
-        if(DataGlobal.instance.firstGame == 0)
+        if(DataGlobal.instance.GetFirstGame() == 1)
         {
             Tutorial.instance.muiten.SetActive(false);
             effectBuyHat.SetActive(true);
+            for (int i = 1; i < arrayToggleSeed.Length; i++)
+            {
+                arrayToggleSeed[i].interactable = false;
+            }
+            btnExit.interactable = false;
+            scrollRect.horizontal = false;
         }
         textButtonBuySeed.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelSeeds.SetActive(true);
@@ -126,6 +142,7 @@ public class UIManager : MonoBehaviour
     public GameObject effectBuyNhaMay;
 
     public Toggle toggleMuanhamay;
+    public Toggle[] arrayToggleFactory;
 
     public void AddListenForPanelFactory1()
     {
@@ -141,7 +158,7 @@ public class UIManager : MonoBehaviour
             if ((_factory1.id == 4 && !(idFactory == 5 || idFactory == 6 || idFactory == 7)) ||
                 (_factory1.id != 4 && (idFactory == 5 || idFactory == 6 || idFactory == 7)))
             {
-
+                PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không thể xây nhà máy này ở đây được!" : "You can't build this factory in here!");
             }
             else if (DataGlobal.instance.GetGold() >= _factory1.gold && DataGlobal.instance.GetLevel() >= _factory1.levelUnlock)
             {
@@ -163,20 +180,30 @@ public class UIManager : MonoBehaviour
             {
                 PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ cấp độ và tiền để mua nhà máy này!" : "You don't have enough gold and level to buy this factory!");
             }
+
             effectBuyNhaMay.SetActive(false);
             Tutorial.instance.TutorialWaiting();
+            for (int i = 0; i < arrayToggleFactory.Length; i++)
+            {
+                arrayToggleFactory[i].interactable = true;
+            }
+            btnExitF1.interactable = true;
         });
     }
 
     public void OnClickToFactory(int id)
     {
-        if(DataGlobal.instance.firstGame == 1)
+        idFactory = id;
+        if(DataGlobal.instance.GetFirstGame() == 2)
         {
             Tutorial.instance.caitay.SetActive(false);
             effectBuyNhaMay.SetActive(true);
-            DataGlobal.instance.firstGame = 2;
+            for (int i = 1; i < arrayToggleFactory.Length; i++)
+            {
+                arrayToggleFactory[i].interactable = false;
+            }
+            btnExitF1.interactable = false;
         }
-        idFactory = id;
         textButtonBuyFactory.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
         PanelFactory1.SetActive(true);
         DataGlobal.instance.AllowMouseDown = false;
@@ -242,16 +269,17 @@ public class UIManager : MonoBehaviour
             }
             effectWaitingNhaMay.SetActive(false);
             Tutorial.instance.TutorialAnimals();
+            btnExitPW.interactable = true;
         });
     }
 
     public void OnClickToWaiting(DetailFactory factoryWating)
     {
-        if(DataGlobal.instance.firstGame == 2)
+        if(DataGlobal.instance.GetFirstGame() == 3)
         {
             Tutorial.instance.caitay.SetActive(false);
             effectWaitingNhaMay.SetActive(true);
-            DataGlobal.instance.firstGame = 3;
+            btnExitPW.interactable = false;
         }
         _factory1 = factoryWating;
         PanelWaiting.SetActive(true);
@@ -502,6 +530,7 @@ public class UIManager : MonoBehaviour
     public GameObject effectBuyItem;
 
     public Toggle toggleStore;
+    public Toggle[] arrayToggleStore;
 
     public void AddListnerForPS()
     {
@@ -512,6 +541,13 @@ public class UIManager : MonoBehaviour
             MainCamera.instance.camLock = false;
             effectBuyItem.SetActive(false);
             Tutorial.instance.TutorialChatCay();
+
+            btnBuyPS.interactable = true;
+
+            for (int i = 0; i < arrayToggleStore.Length; i++)
+            {
+                arrayToggleStore[i].interactable = true;
+            }
         });
 
         btnBuyPS.onClick.AddListener(delegate
@@ -526,16 +562,25 @@ public class UIManager : MonoBehaviour
             {
                 PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ tiền để mua vật phẩm này!" : "You don't have enough gold to buy this item!");
             }
-            effectBuyItem.GetComponent<RectTransform>().localPosition = new Vector3(50, 100, 0);
+            if (DataGlobal.instance.GetFirstGame() == 6)
+            {
+                effectBuyItem.GetComponent<RectTransform>().localPosition = new Vector3(50, 100, 0);
+                btnBuyPS.interactable = false;
+                btnExitPS.interactable = true;
+            }
         });
     }
 
     public void ShowPS()
     {
-        if (DataGlobal.instance.firstGame == 5)
+        if (DataGlobal.instance.GetFirstGame() == 6)
         {
             effectBuyItem.SetActive(true);
-            DataGlobal.instance.firstGame = 6;
+            for (int i = 1; i < arrayToggleStore.Length; i++)
+            {
+                arrayToggleStore[i].interactable = false;
+            }
+            btnExitPS.interactable = false;
         }
         PanelStore.SetActive(true);
         textButtonStore.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";
@@ -641,6 +686,8 @@ public class UIManager : MonoBehaviour
 
     public Toggle toggleChuong;
 
+    public Toggle[] arrayToggleChuong;
+
     private DetailVatnuoi _vatnuoi = null;
     private int _idChuong;
     private int soluongVatnuoi;
@@ -702,17 +749,30 @@ public class UIManager : MonoBehaviour
                 PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Bạn không đủ vàng và cấp độ để mua con vật này!" : "You don't have enough gold and level to buy this animals!");
             }
             effectBuyAnimals.SetActive(false);
+            ExitChuong.interactable = true;
+            Muathem.interactable = true;
+            MuaGiam.interactable = true;
+            for (int i = 0; i < arrayToggleChuong.Length; i++)
+            {
+                arrayToggleChuong[i].interactable = true;
+            }
             Tutorial.instance.TutorialMuaCua();
         });
     }
 
     public void ShowPanelChuong(int idChuong)
     {
-        if(DataGlobal.instance.firstGame == 3)
+        if(DataGlobal.instance.GetFirstGame() == 4)
         {
             effectBuyAnimals.SetActive(true);
             Tutorial.instance.caitay.SetActive(false);
-            DataGlobal.instance.firstGame = 4;
+            ExitChuong.interactable = false;
+            MuaGiam.interactable = false;
+            Muathem.interactable = false;
+            for (int i = 1; i < arrayToggleChuong.Length; i++)
+            {
+                arrayToggleChuong[i].interactable = false;
+            }
         }
         _idChuong = idChuong;
         textButtonMuaVatNuoi.text = DataGlobal.instance.tiengviet ? "Mua" : "Buy";

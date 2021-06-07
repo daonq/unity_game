@@ -87,10 +87,45 @@ public class Land : MonoBehaviour
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1, 1, 1);
-        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        if (nameDown == hit.collider?.name) Handler();
+        if (DataGlobal.instance.AllowMouseDown && !Tutorial.instance.modeTutorial)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name) Handler();
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) Handler();
+        }
+#endif
+        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 1)
+        {
+#if UNITY_EDITOR
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+                if (nameDown == hit.collider?.name) Handler();
+            }
+#else
+        if (!EventSystem.current.IsPointerOverGameObject(0))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (nameDown == hit.collider?.name) Handler();
+        }
+#endif
+        }
     }
 
     private void OnMouseDown()
@@ -114,7 +149,7 @@ public class Land : MonoBehaviour
                 nameDown = hit.collider?.name;
             }
 #endif
-        } else if(DataGlobal.instance.AllowMouseDown && id == 22)
+        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 1)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())

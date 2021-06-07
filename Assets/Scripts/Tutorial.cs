@@ -31,6 +31,9 @@ public class Tutorial : MonoBehaviour
 
     public bool modeTutorial;
 
+    public Button btnGift;
+    public Button btnSetting;
+
     private void Awake()
     {
         instance = this;
@@ -38,96 +41,159 @@ public class Tutorial : MonoBehaviour
 
     private void Start()
     {
-        if(DataGlobal.instance.firstGame == 0)
+        Debug.Log("First Game: " + DataGlobal.instance.GetFirstGame());
+        switch (DataGlobal.instance.GetFirstGame())
         {
+            case 0:
+                TutorialGieoHat();
+                break;
+            case 1:
+                TutorialFactory();
+                break;
+            case 2:
+                TutorialWaiting();
+                break;
+            case 3:
+                TutorialAnimals();
+                break;
+            case 4:
+                TutorialMuaCua();
+                break;
+            case 5:
+                TutorialMuaCua1();
+                break;
+            case 6:
+                TutorialChatCay();
+                break;
+            case 7:
+                EndTutorial();
+                break;
+        }
+    }
+
+    public void TutorialGieoHat()
+    {
+        if (DataGlobal.instance.GetFirstGame() == 0)
+        {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 2, -10);
             muiten.SetActive(true);
-            DataGlobal.instance.firstGame = 1;
+            DataGlobal.instance.SetFirstGame(1);
         }
     }
 
     public void TutorialFactory()
     {
-        if (DataGlobal.instance.firstGame == 1)
+        if (DataGlobal.instance.GetFirstGame() == 1)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
-            DataGlobal.instance.firstGame = 2;
+            DataGlobal.instance.SetFirstGame(2);
         }
     }
 
     public void TutorialWaiting()
     {
-        if(DataGlobal.instance.firstGame == 2)
+        if(DataGlobal.instance.GetFirstGame() == 2)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
-            DataGlobal.instance.firstGame = 3;
+            DataGlobal.instance.SetFirstGame(3);
         }
     }
 
     public void TutorialAnimals()
     {
-        if(DataGlobal.instance.firstGame == 3)
+        if(DataGlobal.instance.GetFirstGame() == 3)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-410, -120, 0);
-            DataGlobal.instance.firstGame = 4;
+            DataGlobal.instance.SetFirstGame(4);
         }
     }
 
     public void TutorialMuaCua()
     {
-        if(DataGlobal.instance.firstGame == 4)
+        if(DataGlobal.instance.GetFirstGame() == 4)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-10, -100, 0);
-            DataGlobal.instance.firstGame = 5;
+            DataGlobal.instance.SetFirstGame(5);
         }
     }
 
     public void TutorialMuaCua1()
     {
-        if(DataGlobal.instance.firstGame == 5)
+        if(DataGlobal.instance.GetFirstGame() == 5)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-160, -150, 0);
-            DataGlobal.instance.firstGame = 6;
+            DataGlobal.instance.SetFirstGame(6);
         }
     }
 
     public void TutorialChatCay()
     {
-        if(DataGlobal.instance.firstGame == 6)
+        if(DataGlobal.instance.GetFirstGame() == 6)
         {
+            btnGift.interactable = false;
+            btnSetting.interactable = false;
             modeTutorial = true;
-            MainCamera.instance.camLock = false;
+            MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
             caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, -10, 0);
-            DataGlobal.instance.firstGame = 7;
+            DataGlobal.instance.SetFirstGame(7);
         }
     }
 
     public void EndTutorial()
     {
-        modeTutorial = false;
+        if (DataGlobal.instance.GetFirstGame() == 7)
+        {
+            modeTutorial = false;
+            caitay.SetActive(false);
+            btnSetting.interactable = true;
+            btnGift.interactable = true;
+            MainCamera.instance.camLock = false;
+            DataGlobal.instance.SetFirstGame(8);
+            DataGlobal.instance.ClickObject = true;
+            /*
+            PanelNotify.instance.ShowContent(DataGlobal.instance.tiengviet ? "Chúc mừng bạn đã hoàn thành phần hướng dẫn!\nBạn nhận được 1000 Vàng, 200 Nước, 200 Đá, 200 Gỗ, 50 Dầu." : "Congratulations on completing the tutorial!\nYou get 1000 Gold, 200 Water, 200 Stone, 200 Wood, 50 Oil.");
+            DataGlobal.instance.AddGold(1000);
+            DataGlobal.instance.AddWater(200);
+            DataGlobal.instance.AddStone(200);
+            DataGlobal.instance.AddWood(200);
+            DataGlobal.instance.AddOil(50);
+            */
+        }
     }
 }
