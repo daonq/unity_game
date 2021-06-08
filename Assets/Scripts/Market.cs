@@ -36,7 +36,7 @@ public class Market : MonoBehaviour
             }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && DataGlobal.instance.GetFirstGame() == 5)
+        else if (DataGlobal.instance.AllowMouseDown && DataGlobal.instance.GetFirstGame() == 4)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -86,7 +86,7 @@ public class Market : MonoBehaviour
         }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && DataGlobal.instance.GetFirstGame() == 5)
+        else if (DataGlobal.instance.AllowMouseDown && DataGlobal.instance.GetFirstGame() == 4)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -117,15 +117,19 @@ public class Market : MonoBehaviour
     private void Handler()
     {
         nameDown = "";
-        vongtron.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
+        vongtron.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
         Tutorial.instance.caitay.SetActive(false);
+        if (DataGlobal.instance.GetFirstGame() != 4)
+        {
+            StartCoroutine(Hide());
+        }
+        DataGlobal.instance.SetFirstGame(5);
         Tutorial.instance.TutorialMuaCua1();
-        StartCoroutine(Hide());
     }
 
     IEnumerator Hide()
     {
         yield return new WaitForSeconds(5);
-        vongtron.transform.DOScale(new Vector3(0, 0, 0), 0);
+        vongtron.transform.DOScale(new Vector3(0, 0, 0), 0.2f);
     }
 }

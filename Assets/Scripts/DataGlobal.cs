@@ -67,7 +67,6 @@ public class DataGlobal : MonoBehaviour
 #if UNITY_EDITOR || UNITY_IOS
     private void OnApplicationQuit()
     {
-        Debug.Log("QUIT");
         PlayerPrefs.SetInt("level", _level);
         PlayerPrefs.SetInt("gold", _gold);
         PlayerPrefs.SetInt("water", _water);
@@ -96,7 +95,6 @@ public class DataGlobal : MonoBehaviour
 #elif UNITY_ANDROID
     private void OnApplicationPause()
     {
-        Debug.Log("PAUSE");
         PlayerPrefs.SetInt("level", _level);
         PlayerPrefs.SetInt("gold", _gold);
         PlayerPrefs.SetInt("water", _water);

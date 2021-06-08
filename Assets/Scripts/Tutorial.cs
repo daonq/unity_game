@@ -41,7 +41,7 @@ public class Tutorial : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("First Game: " + DataGlobal.instance.GetFirstGame());
+        //Debug.Log("First Game: " + DataGlobal.instance.GetFirstGame());
         switch (DataGlobal.instance.GetFirstGame())
         {
             case 0:
@@ -75,13 +75,13 @@ public class Tutorial : MonoBehaviour
     {
         if (DataGlobal.instance.GetFirstGame() == 0)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 2, -10);
             muiten.SetActive(true);
-            DataGlobal.instance.SetFirstGame(1);
+            //DataGlobal.instance.SetFirstGame(1);
         }
     }
 
@@ -89,89 +89,90 @@ public class Tutorial : MonoBehaviour
     {
         if (DataGlobal.instance.GetFirstGame() == 1)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
-            DataGlobal.instance.SetFirstGame(2);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-470, -100, 0);
+            //DataGlobal.instance.SetFirstGame(2);
         }
     }
 
     public void TutorialWaiting()
     {
-        if(DataGlobal.instance.GetFirstGame() == 2)
+        if (DataGlobal.instance.GetFirstGame() == 2)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, -0.5f, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-550, -138, 0);
-            DataGlobal.instance.SetFirstGame(3);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-470, -100, 0);
+            //DataGlobal.instance.SetFirstGame(3);
         }
     }
 
     public void TutorialAnimals()
     {
-        if(DataGlobal.instance.GetFirstGame() == 3)
+        if (DataGlobal.instance.GetFirstGame() == 3)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-410, -120, 0);
-            DataGlobal.instance.SetFirstGame(4);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-330, -60, 0);
+            //DataGlobal.instance.SetFirstGame(4);
         }
     }
 
     public void TutorialMuaCua()
     {
-        if(DataGlobal.instance.GetFirstGame() == 4)
+        if (DataGlobal.instance.GetFirstGame() == 4)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-10, -100, 0);
-            DataGlobal.instance.SetFirstGame(5);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(90, -60, 0);
+            //DataGlobal.instance.SetFirstGame(5);
         }
     }
 
     public void TutorialMuaCua1()
     {
-        if(DataGlobal.instance.GetFirstGame() == 5)
+        if (DataGlobal.instance.GetFirstGame() == 5)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-160, -150, 0);
-            DataGlobal.instance.SetFirstGame(6);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-20, -120, 0);
+            //DataGlobal.instance.SetFirstGame(6);
         }
     }
 
     public void TutorialChatCay()
     {
-        if(DataGlobal.instance.GetFirstGame() == 6)
+        if (DataGlobal.instance.GetFirstGame() == 6)
         {
-            btnGift.interactable = false;
-            btnSetting.interactable = false;
+            btnGift.gameObject.SetActive(false);
+            btnSetting.gameObject.SetActive(false);
             modeTutorial = true;
             MainCamera.instance.camLock = true;
             MainCamera.instance.mcam.GetComponent<Transform>().position = new Vector3(-2, 3, -10);
             caitay.SetActive(true);
-            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, -10, 0);
-            DataGlobal.instance.SetFirstGame(7);
+            caitay.GetComponent<RectTransform>().localPosition = new Vector3(-225, 64, 0);
+            caitay.GetComponent<RectTransform>().localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            //DataGlobal.instance.SetFirstGame(7);
         }
     }
 
@@ -181,8 +182,8 @@ public class Tutorial : MonoBehaviour
         {
             modeTutorial = false;
             caitay.SetActive(false);
-            btnSetting.interactable = true;
-            btnGift.interactable = true;
+            btnGift.gameObject.SetActive(true);
+            btnSetting.gameObject.SetActive(true);
             MainCamera.instance.camLock = false;
             DataGlobal.instance.SetFirstGame(8);
 

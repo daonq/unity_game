@@ -81,7 +81,7 @@ public class Chuong : MonoBehaviour
         }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 4)
+        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 3)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -124,7 +124,7 @@ public class Chuong : MonoBehaviour
             }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 4)
+        else if (DataGlobal.instance.AllowMouseDown && id == 0 && DataGlobal.instance.GetFirstGame() == 3)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())

@@ -62,7 +62,7 @@ public class cr4 : MonoBehaviour
             else nameDown = "";
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 7)
+        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 6)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -91,7 +91,10 @@ public class cr4 : MonoBehaviour
         if (cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] > 0)
         {
             cua.SetActive(true);
-            StartCoroutine(HideCua());
+            if (DataGlobal.instance.GetFirstGame() != 6)
+            {
+                StartCoroutine(HideCua());
+            }
         }
         else if(cothepha && DataGlobal.instance.ArrayHaveOwnedItem[0] <= 0)
         {
@@ -101,7 +104,7 @@ public class cr4 : MonoBehaviour
 
         if (DataGlobal.instance.GetFirstGame() == 6)
         {
-            Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-350, 75, 0);
+            Tutorial.instance.caitay.GetComponent<RectTransform>().localPosition = new Vector3(-225, 128, 0);
         }
     }
 
@@ -118,6 +121,7 @@ public class cr4 : MonoBehaviour
     {
         DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
         Tutorial.instance.caitay.SetActive(false);
+        DataGlobal.instance.SetFirstGame(7);
         Tutorial.instance.EndTutorial();
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
@@ -173,7 +177,7 @@ public class cr4 : MonoBehaviour
         }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 7)
+        else if (DataGlobal.instance.AllowMouseDown && id == 65 && DataGlobal.instance.GetFirstGame() == 6)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())

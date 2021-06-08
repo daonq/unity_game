@@ -106,7 +106,7 @@ public class Land : MonoBehaviour
             if (nameDown == hit.collider?.name) Handler();
         }
 #endif
-        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 1)
+        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 0)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -149,7 +149,7 @@ public class Land : MonoBehaviour
                 nameDown = hit.collider?.name;
             }
 #endif
-        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 1)
+        } else if(DataGlobal.instance.AllowMouseDown && id == 22 && DataGlobal.instance.GetFirstGame() == 0)
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())

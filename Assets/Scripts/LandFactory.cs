@@ -78,7 +78,7 @@ public class LandFactory : MonoBehaviour
         }
 #endif
         }
-        else if (DataGlobal.instance.AllowMouseDown && id == 0 && (DataGlobal.instance.GetFirstGame() == 2 || DataGlobal.instance.GetFirstGame() == 3))
+        else if (DataGlobal.instance.AllowMouseDown && id == 0 && (DataGlobal.instance.GetFirstGame() == 1 || DataGlobal.instance.GetFirstGame() == 2))
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
@@ -122,7 +122,7 @@ public class LandFactory : MonoBehaviour
             }
 #endif
         }
-        else if(DataGlobal.instance.AllowMouseDown && id == 0 && (DataGlobal.instance.GetFirstGame() == 2 || DataGlobal.instance.GetFirstGame() == 3))
+        else if(DataGlobal.instance.AllowMouseDown && id == 0 && (DataGlobal.instance.GetFirstGame() == 1 || DataGlobal.instance.GetFirstGame() == 2))
         {
 #if UNITY_EDITOR
             if (!EventSystem.current.IsPointerOverGameObject())
