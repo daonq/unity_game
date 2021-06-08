@@ -198,11 +198,15 @@ public class DataGlobal : MonoBehaviour
                 {
                     ArrayLand[i].GetComponent<Land>().GetComponent<SpriteRenderer>().sprite = sprOdat;
                 }
+                else
+                {
+                    ArrayLand[i].GetComponent<Land>().GetComponent<SpriteRenderer>().sprite = ArrayLand[i].GetComponent<Land>().spriteLock;
+                }
             }
 
             for (int i = 0; i < ArrayChuong.Length; i++)
             {
-                if(_level >= ArrayChuong[i].GetComponent<Chuong>().levelUnlock)
+                if(_level >= ArrayChuong[i].GetComponent<Chuong>().levelUnlock && ArrayChuong[i].GetComponent<Chuong>().state == Chuong.StateChuong.NONE)
                 {
                     ArrayChuong[i].GetComponent<Chuong>().effect.SetActive(true);
                 }
@@ -210,7 +214,7 @@ public class DataGlobal : MonoBehaviour
 
             for (int i = 0; i < ArrayLandFactory.Length; i++)
             {
-                if(_level >= ArrayLandFactory[i].GetComponent<LandFactory>().levelUnlock)
+                if(_level >= ArrayLandFactory[i].GetComponent<LandFactory>().levelUnlock && ArrayLandFactory[i].GetComponent<LandFactory>().stateLandFactory == LandFactory.StateLandFactory.NONE)
                 {
                     ArrayLandFactory[i].GetComponent<LandFactory>().effect.SetActive(true);
                 }

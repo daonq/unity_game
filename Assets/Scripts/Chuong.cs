@@ -52,12 +52,12 @@ public class Chuong : MonoBehaviour
 
     private void Start()
     {
-        if (DataGlobal.instance.GetLevel() >= levelUnlock)
+        LoadDataOnGame();
+        if (DataGlobal.instance.GetLevel() >= levelUnlock && state == StateChuong.NONE)
         {
             effect.SetActive(true);
         }
         textlevelUnlock.text = DataGlobal.instance.tiengviet ? "Cấp độ " + levelUnlock : "Level " + levelUnlock;
-        LoadDataOnGame();
     }
 
     private void OnMouseUp()
@@ -410,6 +410,11 @@ public class Chuong : MonoBehaviour
                 }
             }
 
+            for (int i = 0; i < listVatNuoi.Count; i++)
+            {
+                listVatNuoi[i].GetComponent<SkeletonAnimation>().AnimationName = "an";
+            }
+
             for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
             {
                 if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
@@ -437,8 +442,41 @@ public class Chuong : MonoBehaviour
         else if (stt == 3)
         {
             state = StateChuong.DONE;
+            idVatnuoi = PlayerPrefs.GetInt("idvatnuoi" + id);
+            sl = PlayerPrefs.GetInt("soluongvatnuoi" + id);
             bien.SetActive(false);
+            UpdateIconVatnuoi();
+
+            listVatNuoi.Clear();
+            for (int i = 0; i < sl; i++)
+            {
+                if (idVatnuoi == 13)
+                {
+                    GameObject vn = Instantiate(ga, vitri[i].position, Quaternion.identity);
+                    listVatNuoi.Add(vn);
+                }
+                else if (idVatnuoi == 14)
+                {
+                    GameObject vn = Instantiate(lon, vitri[i].position, Quaternion.identity);
+                    listVatNuoi.Add(vn);
+                }
+                else if (idVatnuoi == 15)
+                {
+                    GameObject vn = Instantiate(bo, vitri[i].position, Quaternion.identity);
+                    listVatNuoi.Add(vn);
+                }
+                else if (idVatnuoi == 16)
+                {
+                    GameObject vn = Instantiate(cuu, vitri[i].position, Quaternion.identity);
+                    listVatNuoi.Add(vn);
+                }
+            }
             thu_hoach.SetActive(true);
+            for (int i = 0; i < listVatNuoi.Count; i++)
+            {
+                listVatNuoi[i].GetComponent<SkeletonAnimation>().AnimationName = "lo";
+            }
+
             for (int i = 0; i < DataGlobal.instance.listVatNuoi.Count; i++)
             {
                 if (idVatnuoi == DataGlobal.instance.listVatNuoi[i].id)
@@ -447,6 +485,8 @@ public class Chuong : MonoBehaviour
                     break;
                 }
             }
+            GetComponent<SpriteRenderer>().sprite = _vatnuoi.imageChuong1;
+            chuong2.GetComponent<SpriteRenderer>().sprite = _vatnuoi.imageChuong2;
         }
     }
 

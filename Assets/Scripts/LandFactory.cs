@@ -44,7 +44,8 @@ public class LandFactory : MonoBehaviour
 
     private void Start()
     {
-        if(DataGlobal.instance.GetLevel() >= levelUnlock)
+        LoadDataOnGame();
+        if(DataGlobal.instance.GetLevel() >= levelUnlock && stateLandFactory == StateLandFactory.NONE)
         {
             effect.SetActive(true);
         } else
@@ -52,7 +53,6 @@ public class LandFactory : MonoBehaviour
             effect.SetActive(false);
         }
         textLevelUnlock.text = DataGlobal.instance.tiengviet ? "Cấp độ " + levelUnlock : "Level " + levelUnlock;
-        LoadDataOnGame();
     }
 
 
@@ -155,7 +155,7 @@ public class LandFactory : MonoBehaviour
             }
             else if (stateLandFactory == StateLandFactory.WAITING)
             {
-                UIManager.instance.OnClickToWaiting(factory);
+                UIManager.instance.OnClickToWaiting(factory, id);
             }
             else if (stateLandFactory == StateLandFactory.BUILD || stateLandFactory == StateLandFactory.BUILD1 || stateLandFactory == StateLandFactory.BUILD2)
             {
@@ -270,6 +270,14 @@ public class LandFactory : MonoBehaviour
         //PlayerPrefs.SetString("timethucNhamay" + id, DateTime.Now.ToString());
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            PlayerPrefs.SetString("timethucNhamay" + id, DateTime.Now.ToString());
+        }
+    }
+
     public void OnApplicationQuit()
     {
         PlayerPrefs.SetString("timethucNhamay" + id, DateTime.Now.ToString());
@@ -282,6 +290,7 @@ public class LandFactory : MonoBehaviour
 
     public void OnThuHoach(int idFactory)
     {
+        //Debug.Log("ID Factory: " + idFactory);
         thuhoach.SetActive(false);
         if(idFactory == 0)
         {

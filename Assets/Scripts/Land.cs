@@ -35,6 +35,10 @@ public class Land : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = spriteLock;
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = DataGlobal.instance.sprOdat;
+        }
         //loadData();
         LoadDataOnGame();
     }
@@ -362,6 +366,15 @@ public class Land : MonoBehaviour
         {
             Seed.GetComponent<SpriteRenderer>().sprite = seed.spr1;
         }
+        if (currentTime <= seed.time / 2 && currentTime > 1)
+        {
+            Seed.GetComponent<SpriteRenderer>().sprite = seed.spr2;
+        }
+        if (currentTime <= 1)
+        {
+            stateLand = StateLand.DONE;
+            Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
+        }
         while (currentTime > 0)
         {
             yield return new WaitForSeconds(1);
@@ -369,6 +382,17 @@ public class Land : MonoBehaviour
 
             PlayerPrefs.SetInt("idhatgiong" + id, _idSeed);
             PlayerPrefs.SetString("timethucodat" + id, DateTime.Now.ToString());
+
+            if (currentTime <= seed.time / 2 && currentTime > 1)
+            {
+                Seed.GetComponent<SpriteRenderer>().sprite = seed.spr2;
+            }
+            if (currentTime <= 1)
+            {
+                stateLand = StateLand.DONE;
+                Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
+            }
+            textTime.text = formatTime(currentTime);
 
             if (stateLand == StateLand.NONE)
             {
@@ -385,16 +409,6 @@ public class Land : MonoBehaviour
             // stt = 1: None, stt = 2: seeded, stt = 3: done
             PlayerPrefs.SetInt("statusOdat" + id, stt);
 
-            if (currentTime <= seed.time / 2 && currentTime > 1)
-            {
-                Seed.GetComponent<SpriteRenderer>().sprite = seed.spr2;
-            }
-            if (currentTime <= 1)
-            {
-                stateLand = StateLand.DONE;
-                Seed.GetComponent<SpriteRenderer>().sprite = seed.spr3;
-            }
-            textTime.text = formatTime(currentTime);
         }
     }
 }

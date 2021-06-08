@@ -123,8 +123,12 @@ public class Market : MonoBehaviour
         {
             StartCoroutine(Hide());
         }
-        DataGlobal.instance.SetFirstGame(5);
-        Tutorial.instance.TutorialMuaCua1();
+
+        if (DataGlobal.instance.GetFirstGame() == 4)
+        {
+            DataGlobal.instance.SetFirstGame(5);
+            Tutorial.instance.TutorialMuaCua1();
+        }
     }
 
     IEnumerator Hide()

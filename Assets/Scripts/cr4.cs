@@ -120,9 +120,13 @@ public class cr4 : MonoBehaviour
     public void cuanhe()
     {
         DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
-        Tutorial.instance.caitay.SetActive(false);
-        DataGlobal.instance.SetFirstGame(7);
-        Tutorial.instance.EndTutorial();
+        cothepha = false;
+        if (DataGlobal.instance.GetFirstGame() == 6)
+        {
+            Tutorial.instance.caitay.SetActive(false);
+            DataGlobal.instance.SetFirstGame(7);
+            Tutorial.instance.EndTutorial();
+        }
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
         StartCoroutine(HieuUng());

@@ -285,7 +285,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    public void OnClickToWaiting(DetailFactory factoryWating)
+    public void OnClickToWaiting(DetailFactory factoryWating, int idFac)
     {
         if(DataGlobal.instance.GetFirstGame() == 2)
         {
@@ -293,6 +293,7 @@ public class UIManager : MonoBehaviour
             effectWaitingNhaMay.SetActive(true);
             btnExitPW.interactable = false;
         }
+        idFactory = idFac;
         _factory1 = factoryWating;
         PanelWaiting.SetActive(true);
         textWater.text = "" + factoryWating.water;
@@ -553,10 +554,14 @@ public class UIManager : MonoBehaviour
             PanelStore.SetActive(false);
             DataGlobal.instance.AllowMouseDown = true;
             MainCamera.instance.camLock = false;
-            effectBuyItem.SetActive(false);
-            DataGlobal.instance.SetFirstGame(6);
-            Tutorial.instance.TutorialChatCay();
-            btnBuyPS.interactable = true;
+
+            if (DataGlobal.instance.GetFirstGame() == 5)
+            {
+                effectBuyItem.SetActive(false);
+                DataGlobal.instance.SetFirstGame(6);
+                Tutorial.instance.TutorialChatCay();
+                btnBuyPS.interactable = true;
+            }
 
             for (int i = 0; i < arrayToggleStore.Length; i++)
             {

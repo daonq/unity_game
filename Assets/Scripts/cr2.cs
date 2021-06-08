@@ -119,6 +119,7 @@ public class cr2 : MonoBehaviour
     public void cuanhe()
     {
         DataGlobal.instance.ArrayHaveOwnedItem[0] -= 1;
+        cothepha = false;
         GetComponent<Animator>().enabled = false;
         animationCua.SetActive(true);
         StartCoroutine(HieuUng());

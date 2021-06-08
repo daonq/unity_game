@@ -3,7 +3,23 @@ using UnityEngine.EventSystems;
 
 public class House : MonoBehaviour
 {
-    private string nameDown; 
+    private string nameDown;
+
+    [SerializeField] Sprite[] sprites;
+
+    private void Start()
+    {
+        if(DataGlobal.instance.GetLevelHouse() == 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[0];
+        } else if(DataGlobal.instance.GetLevelHouse() == 2)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[1];
+        } else if(DataGlobal.instance.GetLevelHouse() == 3)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[2];
+        }
+    }
 
     private void OnMouseDown()
     {
