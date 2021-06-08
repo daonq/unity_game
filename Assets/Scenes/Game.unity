@@ -13937,7 +13937,7 @@ PrefabInstance:
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}
       propertyPath: levelUnlock
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}
@@ -17670,7 +17670,7 @@ PrefabInstance:
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}
       propertyPath: levelUnlock
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}
@@ -43371,7 +43371,7 @@ PrefabInstance:
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}
       propertyPath: levelUnlock
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1128550229690036107, guid: ff041c5782b090c45abaa23773416bf6,
         type: 3}

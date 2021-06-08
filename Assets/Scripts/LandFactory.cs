@@ -211,8 +211,8 @@ public class LandFactory : MonoBehaviour
         PlayerPrefs.SetInt("stateLandFactory" + id, 4);
         GetComponent<SpriteRenderer>().sprite = factory.sp2;
         GetTimeAndCount();
-        StopCoroutine(FactoryWork());
-        StartCoroutine(FactoryWork());
+        //StopCoroutine(FactoryWork());
+        //StartCoroutine(FactoryWork());
     }
 
     public void OnBuild2()
@@ -227,8 +227,8 @@ public class LandFactory : MonoBehaviour
         PlayerPrefs.SetInt("stateLandFactory" + id, 5);
         GetComponent<SpriteRenderer>().sprite = factory.sp3;
         GetTimeAndCount();
-        StopCoroutine(FactoryWork());
-        StartCoroutine(FactoryWork());
+        //StopCoroutine(FactoryWork());
+        //StartCoroutine(FactoryWork());
     }
 
     int time, timeMax, count, countMax;
