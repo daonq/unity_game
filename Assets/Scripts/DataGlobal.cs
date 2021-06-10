@@ -64,7 +64,7 @@ public class DataGlobal : MonoBehaviour
         UpdateDataAmount();
     }
 
-#if UNITY_EDITOR || UNITY_IOS
+//#if UNITY_EDITOR || UNITY_IOS
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("level", _level);
@@ -92,7 +92,7 @@ public class DataGlobal : MonoBehaviour
             PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
         }
     }
-#elif UNITY_ANDROID
+//#elif UNITY_ANDROID
     private void OnApplicationPause()
     {
         PlayerPrefs.SetInt("level", _level);
@@ -120,7 +120,7 @@ public class DataGlobal : MonoBehaviour
             PlayerPrefs.SetInt("arrayHaveOwnedItem" + i, ArrayHaveOwnedItem[i]);
         }
     }
-#endif
+//#endif
     public bool ClickObject;
 
     public GameObject goldUI;
