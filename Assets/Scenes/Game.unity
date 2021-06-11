@@ -476,6 +476,7 @@ RectTransform:
   - {fileID: 1657949908}
   - {fileID: 1743507825}
   - {fileID: 1449131115}
+  - {fileID: 320016004}
   m_Father: {fileID: 280492971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7916,6 +7917,155 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!1 &320016003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320016004}
+  - component: {fileID: 320016006}
+  - component: {fileID: 320016005}
+  - component: {fileID: 320016007}
+  m_Layer: 5
+  m_Name: title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &320016004
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320016003}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 16430451}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 140}
+  m_SizeDelta: {x: 200, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &320016005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320016003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Waiting
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9394c690a5d49554ca4d5f70b93826cf, type: 2}
+  m_sharedMaterial: {fileID: -6420742122374226889, guid: 9394c690a5d49554ca4d5f70b93826cf,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 97690656
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &320016006
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320016003}
+  m_CullTransparentMesh: 0
+--- !u!114 &320016007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320016003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797426d6f33da5e4a9d2bf8d1154cf95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vn: "\u0110ang ch\u1EDD"
+  en: Waiting
 --- !u!1 &327965855
 GameObject:
   m_ObjectHideFlags: 0
@@ -40454,7 +40604,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1570182871}
   - component: {fileID: 1570182874}
-  - component: {fileID: 1570182873}
   - component: {fileID: 1570182872}
   m_Layer: 0
   m_Name: ThuyenLoai1 (4)
@@ -40496,18 +40645,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1570182873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570182870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92543bf65465564c915e9217a417089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1570182874
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56094,7 +56231,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: acd9f88ed6c455542bbb5899864a0da9,
+      objectReference: {fileID: 21300000, guid: 853c541907af7e84c8422f2f9219f1dd,
         type: 3}
     - target: {fileID: 1860384182520750454, guid: 261398dbfb6777e408046fe3b83396bf,
         type: 3}
@@ -59069,6 +59206,856 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3f8e78537da617c4b884f139e1edb291,
         type: 3}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[27].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[27].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[27].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[27].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[28].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[28].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[28].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[28].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[29].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[29].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[29].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[29].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[30].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[30].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[30].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[30].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[31].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[31].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[31].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[31].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[32].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[32].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[32].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[32].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[33].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[33].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[33].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[33].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[34].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[34].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[34].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[34].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[35].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[35].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[35].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[35].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[36].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[36].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[36].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[36].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[37].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[37].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[37].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[37].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[38].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[38].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[38].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[38].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[39].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[39].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[39].ct2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[39].ct2VN
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[40].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[40].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[41].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[41].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[42].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[42].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[43].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[43].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[44].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[44].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[45].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[45].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[46].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[46].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[47].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[47].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[48].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[48].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[49].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[49].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[50].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[50].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[51].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[51].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[52].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[52].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[53].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[53].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[54].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[54].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[55].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[55].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[56].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[56].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[57].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[57].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[58].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[58].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[59].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[59].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[60].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[60].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[61].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[61].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[62].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[62].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[63].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[63].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[64].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[64].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[65].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[65].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[66].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[66].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[67].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[67].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[68].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[68].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[69].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[70].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[71].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[72].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[73].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[74].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[75].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[76].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[77].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[78].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[79].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[80].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[81].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[82].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[83].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[84].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[85].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[86].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[87].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[88].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[89].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[90].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[91].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[92].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[93].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[94].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[95].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[96].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[97].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[98].ct1
+      value: + Wish you happy gaming
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[69].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[70].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[71].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[72].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[73].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[74].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[75].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[76].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[77].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[78].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[79].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[80].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[81].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[82].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[83].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[84].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[85].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[86].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[87].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[88].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[89].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[90].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[91].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[92].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[93].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[94].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[95].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[96].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[97].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676637844139668879, guid: e1c1c6a1b3fd06849b8330a93910772c,
+        type: 3}
+      propertyPath: listContentOFHOUSE.Array.data[98].ct1VN
+      value: "+ Ch\xFAc b\u1EA1n ch\u01A1i vui v\u1EBB"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c1c6a1b3fd06849b8330a93910772c, type: 3}
 --- !u!1001 &6806338974613189463
@@ -59441,7 +60428,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThuyenLoai1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7156228873479770353, guid: c2e93561227118245824d6df2fd2b93a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c2e93561227118245824d6df2fd2b93a, type: 3}
 --- !u!4 &7309413319924670607 stripped
 Transform:
